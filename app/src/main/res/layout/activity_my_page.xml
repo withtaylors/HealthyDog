@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="812dp"
     android:background="#FFFFFF"
-    android:scrollbarSize="10dp"
     android:fillViewport="true"
+    android:scrollbarSize="10dp"
     android:scrollbarThumbVertical="@color/colorPrimaryDark"
     tools:context=".MyPageActivity">
 
@@ -33,7 +33,7 @@
             app:srcCompat="@drawable/profile_pic1" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/name_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -68,29 +68,29 @@
                 android:id="@+id/spinner_year1"
                 android:layout_width="120dp"
                 android:layout_height="48dp"
-                android:textAlignment="center"
                 android:minHeight="45dp"
+                android:textAlignment="center"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Spinner
                 android:id="@+id/spinner_month1"
                 android:layout_width="80dp"
                 android:layout_height="48dp"
-                android:textAlignment="center"
                 android:layout_marginLeft="10dp"
+                android:textAlignment="center"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             <Spinner
                 android:id="@+id/spinner_day1"
                 android:layout_width="80dp"
                 android:layout_height="48dp"
-                android:textAlignment="center"
                 android:layout_marginLeft="10dp"
+                android:textAlignment="center"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/birth_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="-90dp"
@@ -101,7 +101,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/type_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
@@ -118,13 +118,13 @@
             tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/gender_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:textAlignment="center"
             android:text="반려동물의 성별과 중성화 여부를 선택하세요."
+            android:textAlignment="center"
             android:textColor="#000000"
             android:textColorHighlight="#000000"
             android:textColorHint="#000000"
@@ -170,8 +170,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textAlignment="center"
             android:text="반려동물의 하루 평균 산책 시간을 입력하세요."
+            android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="16sp" />
 
@@ -221,7 +221,6 @@
             android:gravity="center"
             android:text="비만도는 마이페이지에서 간단하게 확인해 보세요!"
             android:textColor="#9A9696" />
-
 
 
     </LinearLayout>
