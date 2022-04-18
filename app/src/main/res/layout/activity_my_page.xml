@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
+            android:textStyle="bold"
             android:paddingBottom="5dp"
             android:text="반려동물의 이름을 입력하세요."
             android:textColor="#000000"
@@ -55,6 +56,7 @@
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:text="이름 입력"
+            android:font="@font/gowundodum"
             android:textColor="#9A9696"
             android:textSize="16sp" />
 
@@ -95,6 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="-90dp"
             android:gravity="center"
+            android:textStyle="bold"
             android:text="반려동물의 생일은 언제인가요?"
             android:textColor="#000000"
             android:textColorHint="#000000"
@@ -106,6 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
             android:gravity="center"
+            android:textStyle="bold"
             android:text="반려동물의 견종을 선택하세요."
             android:textColor="#000000"
             android:textSize="16sp" />
@@ -123,6 +127,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
+            android:textStyle="bold"
             android:text="반려동물의 성별과 중성화 여부를 선택하세요."
             android:textAlignment="center"
             android:textColor="#000000"
@@ -137,21 +142,21 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/female_1"
                 android:layout_width="55dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="5dp"
-                android:background="@drawable/radius"
+                android:background="@drawable/selector_pressed"
                 android:text="여" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/male_1"
                 android:layout_width="55dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="5dp"
-                android:background="@drawable/radius"
+                android:background="@drawable/selector_pressed"
                 android:text="남" />
 
             <Spinner
@@ -166,12 +171,13 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/walk_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="반려동물의 하루 평균 산책 시간을 입력하세요."
             android:textAlignment="center"
+            android:textStyle="bold"
             android:textColor="#000000"
             android:textSize="16sp" />
 
@@ -214,7 +220,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/memo_1"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginTop="550dp"

@@ -19,4 +19,5 @@
     <style name = "gowundodum" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/gowundodum</item>
     </style>
+
 </resources>
