@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_camera"
+        android:enabled="true"
+        android:title="찰칵"
+        android:icon="@drawable/ic_baseline_camera_alt_24"/>
+    <item
+        android:id="@+id/nav_pic_paws"
+        android:enabled="true"
+        android:title="케어"
+        android:icon="@drawable/ic_baseline_favorite_24"/>
+    <item
+        android:id="@+id/nav_nav_hospital"
+        android:enabled="true"
+        android:title="병원"
+        android:icon="@drawable/ic_baseline_local_hospital_24"/>
+    <item
+        android:id="@+id/nav_mypage"
+        android:enabled="true"
+        android:title="마이페이지"
+        android:icon="@drawable/ic_baseline_person_24"/>
+</menu>
