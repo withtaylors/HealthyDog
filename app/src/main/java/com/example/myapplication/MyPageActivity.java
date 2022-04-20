@@ -16,9 +16,13 @@ public class MyPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
-        String[]optionLavala=getResources().getStringArray(R.array.year);
-        ArrayAdapter<String>adapter=new ArrayAdapter<String> (this,android.R.layout.simple_spinner_dropdown_item,optionLavala);
-        Spinner obj=(Spinner)findViewById(R.id.spinner_year1);
-        obj.setAdapter(adapter);
+        final Spinner spin1 = (Spinner)findViewById(R.id.spinner_year1);
+        final Spinner spin2 = (Spinner)findViewById(R.id.spinner_month1);
+        final Spinner spin3 = (Spinner)findViewById(R.id.spinner_day1);
+        final Spinner spin4 = (Spinner)findViewById(R.id.spinner_type1);
+        final Spinner spin5 = (Spinner)findViewById(R.id.spinner_gender1);
+
+
+
     }
 }

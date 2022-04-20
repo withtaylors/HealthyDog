@@ -70,6 +70,7 @@
                 android:id="@+id/spinner_year1"
                 android:layout_width="120dp"
                 android:layout_height="48dp"
+                android:fontFamily="@font/gowundodum"
                 android:minHeight="45dp"
                 android:textAlignment="center"
                 tools:ignore="SpeakableTextPresentCheck" />
@@ -79,6 +80,7 @@
                 android:layout_width="80dp"
                 android:layout_height="48dp"
                 android:layout_marginLeft="10dp"
+                android:fontFamily="@font/gowundodum"
                 android:textAlignment="center"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
@@ -87,6 +89,7 @@
                 android:layout_width="80dp"
                 android:layout_height="48dp"
                 android:layout_marginLeft="10dp"
+                android:fontFamily="@font/gowundodum"
                 android:textAlignment="center"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         </LinearLayout>
@@ -146,22 +149,36 @@
                 android:layout_width="55dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="15dp"
+                android:backgroundTint="@color/button_background_color"
+                android:fontFamily="@font/gowundodum"
+                android:background="@drawable/radius"
                 android:layout_marginRight="5dp"
-                android:background="@drawable/selector_pressed"
                 android:text="여" />
 
             <Button
                 android:id="@+id/male_1"
                 android:layout_width="55dp"
                 android:layout_height="48dp"
+                android:fontFamily="@font/gowundodum"
                 android:layout_marginTop="15dp"
+                android:backgroundTint="@color/button_background_color"
                 android:layout_marginRight="5dp"
-                android:background="@drawable/selector_pressed"
+                android:background="@drawable/radius"
                 android:text="남" />
 
             <Spinner
                 android:id="@+id/spinner_gender1"
                 android:layout_width="100dp"
+
+
+
+
+
+
+
+
+
+                android:fontFamily="@font/gowundodum"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:minHeight="48dp"
@@ -229,5 +246,28 @@
             android:textColor="#9A9696" />
 
 
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constrainStart_toStartOf="parent"
+            app:layout_constrainEnd_toEndof="parent"
+            app:layout_constraintTop_tpTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"/>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:labelVisibilityMode="unlabeled"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/bottom_nav_menu"
+            app:itemBackground="@color/bottom"/>
+
+
+
     </LinearLayout>
+
 </ScrollView>
