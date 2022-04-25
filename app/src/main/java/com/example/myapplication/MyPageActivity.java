@@ -4,24 +4,38 @@ import static com.example.myapplication.R.*;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Button;
 import android.view.View;
 
+import java.io.IOException;
+
 public class MyPageActivity extends AppCompatActivity {
     ArrayAdapter<CharSequence> adspin1, adspin2, adspin3, adspin4, adspin5;
+    Button Female_1;
+    Button Male_1;
+    private boolean check = false;
+    ImageButton profile_pic1;
+    ImageView profile_1;
 
-    ImageButton profile_pic1 = (ImageButton) findViewById(id.profile_pic1);
-    final int GET_GALLERY_IMAGE = 200;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +81,50 @@ public class MyPageActivity extends AppCompatActivity {
         adspin5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin5.setAdapter(adspin5);
 
+        Female_1= (Button)findViewById(id.Female_1);
+        Female_1.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(check == false){
+                    check = true;
+                    Female_1.setSelected(true);
+                }else {
+                    check = false;
+                    Female_1.setSelected(false);
+                }
+            }
+        });
+
+        Male_1= (Button)findViewById(id.Male_1);
+        Male_1.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(check == false){
+                    check = true;
+                    Male_1.setSelected(true);
+                }else {
+                    check = false;
+                    Male_1.setSelected(false);
+                }
+            }
+        });
+
+        ImageButton openimg = (ImageButton)findViewById(id.profile_pic1);
+        openimg.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivity(intent);
+
+            }
+        });
 
     }
-
-
-
 }
+
+
+
+
+
