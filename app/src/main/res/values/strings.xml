@@ -92,8 +92,9 @@
         <item>푸들</item>
     </string-array>
 
-    <sting-array name="gender">
-        <item>중성화 O</item>
-        <item>중성화 X</item>
-    </sting-array>
+    <string-array name="gender">
+        <item>중성화 o</item>
+        <item>중성화 x</item>
+    </string-array>
+
 </resources>
