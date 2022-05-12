@@ -124,6 +124,7 @@ public class c4Activity extends AppCompatActivity {
             // TODO Handle the exception
         }
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == 1 && resultCode == RESULT_OK) {
