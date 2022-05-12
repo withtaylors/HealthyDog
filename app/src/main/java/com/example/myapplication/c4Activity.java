@@ -41,7 +41,7 @@ public class c4Activity extends AppCompatActivity {
         result = findViewById(R.id.result);
         confidence = findViewById(R.id.confidence);
         imageView = findViewById(R.id.imageView);
-        picture = (ImageButton)findViewById(R.id.button);
+        picture = (ImageButton) findViewById(R.id.button);
 
         picture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +58,7 @@ public class c4Activity extends AppCompatActivity {
         });
     }
 
-    public void classifyImage(Bitmap image){
+    public void classifyImage(Bitmap image) {
         try {
             Model model = Model.newInstance(getApplicationContext());
 
@@ -68,13 +68,13 @@ public class c4Activity extends AppCompatActivity {
             byteBuffer.order(ByteOrder.nativeOrder());
 
             // get 1D array of 224 * 224 pixels in image
-            int [] intValues = new int[imageSize * imageSize];
+            int[] intValues = new int[imageSize * imageSize];
             image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
 
             // iterate over pixels and extract R, G, and B values. Add to bytebuffer.
             int pixel = 0;
-            for(int i = 0; i<imageSize; i++){
-                for(int j=0; j<imageSize; j++){
+            for (int i = 0; i < imageSize; i++) {
+                for (int j = 0; j < imageSize; j++) {
                     int val = intValues[pixel++]; //RGB
                     byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f / 255.f));
                     byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f / 255.f));
@@ -94,15 +94,15 @@ public class c4Activity extends AppCompatActivity {
             String toastMessage = "재촬영 요망";
 
             //큰 값 저장하기
-            for(int i =0; i<confidences.length; i++){
-                if(confidences[i] > maxConfidence){
+            for (int i = 0; i < confidences.length; i++) {
+                if (confidences[i] > maxConfidence) {
                     maxConfidence = confidences[i];
                     maxPos = i;
                 }
             }
 
             //정확도가 90% 미만일 경우 토스트 메시지 출력
-            if( maxConfidence * 100 < 90 ) {
+            if (maxConfidence * 100 < 90) {
                 Toast.makeText(c4Activity.this, toastMessage, Toast.LENGTH_SHORT).show();
             }
 
@@ -112,7 +112,7 @@ public class c4Activity extends AppCompatActivity {
 
             String s = "";
 
-            for(int i =0; i<classes.length; i++){
+            for (int i = 0; i < classes.length; i++) {
                 s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
             }
             confidence.setText(s);
