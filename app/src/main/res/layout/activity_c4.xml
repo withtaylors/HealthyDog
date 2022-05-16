@@ -129,7 +129,6 @@
             android:id="@+id/confidence"
             android:layout_below="@+id/confidencesText" />
 
-
     </LinearLayout>
 
 </ScrollView>
