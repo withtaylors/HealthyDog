@@ -108,14 +108,20 @@ public class c4Activity extends AppCompatActivity {
 
             String[] classes = {"Unhealthy_eye", "Healthy_eye"};
 
-            result.setText(classes[maxPos]);
+            //result.setText(classes[maxPos]);
+
+            Intent myIntent = new Intent(this, c5Activity.class);
+            String r = classes[maxPos];
+            myIntent.putExtra("main_result", r);
+            startActivity(myIntent);
+
 
             String s = "";
 
             for (int i = 0; i < classes.length; i++) {
                 s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
             }
-            confidence.setText(s);
+            //confidence.setText(s);
 
 
             // Releases model resources if no longer used.
@@ -138,4 +144,6 @@ public class c4Activity extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+
 }

@@ -20,7 +20,6 @@ public class mypop1 extends AppCompatActivity {
     private static final int PICK_FROM_CAMERA = 0;
     private static final int CROP_FROM_IMAGE = 2;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,8 +76,6 @@ public class mypop1 extends AppCompatActivity {
             return;
         switch (requestCode) {
             case PICK_IMAGE_REQUEST: {
-
-
 
             }
 

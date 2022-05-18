@@ -8,8 +8,6 @@
     tools:context=".c1Activity"
     android:id="@+id/frame_layout">
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -152,22 +150,31 @@
 <!--                    android:text="12e3\n\n\n\n\n\n\n\n\n\ndfjkd" />-->
 <!--            </LinearLayout>-->
 <!--        </ScrollView>-->
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/container"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_marginTop="74dp"-->
+<!--        android:layout_above="@+id/menu"/>-->
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/menu"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_marginTop="74dp"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        app:menu="@menu/menu"-->
+<!--        android:background="@color/white"-->
+<!--        app:itemTextColor="@drawable/bottom_ng_color" />-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="74dp">
+
+
+        </LinearLayout>
+
     </LinearLayout>
 
-
-    <FrameLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="74dp"
-        android:layout_above="@+id/menu"/>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/menu"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="74dp"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/menu"
-        android:background="@color/white"
-        app:itemTextColor="@drawable/bottom_ng_color" />
 </LinearLayout>

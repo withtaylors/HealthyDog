@@ -160,44 +160,44 @@ public class c1Activity extends AppCompatActivity {
     //}
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_c1);
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_c1);
+//
+//        BottomNavigationView bottomNav = findViewById(R.id.menu);
+//        bottomNav.setOnItemSelectedListener(navListener);
+//
+//        //I added this if statement to keep the selected fragment when rotating the device
+//        if (savedInstanceState == null) {
+//            getSupportFragmentManager().beginTransaction().replace(R.id.container,
+//                    new Camera()).commit();
+//        }
+//    }
 
-        BottomNavigationView bottomNav = findViewById(R.id.menu);
-        bottomNav.setOnItemSelectedListener(navListener);
-
-        //I added this if statement to keep the selected fragment when rotating the device
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container,
-                    new Camera()).commit();
-        }
-    }
-
-    private BottomNavigationView.OnItemSelectedListener navListener =
-            new BottomNavigationView.OnItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
-
-                    switch (item.getItemId()) {
-                        case R.id.nav_camera:
-                            selectedFragment = new Camera();
-                            break;
-                        case R.id.nav_pic_paws:
-                            selectedFragment = new Care();
-                            break;
-                        case R.id.nav_mypage:
-                            selectedFragment = new MyPage();
-                            break;
-                    }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container,
-                            selectedFragment).commit();
-
-                    return true;
-                }
-            };
+//    private BottomNavigationView.OnItemSelectedListener navListener =
+//            new BottomNavigationView.OnItemSelectedListener() {
+//                @Override
+//                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                    Fragment selectedFragment = null;
+//
+//                    switch (item.getItemId()) {
+//                        case R.id.nav_camera:
+//                            selectedFragment = new Camera();
+//                            break;
+//                        case R.id.nav_pic_paws:
+//                            selectedFragment = new Care();
+//                            break;
+//                        case R.id.nav_mypage:
+//                            selectedFragment = new MyPage();
+//                            break;
+//                    }
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.container,
+//                            selectedFragment).commit();
+//
+//                    return true;
+//                }
+//            };
 
 
     public void onClick(View view){
