@@ -49,5 +49,4 @@
         android:text="선택완료"
         android:layout_gravity="center"/>
 
-
-</LinearLayout>
+    </LinearLayout>

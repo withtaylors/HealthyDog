@@ -19,14 +19,16 @@ import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class c1Activity extends AppCompatActivity implements View.OnClickListener{
+public class c1Activity extends AppCompatActivity{
     private ImageButton nav_camera;
     private ImageButton nav_pic_paws;
     private ImageButton nav_mypage;
     private ImageButton guidebtn;
-    private TextView text1;
-    private TextView text2;
-    private TextView text3;
+
+    BottomNavigationView bottomNavigationView;
+//    private TextView text1;
+//    private TextView text2;
+//    private TextView text3;
 
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
@@ -61,23 +63,42 @@ public class c1Activity extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_c1);
 
-        nav_camera = (ImageButton) findViewById(R.id.nav_camera);
-        nav_pic_paws = (ImageButton) findViewById(R.id.nav_pic_paws);
-        nav_mypage = (ImageButton) findViewById(R.id.nav_mypage);
-        guidebtn = findViewById(R.id.imageButton3);
+        bottomNavigationView = findViewById(R.id.bottom);
+        bottomNavigationView.setSelectedItemId(R.id.nav_camera);
 
-        text1 = findViewById(R.id.text1);
-        text2 = findViewById(R.id.text2);
-        text3 = findViewById(R.id.text3);
+        bottomNavigationView.setOnItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
+            @Override
+            public void onNavigationItemReselected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.nav_pic_paws:
+                        startActivity(new Intent(getApplicationContext(), c3Activity.class));
+                        overridePendingTransition(0,0);
+                    case R.id.nav_camera:
 
-        guidebtn.setOnClickListener(this);
-        nav_camera.setOnClickListener(this);
-        nav_pic_paws.setOnClickListener(this);
-        nav_mypage.setOnClickListener(this);
+                    case R.id.nav_mypage:
+                        startActivity(new Intent(getApplicationContext(), my1.class));
+                        overridePendingTransition(0,0);
+                }
+            }
+        });
 
-        text1.setOnClickListener(this);
-        text2.setOnClickListener(this);
-        text3.setOnClickListener(this);
+//        nav_camera = (ImageButton) findViewById(R.id.nav_camera);
+//        nav_pic_paws = (ImageButton) findViewById(R.id.nav_pic_paws);
+//        nav_mypage = (ImageButton) findViewById(R.id.nav_mypage);
+//        guidebtn = findViewById(R.id.imageButton3);
+//
+//        text1 = findViewById(R.id.text1);
+//        text2 = findViewById(R.id.text2);
+//        text3 = findViewById(R.id.text3);
+//
+//        guidebtn.setOnClickListener(this);
+//        nav_camera.setOnClickListener(this);
+//        nav_pic_paws.setOnClickListener(this);
+//        nav_mypage.setOnClickListener(this);
+//
+//        text1.setOnClickListener(this);
+//        text2.setOnClickListener(this);
+//        text3.setOnClickListener(this);
     }
 //
 //        camera = new Camera();
@@ -240,27 +261,28 @@ public class c1Activity extends AppCompatActivity implements View.OnClickListene
 //            };
 
 
-    public void onClick(View v){
-        switch(v.getId()){
-            case R.id.guidebtn:
-                Intent intent = new Intent(this, GuideActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.nav_camera:
-            case R.id.text1:
-                Intent intent2 = new Intent(this, c1Activity.class);
-                startActivity(intent2);
-                break;
-            case R.id.nav_pic_paws:
-            case R.id.text2:
-                Intent intent3 = new Intent(this, c3Activity.class);
-                startActivity(intent3);
-                break;
-            case R.id.nav_mypage:
-            case R.id.text3:
-                Intent intent4 = new Intent(this, my1.class);
-                startActivity(intent4);
-                break;
-        }
-    }
+//    public void onClick(View v) {
+//        switch (v.getId()) {
+//            case R.id.guidebtn:
+//                Intent intent = new Intent(this, GuideActivity.class);
+//                startActivity(intent);
+//                break;
+//            case R.id.nav_camera:
+//            case R.id.text1:
+//                Intent intent2 = new Intent(this, c1Activity.class);
+//                startActivity(intent2);
+//                break;
+//            case R.id.nav_pic_paws:
+//            case R.id.text2:
+//                Intent intent3 = new Intent(this, c3Activity.class);
+//                startActivity(intent3);
+//                break;
+//            case R.id.nav_mypage:
+//            case R.id.text3:
+//                Intent intent4 = new Intent(this, my1.class);
+//                startActivity(intent4);
+//                break;
+//        }
+//        finish();
+//    }
 }

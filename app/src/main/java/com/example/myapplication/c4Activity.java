@@ -28,11 +28,21 @@ import java.nio.ByteOrder;
 
 public class c4Activity extends AppCompatActivity {
 
-    TextView result, confidence;
-    ImageView imageView;
-    ImageButton picture;
+    TextView result, confidence; //결과, 정확도
+    ImageView imageView; //촬영사진
+    ImageButton picture; //촬영버튼
+    Button btn2; //측정버튼
     int imageSize = 224;
 
+    int maxPos = 0; //큰 번호 값 저장
+    float maxConfidence = 0; //큰 정확률 값
+
+    String[] classes = {"Unhealthy_eye", "Healthy_eye"};
+
+    String s = ""; //결과 값 저장 변수
+
+
+    //앱 카메라 허용 시 사진 촬영 가능
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +51,8 @@ public class c4Activity extends AppCompatActivity {
         result = findViewById(R.id.result);
         confidence = findViewById(R.id.confidence);
         imageView = findViewById(R.id.imageView);
-        picture = (ImageButton) findViewById(R.id.button);
+        picture = (ImageButton)findViewById(R.id.button);
+        btn2 = findViewById(R.id.button2);
 
         picture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +69,8 @@ public class c4Activity extends AppCompatActivity {
         });
     }
 
-    public void classifyImage(Bitmap image) {
+    //사진 촬영 후 비트맵으로 이미지 띄우기
+    public void classifyImage(Bitmap image){
         try {
             Model model = Model.newInstance(getApplicationContext());
 
@@ -68,13 +80,13 @@ public class c4Activity extends AppCompatActivity {
             byteBuffer.order(ByteOrder.nativeOrder());
 
             // get 1D array of 224 * 224 pixels in image
-            int[] intValues = new int[imageSize * imageSize];
+            int [] intValues = new int[imageSize * imageSize];
             image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
 
             // iterate over pixels and extract R, G, and B values. Add to bytebuffer.
             int pixel = 0;
-            for (int i = 0; i < imageSize; i++) {
-                for (int j = 0; j < imageSize; j++) {
+            for(int i = 0; i<imageSize; i++){
+                for(int j=0; j<imageSize; j++){
                     int val = intValues[pixel++]; //RGB
                     byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f / 255.f));
                     byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f / 255.f));
@@ -84,44 +96,32 @@ public class c4Activity extends AppCompatActivity {
 
             inputFeature0.loadBuffer(byteBuffer);
 
-            // Runs model inference and gets result.
+            // Runs model inference and gets result. Model 돌리기 및 결과 값 가져오기
             Model.Outputs outputs = model.process(inputFeature0);
             TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
             float[] confidences = outputFeature0.getFloatArray();
-            int maxPos = 0;
-            float maxConfidence = 0;
             String toastMessage = "재촬영 요망";
 
+
             //큰 값 저장하기
-            for (int i = 0; i < confidences.length; i++) {
-                if (confidences[i] > maxConfidence) {
+            for(int i =0; i<confidences.length; i++){
+                if(confidences[i] > maxConfidence){
                     maxConfidence = confidences[i];
                     maxPos = i;
                 }
             }
 
             //정확도가 90% 미만일 경우 토스트 메시지 출력
-            if (maxConfidence * 100 < 90) {
+            if( maxConfidence * 100 < 90 ) {
                 Toast.makeText(c4Activity.this, toastMessage, Toast.LENGTH_SHORT).show();
             }
 
-            String[] classes = {"Unhealthy_eye", "Healthy_eye"};
-
-            result.setText(classes[maxPos]);
-
-            Intent myIntent = new Intent(this, c5Activity.class);
-            String r = classes[maxPos];
-            myIntent.putExtra("main_result", r);
-            startActivity(myIntent);
 
 
-            String s = "";
-
-            for (int i = 0; i < classes.length; i++) {
+            for(int i =0; i<classes.length; i++){
                 s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
             }
-            confidence.setText(s);
 
 
             // Releases model resources if no longer used.
@@ -129,6 +129,25 @@ public class c4Activity extends AppCompatActivity {
         } catch (IOException e) {
             // TODO Handle the exception
         }
+
+
+        //측정하기 버튼 클릭했을 때 결과 값 c5로 보내주기
+        String main_result , main_confidences;
+
+        main_result = classes[maxPos] ;
+        main_confidences = s;
+
+        Intent intent = new Intent(this, c5Activity.class);
+        intent.putExtra("result",main_result);
+        intent.putExtra("confidences",main_confidences);
+
+        //측정하기 버튼 클릭했을 때 인텐트 c5 이동
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -144,6 +163,4 @@ public class c4Activity extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-
-
 }

@@ -1,29 +1,28 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class c5Activity extends AppCompatActivity {
-    TextView result2, confidence2;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_c5);
+        TextView result = findViewById(R.id.result);
+        TextView confidences = findViewById(R.id.confidence);
 
-        result2 = findViewById(R.id.result);
-        confidence2 = findViewById(R.id.confidence);
+        String sub_result, sub_confidences ;
 
-        Intent myIntent = getIntent();
-        String results = myIntent.getStringExtra("main_result");
+        Intent intent = getIntent();
+        sub_result = intent.getStringExtra("result");
+        sub_confidences = intent.getStringExtra("confidences");
+
+        result.setText(sub_result);
+        confidences.setText(sub_confidences);
 
     }
-
-
 }
