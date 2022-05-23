@@ -63,6 +63,11 @@ public class c1Activity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_c1);
 
+        nav_camera = (ImageButton) findViewById(R.id.nav_camera);
+        nav_pic_paws = (ImageButton) findViewById(R.id.nav_pic_paws);
+        nav_mypage = (ImageButton) findViewById(R.id.nav_mypage);
+        guidebtn = findViewById(R.id.imageButton3);
+
         bottomNavigationView = findViewById(R.id.bottom);
         bottomNavigationView.setSelectedItemId(R.id.nav_camera);
 
