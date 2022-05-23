@@ -247,20 +247,19 @@ public class c1Activity extends AppCompatActivity implements View.OnClickListene
                 startActivity(intent);
                 break;
             case R.id.nav_camera:
+            case R.id.text1:
                 Intent intent2 = new Intent(this, c1Activity.class);
                 startActivity(intent2);
                 break;
             case R.id.nav_pic_paws:
+            case R.id.text2:
                 Intent intent3 = new Intent(this, c3Activity.class);
                 startActivity(intent3);
                 break;
             case R.id.nav_mypage:
+            case R.id.text3:
                 Intent intent4 = new Intent(this, my1.class);
                 startActivity(intent4);
-                break;
-            case R.id.text1:
-                Intent intent5 = new Intent(this, c1Activity.class);
-                startActivity(intent5);
                 break;
         }
     }
