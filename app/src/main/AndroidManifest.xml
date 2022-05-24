@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
 
+
         <activity android:name=".my2" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

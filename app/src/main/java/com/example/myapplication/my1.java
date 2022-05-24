@@ -135,7 +135,7 @@ public class my1 extends AppCompatActivity {
                         Uri uri = data.getData();
                                 try {
                                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                                        ImageView profile1 = (ImageView) findViewById(id.profile_pic1);
+                                        ImageView profile1 = (ImageView) findViewById(id.profile1);
                                         profile1.setImageBitmap(bitmap);
 
 
