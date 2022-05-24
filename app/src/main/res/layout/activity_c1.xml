@@ -133,7 +133,7 @@
                 tools:ignore="SpeakableTextPresentCheck"/>
         </LinearLayout>
 
-        <!--        <ScrollView-->
+        <!--<ScrollView-->
 <!--            android:id="@+id/guidescroll"-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content">-->
@@ -149,15 +149,13 @@
 <!--            </LinearLayout>-->
 <!--        </ScrollView>-->
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="74dp"
+        android:layout_marginTop="147dp"
         app:menu="@menu/menu"
         app:itemBackground="@color/white"
         app:itemTextColor="@drawable/bottom_ng_color" />
-
     </LinearLayout>
 </LinearLayout>

@@ -20,9 +20,9 @@ public class c3Activity extends AppCompatActivity {
     private ImageButton nav_pic_paws;
     private ImageButton nav_mypage;
     private ImageButton guidebtn;
-    private TextView text1;
-    private TextView text2;
-    private TextView text3;
+//    private TextView text1;
+//    private TextView text2;
+//    private TextView text3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
