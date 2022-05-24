@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.R.array;
 import static com.example.myapplication.R.id;
 import static com.example.myapplication.R.layout;
 
@@ -14,6 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -39,6 +39,11 @@ public class my1 extends AppCompatActivity {
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
+                EditText input;
+                EditText walk;
+
+
+
                 super.onCreate(savedInstanceState);
                 int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
                 int newUiOptions = uiOptions;
@@ -62,25 +67,70 @@ public class my1 extends AppCompatActivity {
                 final Spinner spin4 = (Spinner) findViewById(id.spinner_type1);
                 final Spinner spin5 = (Spinner) findViewById(id.spinner_gender1);
 
-                adspin1 = ArrayAdapter.createFromResource(this, array.year, android.R.layout.simple_spinner_dropdown_item);
+                adspin1 = ArrayAdapter.createFromResource(this, R.array.year, android.R.layout.simple_spinner_dropdown_item);
                 adspin1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spin1.setAdapter(adspin1);
+                spin1.setSelection(0);
 
-                adspin2 = ArrayAdapter.createFromResource(this, array.month, android.R.layout.simple_spinner_dropdown_item);
+                adspin2 = ArrayAdapter.createFromResource(this, R.array.month, android.R.layout.simple_spinner_dropdown_item);
                 adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spin2.setAdapter(adspin2);
+                spin2.setSelection(0);
 
-                adspin3 = ArrayAdapter.createFromResource(this, array.day, android.R.layout.simple_spinner_dropdown_item);
+                adspin3 = ArrayAdapter.createFromResource(this, R.array.day, android.R.layout.simple_spinner_dropdown_item);
                 adspin3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spin3.setAdapter(adspin3);
+                spin3.setSelection(0);
 
-                adspin4 = ArrayAdapter.createFromResource(this, array.type, android.R.layout.simple_spinner_dropdown_item);
+                adspin4 = ArrayAdapter.createFromResource(this, R.array.type, android.R.layout.simple_spinner_dropdown_item);
                 adspin4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spin4.setAdapter(adspin4);
+                spin4.setSelection(0);
 
-                adspin5 = ArrayAdapter.createFromResource(this, array.gender, android.R.layout.simple_spinner_dropdown_item);
+                adspin5 = ArrayAdapter.createFromResource(this, R.array.gender, android.R.layout.simple_spinner_dropdown_item);
                 adspin5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spin5.setAdapter(adspin5);
+                spin5.setSelection(0);
+
+                input = (EditText)findViewById(R.id.inputname);
+                walk = (EditText)findViewById(id.walk_1);
+
+
+
+
+
+
+
+
+                Intent intent = new Intent(my1.this, my2.class);
+
+
+                Button submit_1 = (Button) findViewById(id.submit_1);
+                submit_1.setOnClickListener(new View.OnClickListener(){
+
+                        @Override
+                        public void onClick(View view) {
+
+                                String name = input.getText().toString();
+                                String time = walk.getText().toString();
+
+                                intent.putExtra("이름", name);
+                                intent.putExtra("시간", time);
+                                intent.putExtra("년도", spin1.getSelectedItem().toString());
+                                intent.putExtra("월", spin2.getSelectedItem().toString());
+                                intent.putExtra("일", spin3.getSelectedItem().toString());
+                                intent.putExtra("견종", spin4.getSelectedItem().toString());
+                                intent.putExtra("중성화", spin5.getSelectedItem().toString());
+
+
+
+
+                                startActivity(intent);
+
+                        }
+                });
+
+
 
                 Female_1 = (Button) findViewById(id.Female_1);
                 Female_1.setOnClickListener(new OnClickListener() {
@@ -110,8 +160,6 @@ public class my1 extends AppCompatActivity {
                         }
                 });
 
-
-
                 ImageButton profile_pic1 = (ImageButton)findViewById(id.profile_pic1);
 
 
@@ -133,22 +181,22 @@ public class my1 extends AppCompatActivity {
                 super.onActivityResult(requestCode, resultCode, data);
                 if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null){
                         Uri uri = data.getData();
-                                try {
-                                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                                        ImageView profile1 = (ImageView) findViewById(id.profile1);
-                                        profile1.setImageBitmap(bitmap);
+                        try {
+                                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                                ImageView profile1 = (ImageView) findViewById(id.profile1);
+                                profile1.setImageBitmap(bitmap);
 
 
 
 
 
-                                } catch (IOException e) {
-                                        e.printStackTrace();
-                                }
+                        } catch (IOException e) {
+                                e.printStackTrace();
+                        }
 
                 }else if (resultCode == RESULT_CANCELED){
-                                Toast.makeText(this, "사진 선택 취소", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "사진 선택 취소", Toast.LENGTH_LONG).show();
 
-                        }
                 }
         }
+}

@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name='year'>
+        <item>년도</item>
         <item>2000</item>
         <item>2001</item>
         <item>2002</item>
@@ -30,6 +29,7 @@
 
     </string-array>
     <string-array name="month">
+        <item>월</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -44,6 +44,7 @@
         <item>12</item>
     </string-array>
     <string-array name="day">
+        <item>일</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -78,6 +79,7 @@
     </string-array>
 
     <string-array name="type">
+        <item>견종</item>
         <item>골든 리트리버</item>
         <item>닥스훈트</item>
         <item>래브라도 리트리버</item>
@@ -99,6 +101,5 @@
         <item>중성화 o</item>
         <item>중성화 x</item>
     </string-array>
-
 
 </resources>

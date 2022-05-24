@@ -22,31 +22,34 @@ import com.google.android.material.navigation.NavigationBarView;
 public class c1Activity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
+    Camera camera = new Camera();
+    Care care = new Care();
+    MyPage mypage = new MyPage();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_c1);
 
-        nav_camera = (ImageButton) findViewById(R.id.nav_camera);
-        nav_pic_paws = (ImageButton) findViewById(R.id.nav_pic_paws);
-        nav_mypage = (ImageButton) findViewById(R.id.nav_mypage);
-        guidebtn = findViewById(R.id.imageButton3);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        bottomNavigationView = findViewById(R.id.bottom);
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,camera).commit();
 
-        bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public void onNavigationItemReselected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nav_pic_paws:
-                        startActivity(new Intent(getApplicationContext(), c3Activity.class));
-                        overridePendingTransition(0, 0);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
                     case R.id.nav_camera:
-
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container,camera).commit();
+                        return true;
+                    case R.id.nav_pic_paws:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container,care).commit();
+                        return true;
                     case R.id.nav_mypage:
-                        startActivity(new Intent(getApplicationContext(), my1.class));
-                        overridePendingTransition(0, 0);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container,mypage).commit();
+                        return true;
                 }
+                return false;
             }
         });
     }
