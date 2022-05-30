@@ -21,7 +21,6 @@ public class my2 extends AppCompatActivity {
         String str2;
         String str3;
 
-
         name2 = findViewById(R.id.name2);
         walk_2 = findViewById(R.id.walk_2);
         birth_2 = findViewById(R.id.birth_2);
@@ -36,9 +35,6 @@ public class my2 extends AppCompatActivity {
         birth_2.setText(str1+" . "+str2+" . "+str3);
 
         walk_2.setText(time);
-
-
-
         name2.setText(name);
     }
 }

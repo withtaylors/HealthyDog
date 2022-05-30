@@ -14,7 +14,6 @@
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
         <item name="android:textViewStyle">@style/gowundodum</item>
-
     </style>
     <style name = "gowundodum" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/gowundodum</item>
@@ -28,5 +27,4 @@
         <item name = "android:backgroundDimEnabled">false</item>
         <item name = "android:windowBackground">@android:color/transparent</item>
     </style>
-
 </resources>

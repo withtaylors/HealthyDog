@@ -37,9 +37,10 @@ public class c4Activity extends AppCompatActivity {
     int maxPos = 0; //큰 번호 값 저장
     float maxConfidence = 0; //큰 정확률 값
 
-    String[] classes = {"Unhealthy_eye", "Healthy_eye"};
+    String[] classes = {"혼탁 증상 확률이 높다", "혼탁 증상 확률이 낮다"};
 
     String s = ""; //결과 값 저장 변수
+    String result_info = ""; //혼탁 증상 확률이 높을 경우 출력되는 '수의사 측정 요망' 문구
 
 
     //앱 카메라 허용 시 사진 촬영 가능
@@ -48,8 +49,6 @@ public class c4Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_c4);
 
-        result = findViewById(R.id.result);
-        confidence = findViewById(R.id.confidence);
         imageView = findViewById(R.id.imageView);
         picture = (ImageButton)findViewById(R.id.button);
         btn2 = findViewById(R.id.button2);
@@ -101,7 +100,7 @@ public class c4Activity extends AppCompatActivity {
             TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
             float[] confidences = outputFeature0.getFloatArray();
-            String toastMessage = "재촬영 요망";
+            String toastMessage = "정확도가 낮아요! 재촬영이 필요합니다.";
 
 
             //큰 값 저장하기
@@ -112,11 +111,16 @@ public class c4Activity extends AppCompatActivity {
                 }
             }
 
+
+            //눈 혼탁 증상률이 높다고 판정될 경우, 전문 수의사의 진단이 필요함을 안내하는 문구
+            if( maxPos == 0 ){
+                result_info = "각막의 혼탁이 부분적으로 나타날 경우 지방이나 칼슘의 침착, 이전 상처에 대한 흉터일 가능성도 있어요. 전반적인 각막의 혼탁이 나타난다면 각막 부종이나 녹내장 등과 같은 질환일 수 있으니 동물병원에서 정확한 원인을 체크받길 추천해요.";
+            }
+
             //정확도가 90% 미만일 경우 토스트 메시지 출력
             if( maxConfidence * 100 < 90 ) {
                 Toast.makeText(c4Activity.this, toastMessage, Toast.LENGTH_SHORT).show();
             }
-
 
 
             for(int i =0; i<classes.length; i++){
@@ -131,15 +135,17 @@ public class c4Activity extends AppCompatActivity {
         }
 
 
-        //측정하기 버튼 클릭했을 때 결과 값 c5로 보내주기
-        String main_result , main_confidences;
+        //측정하기 버튼 클릭했을 때 결과 값 c5로 보내주기 + 증상이 높을 경우 수의사 진단 필요함을 안내하는 'result_info' 보내주기
+        String main_result , main_confidences, main_result_info;
 
         main_result = classes[maxPos] ;
         main_confidences = s;
+        main_result_info = result_info;
 
         Intent intent = new Intent(this, c5Activity.class);
         intent.putExtra("result",main_result);
         intent.putExtra("confidences",main_confidences);
+        intent.putExtra("result_info",main_result_info);
 
         //측정하기 버튼 클릭했을 때 인텐트 c5 이동
         btn2.setOnClickListener(new View.OnClickListener() {
