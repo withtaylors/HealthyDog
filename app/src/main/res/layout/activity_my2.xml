@@ -7,7 +7,7 @@
     android:background="#FFFFFF"
     android:fillViewport="true"
     android:scrollbarSize="10dp"
-    tools:context=".my2">
+    tools:context=".MyPage">
 
     <LinearLayout
         android:layout_width="match_parent"

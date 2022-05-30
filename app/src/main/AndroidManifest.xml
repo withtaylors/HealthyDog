@@ -17,8 +17,6 @@
         android:theme="@style/Theme.MyApplication">
         <activity android:name=".my1" android:exported="true">
         </activity>
-        <activity android:name=".my2" android:exported="true">
-        </activity>
 
         <activity
             android:name=".c5Activity"

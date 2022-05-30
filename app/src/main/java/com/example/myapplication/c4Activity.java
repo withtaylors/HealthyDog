@@ -40,7 +40,8 @@ public class c4Activity extends AppCompatActivity {
     String s = ""; //결과 값 저장 변수
     String result_info = ""; //혼탁 증상 확률이 높을 경우 출력되는 '수의사 측정 요망' 문구
 
-    //앱 카메라 허용 시 사진 촬영 가능
+    int CheckOn ; //선택된 눈의 값. 왼쪽 체크 시 값 1, 오른쪽 체크 시 2, 둘 다 체크 시 3
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,27 +51,28 @@ public class c4Activity extends AppCompatActivity {
         button = findViewById(R.id.button);
         TextView textView2 = findViewById(R.id.textView2);
 
-        boolean getBoolean = getIntent().getBooleanExtra("checkOn",false);
-        boolean getBoolean_R = getIntent().getBooleanExtra("checkOn_r",false);
+        //CheckOn 값 (촬영할 눈 선택 값) 가져오기
+        Intent intent = getIntent();
+        CheckOn = intent.getIntExtra("CheckOn",0);
 
-        //왼쪽 눈 촬영을 클릭한 경우
-        if(getBoolean == true){
+
+        if(CheckOn == 1) { //왼쪽 눈 촬영만 클릭한 경우
             textView2.setText("왼쪽 눈을 촬영해주세요");
             button.setVisibility(View.VISIBLE);
+        } else if (CheckOn == 2){ //오른쪽 눈 촬영만 클릭한 경우
+            button.setVisibility(View.VISIBLE);
+            textView2.setText("오른쪽 눈을 촬영해주세요");
+        } else if (CheckOn == 3){ //양쪽 눈 촬영 클릭한 경우
+            button.setVisibility(View.GONE);
+            othereye.setVisibility(View.VISIBLE);
         }
-        //왼쪽 눈 촬영을 클릭하지 않은 경우
-        else{
-            //오른쪽 눈 촬영만 클릭한 경우
-            if(getBoolean_R == true){
-                button.setVisibility(View.VISIBLE);
-                textView2.setText("오른쪽 눈을 촬영해주세요");
-            }
-        }
+
 
         imageView = findViewById(R.id.imageView);
         picture = (ImageButton)findViewById(R.id.button);
         btn2 = findViewById(R.id.button2);
 
+        //앱 카메라 허용 시 사진 촬영 가능
         picture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,11 +83,6 @@ public class c4Activity extends AppCompatActivity {
                 } else {
                     //Request camera permission if we don't have it.
                     requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
-                }
-                //양쪽 눈을 클릭한 경우
-                if(getBoolean_R == true){
-                    button.setVisibility(View.GONE);
-                    othereye.setVisibility(View.VISIBLE);
                 }
             }
         });

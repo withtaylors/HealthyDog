@@ -102,7 +102,7 @@ public class my1 extends AppCompatActivity {
 
 
 
-                Intent intent = new Intent(my1.this, my2.class);
+                Intent intent = new Intent(my1.this, MyPage.class);
 
 
                 Button submit_1 = (Button) findViewById(id.submit_1);
