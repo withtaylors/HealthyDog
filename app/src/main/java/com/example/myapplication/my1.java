@@ -4,6 +4,7 @@ import static com.example.myapplication.R.id;
 import static com.example.myapplication.R.layout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -37,10 +38,10 @@ public class my1 extends AppCompatActivity {
 
 
 
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
-                EditText input;
-                EditText walk;
+
 
 
 
@@ -60,6 +61,7 @@ public class my1 extends AppCompatActivity {
 
 
                 setContentView(layout.activity_my1);
+                //스피너 값 선택하기
 
                 final Spinner spin1 = (Spinner) findViewById(id.spinner_year1);
                 final Spinner spin2 = (Spinner) findViewById(id.spinner_month1);
@@ -92,8 +94,6 @@ public class my1 extends AppCompatActivity {
                 spin5.setAdapter(adspin5);
                 spin5.setSelection(0);
 
-                input = (EditText)findViewById(R.id.inputname);
-                walk = (EditText)findViewById(id.walk_1);
 
 
 
@@ -101,8 +101,9 @@ public class my1 extends AppCompatActivity {
 
 
 
+                //여기서부터 인텐트
 
-                Intent intent = new Intent(my1.this, MyPage.class);
+                final EditText inputname = findViewById(id.inputname);
 
 
                 Button submit_1 = (Button) findViewById(id.submit_1);
@@ -111,24 +112,29 @@ public class my1 extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
 
-                                String name = input.getText().toString();
-                                String time = walk.getText().toString();
 
-                                intent.putExtra("이름", name);
-                                intent.putExtra("시간", time);
-                                intent.putExtra("년도", spin1.getSelectedItem().toString());
-                                intent.putExtra("월", spin2.getSelectedItem().toString());
-                                intent.putExtra("일", spin3.getSelectedItem().toString());
-                                intent.putExtra("견종", spin4.getSelectedItem().toString());
-                                intent.putExtra("중성화", spin5.getSelectedItem().toString());
+                                String name = inputname.getText().toString().trim();
+                                SharedPreferences sharedPreferences = getSharedPreferences("MY", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString("value", name);
+                                editor.apply();
+                                Intent intent = new Intent(my1.this, MyPage.class);
 
 
 
 
-                                startActivity(intent);
+
+                                startActivity(intent);//my2불러오기기
 
                         }
-                });
+                }); //클릭 시 인텐트 부분 끝
+
+
+
+
+
+
+
 
 
 
@@ -165,7 +171,7 @@ public class my1 extends AppCompatActivity {
 
                 profile_pic1.setOnClickListener(new View.OnClickListener() {
 
-                        @Override
+                        @Override //갤러리 부분
                         public void onClick(View view) {
                                 Intent intent = new Intent();
                                 intent.setType("image/*");
@@ -174,17 +180,19 @@ public class my1 extends AppCompatActivity {
                         }
                 });
         }
-        @Override
+        @Override //사진 띄우기
         public  void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
 
                 super.onActivityResult(requestCode, resultCode, data);
                 if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null){
                         Uri uri = data.getData();
+
                         try {
                                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                                 ImageView profile1 = (ImageView) findViewById(id.profile1);
                                 profile1.setImageBitmap(bitmap);
+
 
 
 
