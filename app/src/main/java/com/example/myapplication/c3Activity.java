@@ -1,7 +1,8 @@
 package com.example.myapplication;
 
+import static android.graphics.BlendMode.COLOR;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View.OnClickListener;
@@ -25,6 +26,11 @@ public class c3Activity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_c3);
 
+        Intent intent = new Intent(this, c4Activity.class);
+
+//        Intent intent2 = new Intent(this, c4Activity.class);
+//        Intent intent3 = new Intent(this, c4Activity.class);
+
         btn2_change = (ImageButton)findViewById(R.id.choose_eye_left);
         btn2_change.setOnClickListener(new OnClickListener() {
             @Override
@@ -32,9 +38,16 @@ public class c3Activity extends Activity {
                 if(check2 == false){
                     check2 = true;
                     btn2_change.setSelected(true);
+                    intent.putExtra("checkOn", true);
                 }else {
                     check2 = false;
                     btn2_change.setSelected(false);
+                    intent.putExtra("checkOn", false);
+                }
+                if (check2 == true || check3 == true ){
+                    choose_button.setEnabled(true);
+                }else{
+                    choose_button.setEnabled(false);
                 }
             }
         });
@@ -46,15 +59,21 @@ public class c3Activity extends Activity {
                 if(check3 == false){
                     check3 = true;
                     btn3_change.setSelected(true);
+                    intent.putExtra("checkOn_r", true);
                 }else {
                     check3 = false;
                     btn3_change.setSelected(false);
+                    intent.putExtra("checkOn_r", false);
+                }
+                if (check2 == true || check3 == true ){
+                    choose_button.setEnabled(true);
+                }else{
+                    choose_button.setEnabled(false);
                 }
             }
         });
 
         choose_button = (Button)findViewById(R.id.choose_button);
-        Intent intent = new Intent(this, c4Activity.class);
 
         choose_button.setOnClickListener(new OnClickListener() {
             @Override
@@ -63,6 +82,5 @@ public class c3Activity extends Activity {
                 finish();
             }
         });
-
     }
 }

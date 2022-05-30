@@ -27,11 +27,9 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public class c4Activity extends AppCompatActivity {
-
-    TextView result, confidence; //결과, 정확도
     ImageView imageView; //촬영사진
-    ImageButton picture; //촬영버튼
-    Button btn2; //측정버튼
+    ImageButton picture, button; //촬영버튼
+    Button othereye, btn2; //측정버튼
     int imageSize = 224;
 
     int maxPos = 0; //큰 번호 값 저장
@@ -42,12 +40,32 @@ public class c4Activity extends AppCompatActivity {
     String s = ""; //결과 값 저장 변수
     String result_info = ""; //혼탁 증상 확률이 높을 경우 출력되는 '수의사 측정 요망' 문구
 
-
     //앱 카메라 허용 시 사진 촬영 가능
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_c4);
+
+        othereye = findViewById(R.id.othereye);
+        button = findViewById(R.id.button);
+        TextView textView2 = findViewById(R.id.textView2);
+
+        boolean getBoolean = getIntent().getBooleanExtra("checkOn",false);
+        boolean getBoolean_R = getIntent().getBooleanExtra("checkOn_r",false);
+
+        //왼쪽 눈 촬영을 클릭한 경우
+        if(getBoolean == true){
+            textView2.setText("왼쪽 눈을 촬영해주세요");
+            button.setVisibility(View.VISIBLE);
+        }
+        //왼쪽 눈 촬영을 클릭하지 않은 경우
+        else{
+            //오른쪽 눈 촬영만 클릭한 경우
+            if(getBoolean_R == true){
+                button.setVisibility(View.VISIBLE);
+                textView2.setText("오른쪽 눈을 촬영해주세요");
+            }
+        }
 
         imageView = findViewById(R.id.imageView);
         picture = (ImageButton)findViewById(R.id.button);
@@ -63,6 +81,11 @@ public class c4Activity extends AppCompatActivity {
                 } else {
                     //Request camera permission if we don't have it.
                     requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
+                }
+                //양쪽 눈을 클릭한 경우
+                if(getBoolean_R == true){
+                    button.setVisibility(View.GONE);
+                    othereye.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -111,23 +134,17 @@ public class c4Activity extends AppCompatActivity {
                 }
             }
 
-
             //눈 혼탁 증상률이 높다고 판정될 경우, 전문 수의사의 진단이 필요함을 안내하는 문구
             if( maxPos == 0 ){
                 result_info = "각막의 혼탁이 부분적으로 나타날 경우 지방이나 칼슘의 침착, 이전 상처에 대한 흉터일 가능성도 있어요. 전반적인 각막의 혼탁이 나타난다면 각막 부종이나 녹내장 등과 같은 질환일 수 있으니 동물병원에서 정확한 원인을 체크받길 추천해요.";
             }
-
             //정확도가 90% 미만일 경우 토스트 메시지 출력
             if( maxConfidence * 100 < 90 ) {
                 Toast.makeText(c4Activity.this, toastMessage, Toast.LENGTH_SHORT).show();
             }
-
-
             for(int i =0; i<classes.length; i++){
                 s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
             }
-
-
             // Releases model resources if no longer used.
             model.close();
         } catch (IOException e) {
