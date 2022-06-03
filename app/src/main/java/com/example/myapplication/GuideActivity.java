@@ -18,6 +18,8 @@ public class GuideActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide);
+
+//        tabs = (TabLayout) findViewById(R.id.tabs);
     }
     public void onClick(View view){
         Intent intent = new Intent(this, c1Activity.class);
