@@ -26,8 +26,6 @@ import androidx.fragment.app.Fragment;
 import java.io.IOException;
 
 public class my1 extends AppCompatActivity {
-
-
         ArrayAdapter<CharSequence> adspin1, adspin2, adspin3, adspin4, adspin5;
         Button Female_1;
         Button Male_1;
@@ -36,15 +34,8 @@ public class my1 extends AppCompatActivity {
         ImageView profile1;
         private static final int PICK_IMAGE_REQUEST = 1;
 
-
-
-
         @Override
         protected void onCreate(Bundle savedInstanceState) {
-
-
-
-
                 super.onCreate(savedInstanceState);
                 int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
                 int newUiOptions = uiOptions;
@@ -94,26 +85,14 @@ public class my1 extends AppCompatActivity {
                 spin5.setAdapter(adspin5);
                 spin5.setSelection(0);
 
-
-
-
-
-
-
-
                 //여기서부터 인텐트
-
                 final EditText inputname = findViewById(id.inputname);
-
 
                 Button submit_1 = (Button) findViewById(id.submit_1);
                 submit_1.setOnClickListener(new View.OnClickListener(){
 
                         @Override
                         public void onClick(View view) {
-
-
-
                                         Bundle bundle = new Bundle();
                                         bundle.putString("name", inputname.getText().toString().trim());
                                         Fragment MyPage = new Fragment();
@@ -123,15 +102,6 @@ public class my1 extends AppCompatActivity {
 
                         }
                 }); //클릭 시 인텐트 부분 끝
-
-
-
-
-
-
-
-
-
 
                 Female_1 = (Button) findViewById(id.Female_1);
                 Female_1.setOnClickListener(new OnClickListener() {
@@ -163,9 +133,7 @@ public class my1 extends AppCompatActivity {
 
                 ImageButton profile_pic1 = (ImageButton)findViewById(id.profile_pic1);
 
-
                 profile_pic1.setOnClickListener(new View.OnClickListener() {
-
                         @Override //갤러리 부분
                         public void onClick(View view) {
                                 Intent intent = new Intent();
@@ -177,8 +145,6 @@ public class my1 extends AppCompatActivity {
         }
         @Override //사진 띄우기
         public  void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-
-
                 super.onActivityResult(requestCode, resultCode, data);
                 if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null){
                         Uri uri = data.getData();
@@ -187,11 +153,6 @@ public class my1 extends AppCompatActivity {
                                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                                 ImageView profile1 = (ImageView) findViewById(id.profile1);
                                 profile1.setImageBitmap(bitmap);
-
-
-
-
-
 
                         } catch (IOException e) {
                                 e.printStackTrace();

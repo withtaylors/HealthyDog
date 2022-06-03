@@ -8,27 +8,39 @@
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
+        android:id="@+id/page1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:textStyle="bold"
+            android:padding="10dp"
+            android:text="한번에 잘 찍으려면? 촬영 전 준비해 주세요."
             android:textSize="17dp"
-            android:text="한번에 잘 찍으려면? 촬영 전 준비해 주세요."/>
+            android:textStyle="bold" />
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
-            android:layout_height="300dp"
+            android:layout_height="180dp"
             android:src="@drawable/guide_pic" />
-        <TextView
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:text="밝은 곳에서 촬영한다면, 강아지 눈에 반사되는 사물이 최대한 없도록 신경써 주세요. \n균일한 눈 건강 측정을 위하여 가능한 동일한 환경에서 촬영할 수 있도록 해주세요. \n멀리서 눈 앞까지 천천히 접근해주세요. 아이가 정면을 바라볼 수 있도록 이름을 불러주시는 것도 좋아요. \n털이 눈을 가리면 안돼요. 다른 쪽 눈이나 코가 나오면 정확도가 떨어지니 최대한 촬영할 눈만 나오도록 찍어주세요 \n정확도가 떨어지면 촬영 후 재촬영 안내메세지가 떠요. 가이드를 확인한 뒤 그에 맞춰 다시 촬영해 주세요."/>
+            android:orientation="vertical" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="밝은 곳에서 촬영한다면, 강아지 눈에 반사되는 사물이 최대한 없도록 신경써 주세요. \n균일한 눈 건강 측정을 위하여 가능한 동일한 환경에서 촬영할 수 있도록 해주세요. \n멀리서 눈 앞까지 천천히 접근해주세요. 아이가 정면을 바라볼 수 있도록 이름을 불러주시는 것도 좋아요. \n털이 눈을 가리면 안돼요. 다른 쪽 눈이나 코가 나오면 정확도가 떨어지니 최대한 촬영할 눈만 나오도록 찍어주세요 \n정확도가 떨어지면 촬영 후 재촬영 안내메세지가 떠요. 가이드를 확인한 뒤 그에 맞춰 다시 촬영해 주세요." />
+        </ScrollView>
     </LinearLayout>
 
 </FrameLayout>

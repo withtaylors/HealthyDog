@@ -16,12 +16,15 @@ public class MyPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_my2, container,false);
-        TextView name2 = view.findViewById(R.id.name2);
-        Bundle bundle = this.getArguments();
-        if(bundle != null) {
-            bundle = getArguments();
 
-            String name = bundle.getString("name");
+        TextView name2 = view.findViewById(R.id.name2);
+
+        Bundle bundle1 = this.getArguments();
+
+        if(bundle1 != null) {
+            bundle1 = getArguments();
+
+            String name = bundle1.getString("name");
             name2.setText(name);
         }
 

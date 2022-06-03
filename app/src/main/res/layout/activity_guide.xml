@@ -40,31 +40,12 @@
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/gowundodum">
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/eyes_guide"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="눈 건강"/>
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/teeth_guide"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="치아 건강"/>
         </com.google.android.material.tabs.TabLayout>
     </LinearLayout>
 
     <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/viewpager2">
+        android:layout_height="match_parent">
     </androidx.viewpager2.widget.ViewPager2>
-<!--    <ImageView>-->
-<!--            android:id="@+id/imageView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:srcCompat="@drawable/guide_pic"/>-->
-<!--    </ImageView>-->
-
 </LinearLayout>
