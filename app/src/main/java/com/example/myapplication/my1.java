@@ -4,7 +4,6 @@ import static com.example.myapplication.R.id;
 import static com.example.myapplication.R.layout;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,6 +21,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import java.io.IOException;
 
@@ -113,18 +113,13 @@ public class my1 extends AppCompatActivity {
                         public void onClick(View view) {
 
 
-                                String name = inputname.getText().toString().trim();
-                                SharedPreferences sharedPreferences = getSharedPreferences("MY", MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString("value", name);
-                                editor.apply();
-                                Intent intent = new Intent(my1.this, MyPage.class);
 
-
-
-
-
-                                startActivity(intent);//my2불러오기기
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("name", inputname.getText().toString().trim());
+                                        Fragment MyPage = new Fragment();
+                                        MyPage.setArguments(bundle);
+                                        getSupportFragmentManager().beginTransaction().replace(R.id.container, MyPage).commit();
+                                        //my2불러오기기
 
                         }
                 }); //클릭 시 인텐트 부분 끝
