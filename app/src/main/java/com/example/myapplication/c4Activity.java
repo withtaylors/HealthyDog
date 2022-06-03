@@ -8,6 +8,7 @@ import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -47,33 +48,38 @@ public class c4Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_c4);
 
-        othereye = findViewById(R.id.othereye);
-        button = findViewById(R.id.button);
+        othereye = findViewById(R.id.othereye); //다른쪽 눈(오른쪽) 촬영하기 버튼
+        button = findViewById(R.id.button); //카메라 버튼
         TextView textView2 = findViewById(R.id.textView2);
+        btn2 = findViewById(R.id.button2); //측정하기 버튼
 
         //CheckOn 값 (촬영할 눈 선택 값) 가져오기
         Intent intent = getIntent();
         CheckOn = intent.getIntExtra("CheckOn",0);
 
-
         if(CheckOn == 1) { //왼쪽 눈 촬영만 클릭한 경우
             textView2.setText("왼쪽 눈을 촬영해주세요");
             button.setVisibility(View.VISIBLE);
         } else if (CheckOn == 2){ //오른쪽 눈 촬영만 클릭한 경우
-            button.setVisibility(View.VISIBLE);
             textView2.setText("오른쪽 눈을 촬영해주세요");
-        } else if (CheckOn == 3){ //양쪽 눈 촬영 클릭한 경우
-            button.setVisibility(View.GONE);
+            button.setVisibility(View.VISIBLE);
+        } else if (CheckOn == 3){ //양쪽 눈 촬영 클릭한 경우 - 왼쪽 먼저 실행
+            textView2.setText("왼쪽 눈을 촬영해주세요");
+            button.setVisibility(View.VISIBLE);
             othereye.setVisibility(View.VISIBLE);
+            btn2.setVisibility(View.GONE);
+        }  else if (CheckOn == 4) { //양쪽 눈 촬영 클릭한 경우 - 왼쪽 실행 후 오른쪽
+            textView2.setText("오른쪽 눈을 촬영해주세요");
+            button.setVisibility(View.VISIBLE);
+            //othereye.setVisibility(View.GONE);
+            //btn2.setVisibility(View.VISIBLE);
         }
-
 
         imageView = findViewById(R.id.imageView);
         picture = (ImageButton)findViewById(R.id.button);
-        btn2 = findViewById(R.id.button2);
 
         //앱 카메라 허용 시 사진 촬영 가능
-        picture.setOnClickListener(new View.OnClickListener() {
+        picture.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Launch camera if we have permission
@@ -149,6 +155,7 @@ public class c4Activity extends AppCompatActivity {
         }
 
 
+        //오른쪽 눈 촬영하기 버튼을 클릭했을 경우, 결과 값 c5로 보내주기
         //측정하기 버튼 클릭했을 때 결과 값 c5로 보내주기 + 증상이 높을 경우 수의사 진단 필요함을 안내하는 'result_info' 보내주기
         String main_result , main_confidences, main_result_info;
 
@@ -161,8 +168,17 @@ public class c4Activity extends AppCompatActivity {
         intent.putExtra("confidences",main_confidences);
         intent.putExtra("result_info",main_result_info);
 
+        //오른쪽 눈 촬영하기 버튼 클릭했을 경우 해당 액티비티 다시 실행
+        othereye.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CheckOn = 4;
+                System.out.println("-------------"+CheckOn);
+                startActivity(new Intent(c4Activity.this,c4Activity.class));
+            }
+        });
         //측정하기 버튼 클릭했을 때 인텐트 c5 이동
-        btn2.setOnClickListener(new View.OnClickListener() {
+        btn2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(intent);
