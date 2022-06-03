@@ -1,0 +1,875 @@
+Index: app/src/test/java/com/example/myapplication/ExampleUnitTest.java
+===================================================================
+diff --git a/app/src/test/java/com/example/myapplication/ExampleUnitTest.java b/app/src/test/java/com/example/myapplication/ExampleUnitTest.java
+deleted file mode 100644
+--- a/app/src/test/java/com/example/myapplication/ExampleUnitTest.java	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,17 +0,0 @@
+-package com.example.myapplication;
+-
+-import org.junit.Test;
+-
+-import static org.junit.Assert.*;
+-
+-/**
+- * Example local unit test, which will execute on the development machine (host).
+- *
+- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+- */
+-public class ExampleUnitTest {
+-    @Test
+-    public void addition_isCorrect() {
+-        assertEquals(4, 2 + 2);
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/res/drawable/ic_baseline_favorite_24.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/ic_baseline_favorite_24.xml b/app/src/main/res/drawable/ic_baseline_favorite_24.xml
+deleted file mode 100644
+--- a/app/src/main/res/drawable/ic_baseline_favorite_24.xml	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,10 +0,0 @@
+-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:width="24dp"
+-    android:height="24dp"
+-    android:viewportWidth="24"
+-    android:viewportHeight="24"
+-    android:tint="?attr/colorControlNormal">
+-  <path
+-      android:fillColor="@android:color/white"
+-      android:pathData="M12,21.35l-1.45,-1.32C5.4,15.36 2,12.28 2,8.5 2,5.42 4.42,3 7.5,3c1.74,0 3.41,0.81 4.5,2.09C13.09,3.81 14.76,3 16.5,3 19.58,3 22,5.42 22,8.5c0,3.78 -3.4,6.86 -8.55,11.54L12,21.35z"/>
+-</vector>
+Index: app/src/androidTest/java/com/example/myapplication/ExampleInstrumentedTest.java
+===================================================================
+diff --git a/app/src/androidTest/java/com/example/myapplication/ExampleInstrumentedTest.java b/app/src/androidTest/java/com/example/myapplication/ExampleInstrumentedTest.java
+deleted file mode 100644
+--- a/app/src/androidTest/java/com/example/myapplication/ExampleInstrumentedTest.java	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,26 +0,0 @@
+-package com.example.myapplication;
+-
+-import android.content.Context;
+-
+-import androidx.test.platform.app.InstrumentationRegistry;
+-import androidx.test.ext.junit.runners.AndroidJUnit4;
+-
+-import org.junit.Test;
+-import org.junit.runner.RunWith;
+-
+-import static org.junit.Assert.*;
+-
+-/**
+- * Instrumented test, which will execute on an Android device.
+- *
+- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+- */
+-@RunWith(AndroidJUnit4.class)
+-public class ExampleInstrumentedTest {
+-    @Test
+-    public void useAppContext() {
+-        // Context of the app under test.
+-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+-        assertEquals("com.example.myapplication", appContext.getPackageName());
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/res/drawable/ic_baseline_local_hospital_24.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/ic_baseline_local_hospital_24.xml b/app/src/main/res/drawable/ic_baseline_local_hospital_24.xml
+deleted file mode 100644
+--- a/app/src/main/res/drawable/ic_baseline_local_hospital_24.xml	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,10 +0,0 @@
+-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:width="24dp"
+-    android:height="24dp"
+-    android:viewportWidth="24"
+-    android:viewportHeight="24"
+-    android:tint="?attr/colorControlNormal">
+-  <path
+-      android:fillColor="@android:color/white"
+-      android:pathData="M19,3L5,3c-1.1,0 -1.99,0.9 -1.99,2L3,19c0,1.1 0.9,2 2,2h14c1.1,0 2,-0.9 2,-2L21,5c0,-1.1 -0.9,-2 -2,-2zM18,14h-4v4h-4v-4L6,14v-4h4L10,6h4v4h4v4z"/>
+-</vector>
+Index: app/src/main/res/drawable/ic_launcher_background.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/ic_launcher_background.xml b/app/src/main/res/drawable/ic_launcher_background.xml
+deleted file mode 100644
+--- a/app/src/main/res/drawable/ic_launcher_background.xml	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,170 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:width="108dp"
+-    android:height="108dp"
+-    android:viewportWidth="108"
+-    android:viewportHeight="108">
+-    <path
+-        android:fillColor="#3DDC84"
+-        android:pathData="M0,0h108v108h-108z" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M9,0L9,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,0L19,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M29,0L29,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M39,0L39,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M49,0L49,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M59,0L59,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M69,0L69,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M79,0L79,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M89,0L89,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M99,0L99,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,9L108,9"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,19L108,19"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,29L108,29"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,39L108,39"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,49L108,49"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,59L108,59"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,69L108,69"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,79L108,79"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,89L108,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,99L108,99"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,29L89,29"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,39L89,39"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,49L89,49"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,59L89,59"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,69L89,69"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,79L89,79"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M29,19L29,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M39,19L39,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M49,19L49,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M59,19L59,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M69,19L69,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M79,19L79,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-</vector>
+Index: app/src/main/res/layout/activity_main.xml
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout/activity_main.xml	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,18 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context=".MainActivity">
+-
+-    <TextView
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:text="Hello World!"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintLeft_toLeftOf="parent"
+-        app:layout_constraintRight_toRightOf="parent"
+-        app:layout_constraintTop_toTopOf="parent" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/myapplication/MyPageActivity.java
+===================================================================
+diff --git a/app/src/main/java/com/example/myapplication/MyPageActivity.java b/app/src/main/java/com/example/myapplication/MyPageActivity.java
+deleted file mode 100644
+--- a/app/src/main/java/com/example/myapplication/MyPageActivity.java	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,28 +0,0 @@
+-package com.example.myapplication;
+-
+-import androidx.appcompat.app.AppCompatActivity;
+-import android.os.Bundle;
+-import android.view.WindowManager;
+-import android.widget.AdapterView;
+-import android.widget.ArrayAdapter;
+-import android.widget.Spinner;
+-import android.widget.Button;
+-import android.view.View;
+-
+-public class MyPageActivity extends AppCompatActivity {
+-
+-
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_my_page);
+-        final Spinner spin1 = (Spinner)findViewById(R.id.spinner_year1);
+-        final Spinner spin2 = (Spinner)findViewById(R.id.spinner_month1);
+-        final Spinner spin3 = (Spinner)findViewById(R.id.spinner_day1);
+-        final Spinner spin4 = (Spinner)findViewById(R.id.spinner_type1);
+-        final Spinner spin5 = (Spinner)findViewById(R.id.spinner_gender1);
+-
+-
+-
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/res/drawable/radius.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/radius.xml b/app/src/main/res/drawable/radius.xml
+deleted file mode 100644
+--- a/app/src/main/res/drawable/radius.xml	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,13 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<shape xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:shape="rectangle" android:padding = "10dp">
+-    <solid android:color="#ffffff"></solid>
+-    <corners
+-        android:bottomLeftRadius="80dp"
+-        android:bottomRightRadius="80dp"
+-        android:topLeftRadius="80dp"
+-        android:topRightRadius="80dp"></corners>
+-    <stroke android:width="2dp"
+-        android:color="#9A9696"></stroke>
+-
+-</shape>
+Index: app/src/main/res/drawable/radius2.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/radius2.xml b/app/src/main/res/drawable/radius2.xml
+deleted file mode 100644
+--- a/app/src/main/res/drawable/radius2.xml	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,12 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<shape xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:shape="rectangle" android:padding = "10dp">
+-    <solid android:color="#ffffff"></solid>
+-    <corners
+-        android:bottomLeftRadius="60dp"
+-        android:bottomRightRadius="60dp"
+-        android:topLeftRadius="60dp"
+-        android:topRightRadius="60dp"></corners>
+-    <stroke android:width="4dp"
+-        android:color="#BDBDBD"></stroke>
+-</shape>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_my_page.xml
+===================================================================
+diff --git a/app/src/main/res/layout/activity_my_page.xml b/app/src/main/res/layout/activity_my_page.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout/activity_my_page.xml	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,273 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="812dp"
+-    android:background="#FFFFFF"
+-    android:fillViewport="true"
+-    android:scrollbarSize="10dp"
+-    android:scrollbarThumbVertical="@color/colorPrimaryDark"
+-    tools:context=".MyPageActivity">
+-
+-    <LinearLayout
+-        android:layout_width="match_parent"
+-        android:layout_height="812dp"
+-        android:orientation="vertical">
+-
+-        <ImageView
+-            android:id="@+id/profile1"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="60dp"
+-            android:layout_marginRight="15dp"
+-            android:scaleType="center"
+-            app:srcCompat="@drawable/profile1" />
+-
+-        <ImageView
+-            android:id="@+id/profile_pic1"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:layout_marginLeft="90dp"
+-            android:layout_marginTop="-45dp"
+-            app:srcCompat="@drawable/profile_pic1" />
+-
+-        <TextView
+-            android:id="@+id/name_1"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="20dp"
+-            android:gravity="center"
+-            android:textStyle="bold"
+-            android:paddingBottom="5dp"
+-            android:text="반려동물의 이름을 입력하세요."
+-            android:textColor="#000000"
+-            android:textColorHighlight="#000000"
+-            android:textColorHint="#000000"
+-            android:textSize="16sp" />
+-
+-        <EditText
+-            android:id="@+id/editTextTextPersonName3"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_marginLeft="105dp"
+-            android:ems="10"
+-            android:gravity="center"
+-            android:inputType="textPersonName"
+-            android:minHeight="48dp"
+-            android:text="이름 입력"
+-            android:font="@font/gowundodum"
+-            android:textColor="#9A9696"
+-            android:textSize="16sp" />
+-
+-        <LinearLayout
+-            android:layout_width="match_parent"
+-            android:layout_height="60dp"
+-            android:layout_marginTop="40dp"
+-            android:gravity="center">
+-
+-            <Spinner
+-                android:id="@+id/spinner_year1"
+-                android:layout_width="120dp"
+-                android:layout_height="48dp"
+-                android:fontFamily="@font/gowundodum"
+-                android:minHeight="45dp"
+-                android:textAlignment="center"
+-                tools:ignore="SpeakableTextPresentCheck" />
+-
+-            <Spinner
+-                android:id="@+id/spinner_month1"
+-                android:layout_width="80dp"
+-                android:layout_height="48dp"
+-                android:layout_marginLeft="10dp"
+-                android:fontFamily="@font/gowundodum"
+-                android:textAlignment="center"
+-                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+-
+-            <Spinner
+-                android:id="@+id/spinner_day1"
+-                android:layout_width="80dp"
+-                android:layout_height="48dp"
+-                android:layout_marginLeft="10dp"
+-                android:fontFamily="@font/gowundodum"
+-                android:textAlignment="center"
+-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+-        </LinearLayout>
+-
+-        <TextView
+-            android:id="@+id/birth_1"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="-90dp"
+-            android:gravity="center"
+-            android:textStyle="bold"
+-            android:text="반려동물의 생일은 언제인가요?"
+-            android:textColor="#000000"
+-            android:textColorHint="#000000"
+-            android:textSize="16sp" />
+-
+-        <TextView
+-            android:id="@+id/type_1"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="70dp"
+-            android:gravity="center"
+-            android:textStyle="bold"
+-            android:text="반려동물의 견종을 선택하세요."
+-            android:textColor="#000000"
+-            android:textSize="16sp" />
+-
+-        <Spinner
+-            android:id="@+id/spinner_type1"
+-            android:layout_width="200dp"
+-            android:layout_height="48dp"
+-            android:layout_marginLeft="100dp"
+-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+-
+-        <TextView
+-            android:id="@+id/gender_1"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="5dp"
+-            android:gravity="center"
+-            android:textStyle="bold"
+-            android:text="반려동물의 성별과 중성화 여부를 선택하세요."
+-            android:textAlignment="center"
+-            android:textColor="#000000"
+-            android:textColorHighlight="#000000"
+-            android:textColorHint="#000000"
+-            android:textSize="16sp" />
+-
+-        <LinearLayout
+-            android:layout_width="wrap_content"
+-            android:layout_height="75dp"
+-            android:layout_marginLeft="100dp"
+-            android:orientation="horizontal">
+-
+-            <Button
+-                android:id="@+id/female_1"
+-                android:layout_width="55dp"
+-                android:layout_height="48dp"
+-                android:layout_marginTop="15dp"
+-                android:backgroundTint="@color/button_background_color"
+-                android:fontFamily="@font/gowundodum"
+-                android:background="@drawable/radius"
+-                android:layout_marginRight="5dp"
+-                android:text="여" />
+-
+-            <Button
+-                android:id="@+id/male_1"
+-                android:layout_width="55dp"
+-                android:layout_height="48dp"
+-                android:fontFamily="@font/gowundodum"
+-                android:layout_marginTop="15dp"
+-                android:backgroundTint="@color/button_background_color"
+-                android:layout_marginRight="5dp"
+-                android:background="@drawable/radius"
+-                android:text="남" />
+-
+-            <Spinner
+-                android:id="@+id/spinner_gender1"
+-                android:layout_width="100dp"
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-                android:fontFamily="@font/gowundodum"
+-                android:layout_height="wrap_content"
+-                android:layout_marginTop="15dp"
+-                android:minHeight="48dp"
+-                tools:ignore="SpeakableTextPresentCheck" />
+-
+-
+-        </LinearLayout>
+-
+-        <TextView
+-            android:id="@+id/walk_1"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:gravity="center"
+-            android:text="반려동물의 하루 평균 산책 시간을 입력하세요."
+-            android:textAlignment="center"
+-            android:textStyle="bold"
+-            android:textColor="#000000"
+-            android:textSize="16sp" />
+-
+-        <LinearLayout
+-            android:layout_width="wrap_content"
+-            android:layout_height="60dp"
+-            android:layout_marginLeft="140dp"
+-            android:orientation="horizontal">
+-
+-            <EditText
+-                android:id="@+id/editTextNumber"
+-                android:layout_width="100dp"
+-                android:layout_height="60dp"
+-                android:layout_marginRight="5dp"
+-                android:ems="10"
+-                android:gravity="center"
+-                android:inputType="number"
+-                android:text="산책 시간"
+-                android:textColor="#9A9696"
+-                android:textSize="16sp" />
+-
+-            <TextView
+-                android:id="@+id/textView2"
+-                android:layout_width="match_parent"
+-                android:layout_height="60dp"
+-                android:text="(분)" />
+-
+-
+-        </LinearLayout>
+-
+-        <TextView
+-            android:id="@+id/textView7"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="-550dp"
+-            android:layout_marginRight="15dp"
+-            android:gravity="center"
+-            android:text="반려동물\n 프로필 사진 등록"
+-            android:textColor="#9A9696"
+-            android:textSize="14sp" />
+-
+-        <TextView
+-            android:id="@+id/memo_1"
+-            android:layout_width="match_parent"
+-            android:layout_height="35dp"
+-            android:layout_marginTop="550dp"
+-            android:gravity="center"
+-            android:text="비만도는 마이페이지에서 간단하게 확인해 보세요!"
+-            android:textColor="#9A9696" />
+-
+-
+-        <LinearLayout
+-            android:id="@+id/linearLayout"
+-            android:layout_width="match_parent"
+-            android:layout_height="match_parent"
+-            android:orientation="vertical"
+-            app:layout_constrainStart_toStartOf="parent"
+-            app:layout_constrainEnd_toEndof="parent"
+-            app:layout_constraintTop_tpTopOf="parent"
+-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"/>
+-
+-        <com.google.android.material.bottomnavigation.BottomNavigationView
+-            android:id="@+id/bottomNavigationView"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            app:labelVisibilityMode="unlabeled"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintBottom_toBottomOf="parent"
+-            app:menu="@menu/bottom_nav_menu"
+-            app:itemBackground="@color/bottom"/>
+-
+-
+-
+-    </LinearLayout>
+-
+-</ScrollView>
+\ No newline at end of file
+Index: app/src/main/res/drawable/ic_baseline_person_24.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/ic_baseline_person_24.xml b/app/src/main/res/drawable/ic_baseline_person_24.xml
+deleted file mode 100644
+--- a/app/src/main/res/drawable/ic_baseline_person_24.xml	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,10 +0,0 @@
+-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:width="24dp"
+-    android:height="24dp"
+-    android:viewportWidth="24"
+-    android:viewportHeight="24"
+-    android:tint="?attr/colorControlNormal">
+-  <path
+-      android:fillColor="@android:color/white"
+-      android:pathData="M12,12c2.21,0 4,-1.79 4,-4s-1.79,-4 -4,-4 -4,1.79 -4,4 1.79,4 4,4zM12,14c-2.67,0 -8,1.34 -8,4v2h16v-2c0,-2.66 -5.33,-4 -8,-4z"/>
+-</vector>
+Index: app/src/main/java/com/example/healthydog/MainActivity.java
+===================================================================
+diff --git a/app/src/main/java/com/example/healthydog/MainActivity.java b/app/src/main/java/com/example/healthydog/MainActivity.java
+deleted file mode 100644
+--- a/app/src/main/java/com/example/healthydog/MainActivity.java	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,15 +0,0 @@
+-package com.example.healthydog;
+-
+-import androidx.appcompat.app.AppCompatActivity;
+-
+-import android.os.Bundle;
+-
+-
+-public class MainActivity extends AppCompatActivity {
+-
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_main);
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/res/drawable/bottom_nav_color.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/bottom_nav_color.xml b/app/src/main/res/drawable/bottom_nav_color.xml
+deleted file mode 100644
+--- a/app/src/main/res/drawable/bottom_nav_color.xml	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,4 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+-<item android:color=""></item>
+-</selector>
+\ No newline at end of file
+Index: app/src/main/res/drawable/ic_baseline_camera_alt_24.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml b/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml
+deleted file mode 100644
+--- a/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,13 +0,0 @@
+-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:width="24dp"
+-    android:height="24dp"
+-    android:viewportWidth="24"
+-    android:viewportHeight="24"
+-    android:tint="?attr/colorControlNormal">
+-  <path
+-      android:fillColor="@android:color/white"
+-      android:pathData="M12,12m-3.2,0a3.2,3.2 0,1 1,6.4 0a3.2,3.2 0,1 1,-6.4 0"/>
+-  <path
+-      android:fillColor="@android:color/white"
+-      android:pathData="M9,2L7.17,4L4,4c-1.1,0 -2,0.9 -2,2v12c0,1.1 0.9,2 2,2h16c1.1,0 2,-0.9 2,-2L22,6c0,-1.1 -0.9,-2 -2,-2h-3.17L15,2L9,2zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5z"/>
+-</vector>
+Index: app/src/androidTest/java/com/example/healthydog/ExampleInstrumentedTest.java
+===================================================================
+diff --git a/app/src/androidTest/java/com/example/healthydog/ExampleInstrumentedTest.java b/app/src/androidTest/java/com/example/healthydog/ExampleInstrumentedTest.java
+deleted file mode 100644
+--- a/app/src/androidTest/java/com/example/healthydog/ExampleInstrumentedTest.java	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,26 +0,0 @@
+-package com.example.healthydog;
+-
+-import android.content.Context;
+-
+-import androidx.test.platform.app.InstrumentationRegistry;
+-import androidx.test.ext.junit.runners.AndroidJUnit4;
+-
+-import org.junit.Test;
+-import org.junit.runner.RunWith;
+-
+-import static org.junit.Assert.*;
+-
+-/**
+- * Instrumented test, which will execute on an Android device.
+- *
+- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+- */
+-@RunWith(AndroidJUnit4.class)
+-public class ExampleInstrumentedTest {
+-    @Test
+-    public void useAppContext() {
+-        // Context of the app under test.
+-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+-        assertEquals("com.example.healthydog", appContext.getPackageName());
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/res/color/button_background_color.xml
+===================================================================
+diff --git a/app/src/main/res/color/button_background_color.xml b/app/src/main/res/color/button_background_color.xml
+deleted file mode 100644
+--- a/app/src/main/res/color/button_background_color.xml	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+-    <item android:state_pressed="true" android:color="#FFE9C9"/>
+-    <item android:state_selected="true" android:color="#FFE9C9"/>
+-    <item android:color="@color/grey"/>
+-</selector>
+\ No newline at end of file
+Index: app/src/test/java/com/example/healthydog/ExampleUnitTest.java
+===================================================================
+diff --git a/app/src/test/java/com/example/healthydog/ExampleUnitTest.java b/app/src/test/java/com/example/healthydog/ExampleUnitTest.java
+deleted file mode 100644
+--- a/app/src/test/java/com/example/healthydog/ExampleUnitTest.java	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,17 +0,0 @@
+-package com.example.healthydog;
+-
+-import org.junit.Test;
+-
+-import static org.junit.Assert.*;
+-
+-/**
+- * Example local unit test, which will execute on the development machine (host).
+- *
+- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+- */
+-public class ExampleUnitTest {
+-    @Test
+-    public void addition_isCorrect() {
+-        assertEquals(4, 2 + 2);
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/res/drawable-v24/ic_launcher_foreground.xml
+===================================================================
+diff --git a/app/src/main/res/drawable-v24/ic_launcher_foreground.xml b/app/src/main/res/drawable-v24/ic_launcher_foreground.xml
+deleted file mode 100644
+--- a/app/src/main/res/drawable-v24/ic_launcher_foreground.xml	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ /dev/null	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
+@@ -1,30 +0,0 @@
+-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:aapt="http://schemas.android.com/aapt"
+-    android:width="108dp"
+-    android:height="108dp"
+-    android:viewportWidth="108"
+-    android:viewportHeight="108">
+-    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
+-        <aapt:attr name="android:fillColor">
+-            <gradient
+-                android:endX="85.84757"
+-                android:endY="92.4963"
+-                android:startX="42.9492"
+-                android:startY="49.59793"
+-                android:type="linear">
+-                <item
+-                    android:color="#44000000"
+-                    android:offset="0.0" />
+-                <item
+-                    android:color="#00000000"
+-                    android:offset="1.0" />
+-            </gradient>
+-        </aapt:attr>
+-    </path>
+-    <path
+-        android:fillColor="#FFFFFF"
+-        android:fillType="nonZero"
+-        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
+-        android:strokeWidth="1"
+-        android:strokeColor="#00000000" />
+-</vector>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"DesignSurface\">\n    <option name=\"filePathToZoomLevelMap\">\n      <map>\n        <entry key=\"..\\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable-v24/ic_launcher_foreground.xml\" value=\"0.3255\" />\n        <entry key=\"..\\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/bottom_nav_color.xml\" value=\"0.3255\" />\n        <entry key=\"..\\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/button_selector.xml\" value=\"0.1095\" />\n        <entry key=\"..\\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml\" value=\"0.1\" />\n        <entry key=\"..\\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/radius.xml\" value=\"0.1705\" />\n        <entry key=\"..\\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/radius2.xml\" value=\"0.1705\" />\n        <entry key=\"..\\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/selector_pressed.xml\" value=\"0.132\" />\n        <entry key=\"..\\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/font/font.xml\" value=\"0.28637627432808155\" />\n        <entry key=\"..\\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml\" value=\"0.1\" />\n        <entry key=\"..\\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_my_page.xml\" value=\"0.33\" />\n        <entry key=\"..\\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_mypage.xml\" value=\"0.22\" />\n        <entry key=\"..\\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/spinner_item.xml\" value=\"0.1\" />\n        <entry key=\"..\\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/support_simple_spinner_dropdown_item.xml\" value=\"0.1\" />\n        <entry key=\"..\\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/menu/activity_memu_main.xml\" value=\"0.1\" />\n        <entry key=\"..\\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/menu/bottom_nav_menu.xml\" value=\"0.33\" />\n        <entry key=\"..\\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/menu/bottom_navi.xml\" value=\"0.33\" />\n      </map>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"Android Studio default JDK\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\n  </component>\n  <component name=\"ProjectType\">\n    <option name=\"id\" value=\"Android\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 7423ea4043cd51d14d0ac0bc7b23bd2a625471de)
++++ b/.idea/misc.xml	(date 1652097701726)
+@@ -3,22 +3,12 @@
+   <component name="DesignSurface">
+     <option name="filePathToZoomLevelMap">
+       <map>
+-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3255" />
+-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/bottom_nav_color.xml" value="0.3255" />
+-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/button_selector.xml" value="0.1095" />
+-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.1" />
+-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/radius.xml" value="0.1705" />
+-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/radius2.xml" value="0.1705" />
+-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/selector_pressed.xml" value="0.132" />
+-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/font/font.xml" value="0.28637627432808155" />
+-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.1" />
+-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_my_page.xml" value="0.33" />
+-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_mypage.xml" value="0.22" />
+-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/spinner_item.xml" value="0.1" />
+-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/support_simple_spinner_dropdown_item.xml" value="0.1" />
+-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/menu/activity_memu_main.xml" value="0.1" />
+-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/menu/bottom_nav_menu.xml" value="0.33" />
+-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/menu/bottom_navi.xml" value="0.33" />
++        <entry key="app/src/main/res/drawable/button_left.xml" value="0.139" />
++        <entry key="app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.1" />
++        <entry key="app/src/main/res/drawable/ic_baseline_local_hospital_24.xml" value="0.1" />
++        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.139" />
++        <entry key="app/src/main/res/layout/activity_c3.xml" value="0.24479166666666666" />
++        <entry key="app/src/main/res/layout/activity_c4.xml" value="0.24479166666666666" />
+       </map>
+     </option>
+   </component>
