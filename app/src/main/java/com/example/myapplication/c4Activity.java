@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
@@ -33,15 +35,12 @@ public class c4Activity extends AppCompatActivity {
     Button othereye, btn2; //측정버튼
     int imageSize = 224;
 
-    int maxPos = 0; //큰 번호 값 저장
-    float maxConfidence = 0; //큰 정확률 값
 
     String[] classes = {"혼탁 증상 확률이 높다", "혼탁 증상 확률이 낮다"};
-
-    String s = ""; //결과 값 저장 변수
-    String result_info = ""; //혼탁 증상 확률이 높을 경우 출력되는 '수의사 측정 요망' 문구
+    String result_info = "각막의 혼탁이 부분적으로 나타날 경우 지방이나 칼슘의 침착, 이전 상처에 대한 흉터일 가능성도 있어요. 전반적인 각막의 혼탁이 나타난다면 각막 부종이나 녹내장 등과 같은 질환일 수 있으니 동물병원에서 정확한 원인을 체크받길 추천해요."; //혼탁 증상 확률이 높을 경우 출력되는 '수의사 측정 요망' 문구
 
     int CheckOn ; //선택된 눈의 값. 왼쪽 체크 시 값 1, 오른쪽 체크 시 2, 둘 다 체크 시 3
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +54,7 @@ public class c4Activity extends AppCompatActivity {
 
         //CheckOn 값 (촬영할 눈 선택 값) 가져오기
         Intent intent = getIntent();
-        CheckOn = intent.getIntExtra("CheckOn",0);
+        CheckOn = intent.getIntExtra("CheckOn",4);
 
         if(CheckOn == 1) { //왼쪽 눈 촬영만 클릭한 경우
             textView2.setText("왼쪽 눈을 촬영해주세요");
@@ -68,12 +67,8 @@ public class c4Activity extends AppCompatActivity {
             button.setVisibility(View.VISIBLE);
             othereye.setVisibility(View.VISIBLE);
             btn2.setVisibility(View.GONE);
-        }  else if (CheckOn == 4) { //양쪽 눈 촬영 클릭한 경우 - 왼쪽 실행 후 오른쪽
-            textView2.setText("오른쪽 눈을 촬영해주세요");
-            button.setVisibility(View.VISIBLE);
-            //othereye.setVisibility(View.GONE);
-            //btn2.setVisibility(View.VISIBLE);
-        }
+        }; //양쪽 눈 촬영 클릭한 경우 CheckOn 디폴트 값 '4' - 왼쪽 실행 후 오른쪽
+
 
         imageView = findViewById(R.id.imageView);
         picture = (ImageButton)findViewById(R.id.button);
@@ -118,69 +113,99 @@ public class c4Activity extends AppCompatActivity {
                     byteBuffer.putFloat((val & 0xFF) * (1.f / 255.f));
                 }
             }
-
             inputFeature0.loadBuffer(byteBuffer);
 
             // Runs model inference and gets result. Model 돌리기 및 결과 값 가져오기
             Model.Outputs outputs = model.process(inputFeature0);
             TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
-            float[] confidences = outputFeature0.getFloatArray();
-            String toastMessage = "정확도가 낮아요! 재촬영이 필요합니다.";
+            //정확도 오른쪽, 왼쪽눈에 각각 저장 -----------------------
+            float[] confidences_l = outputFeature0.getFloatArray();
+            float[] confidences_r = outputFeature0.getFloatArray();
+
+            int maxPos_l =0, maxPos_r = 0; //큰 번호 값 저장
+            float maxConfidence_l = 0, maxConfidence_r = 0; //큰 정확률 값
+
+            //배열에 잘 저장돠는지 확인하기 위해 일단 확인!
+            System.out.println(confidences_l);
+            System.out.println(confidences_r);
 
 
-            //큰 값 저장하기
-            for(int i =0; i<confidences.length; i++){
-                if(confidences[i] > maxConfidence){
-                    maxConfidence = confidences[i];
-                    maxPos = i;
+            SharedPreferences sharedPreferences = getSharedPreferences("total_result", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+            if(CheckOn == 1 || CheckOn ==3){ //왼쪽눈 촬영시
+                //큰 값 저장하기
+                for(int i =0; i<confidences_l.length; i++){
+                    if(confidences_l[i] >= maxConfidence_l){
+                        maxConfidence_l = confidences_l[i];
+                        maxPos_l = i;
+                    }
                 }
+
+                System.out.println(maxPos_l + classes[maxPos_l] );
+                System.out.println("큰 값은 " + maxConfidence_l * 100);
+
+                String result_l = classes[maxPos_l].trim();
+                String l_result = Float.toString(confidences_l[0]*100).trim();
+                editor.putString("result_l", result_l);
+                editor.putString("l_result", l_result);
+            }
+            if (CheckOn == 2 || CheckOn == 4){ //오른쪽눈 촬영시
+                //큰 값 저장하기
+                for(int i =0; i<confidences_r.length; i++){
+                    if(confidences_r[i] > maxConfidence_r){
+                        maxConfidence_r = confidences_r[i];
+                        maxPos_r = i;
+                    }
+                }
+                System.out.println(maxPos_r + classes[maxPos_r] );
+                System.out.println("큰 값은 " + maxConfidence_r * 100);
+
+                String result_r = classes[maxPos_r].trim();
+                String r_result = Float.toString(confidences_r[0]*100);
+                editor.putString("result_r", result_r);
+                editor.putString("r_result", r_result);
+            }
+
+            //정확도가 90% 미만일 경우 토스트 메시지 출력
+            String toastMessage = "정확도가 낮아요! 재촬영이 필요합니다.";
+            if( maxConfidence_l * 100 < 90 || maxConfidence_r * 100 < 90 ) {
+                Toast.makeText(c4Activity.this, toastMessage, Toast.LENGTH_SHORT).show();
             }
 
             //눈 혼탁 증상률이 높다고 판정될 경우, 전문 수의사의 진단이 필요함을 안내하는 문구
-            if( maxPos == 0 ){
-                result_info = "각막의 혼탁이 부분적으로 나타날 경우 지방이나 칼슘의 침착, 이전 상처에 대한 흉터일 가능성도 있어요. 전반적인 각막의 혼탁이 나타난다면 각막 부종이나 녹내장 등과 같은 질환일 수 있으니 동물병원에서 정확한 원인을 체크받길 추천해요.";
+            if( maxPos_l == 0 || maxPos_r == 0 ){
+                //증상이 높을 경우 수의사 진단 필요함을 안내하는 'result_info' 보내주기
+                String main_result_info;
+                main_result_info = result_info;
+
+                Intent intent = new Intent(c4Activity.this, c5Activity.class);
+                intent.putExtra("result_info",main_result_info);
             }
-            //정확도가 90% 미만일 경우 토스트 메시지 출력
-            if( maxConfidence * 100 < 90 ) {
-                Toast.makeText(c4Activity.this, toastMessage, Toast.LENGTH_SHORT).show();
-            }
-            for(int i =0; i<classes.length; i++){
-                s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
-            }
+
+            //결과 값 저장하기
+            editor.apply();
+
             // Releases model resources if no longer used.
             model.close();
         } catch (IOException e) {
-            // TODO Handle the exception
+            //TODO Handle the exception
         }
-
-
-        //오른쪽 눈 촬영하기 버튼을 클릭했을 경우, 결과 값 c5로 보내주기
-        //측정하기 버튼 클릭했을 때 결과 값 c5로 보내주기 + 증상이 높을 경우 수의사 진단 필요함을 안내하는 'result_info' 보내주기
-        String main_result , main_confidences, main_result_info;
-
-        main_result = classes[maxPos] ;
-        main_confidences = s;
-        main_result_info = result_info;
-
-        Intent intent = new Intent(this, c5Activity.class);
-        intent.putExtra("result",main_result);
-        intent.putExtra("confidences",main_confidences);
-        intent.putExtra("result_info",main_result_info);
 
         //오른쪽 눈 촬영하기 버튼 클릭했을 경우 해당 액티비티 다시 실행
         othereye.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                CheckOn = 4;
-                System.out.println("-------------"+CheckOn);
                 startActivity(new Intent(c4Activity.this,c4Activity.class));
             }
         });
+
         //측정하기 버튼 클릭했을 때 인텐트 c5 이동
         btn2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(c4Activity.this, c5Activity.class);
                 startActivity(intent);
             }
         });
@@ -188,7 +213,7 @@ public class c4Activity extends AppCompatActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == 1 && resultCode == RESULT_OK) {
+        if (requestCode == 1 && resultCode ==RESULT_OK) {
             Bitmap image = (Bitmap) data.getExtras().get("data");
             int dimension = Math.min(image.getWidth(), image.getHeight());
             image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);

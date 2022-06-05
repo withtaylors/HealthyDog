@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/mypagebtcl.xml" value="0.1" />
+        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/progressbar_my.xml" value="0.1" />
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/radiusview.xml" value="0.1" />
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_my1.xml" value="0.25" />
-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_my2.xml" value="0.18" />
+        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_my2.xml" value="0.25" />
         <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/button_background.xml" value="0.1" />
         <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_c1.xml" value="0.2247191011235955" />
         <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_c3.xml" value="0.1762917933130699" />

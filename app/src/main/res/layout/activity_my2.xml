@@ -51,8 +51,7 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="-40dp"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textAlignment="center"
+                android:textSize="14sp"
                 android:layout_marginLeft="280dp"
                 android:text="      " />
 
@@ -74,8 +73,7 @@
                 android:layout_marginTop="-40dp"
                 android:layout_marginLeft="280dp"
                 android:layout_height="40dp"
-                android:textSize="16sp"
-                android:textAlignment="center"
+                android:textSize="14sp"
                 android:textColor="@color/black"
 
                 android:text="             " />
@@ -95,8 +93,7 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="-40dp"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textAlignment="center"
+                android:textSize="14sp"
                 android:layout_marginLeft="280dp"
                 android:text="      " />
             <TextView
@@ -115,8 +112,7 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="-40dp"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textAlignment="center"
+                android:textSize="14sp"
                 android:layout_marginLeft="280dp"
                 android:text="      " />
 
@@ -131,20 +127,114 @@
             android:backgroundTint="@color/yellow"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/type3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/typeinfo"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="230dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/radiusview"
             android:backgroundTint="@color/yellow"
-            android:orientation="vertical"></LinearLayout>
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/fattext"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="-20dp"
+                android:textStyle="bold"
+                android:text="비만도 체크" />
+            <TextView
+                android:id="@+id/fattext2"
+                android:layout_width="210dp"
+                android:layout_height="30dp"
+                android:textSize="12sp"
+                android:layout_marginTop="-8dp"
+                android:layout_marginLeft="100dp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="-20dp"
+                android:textStyle="bold"
+                android:text="*우리 아이와 닮은 체형을 골라주세요.*" />
+
+            <ImageButton
+                android:id="@+id/fat3"
+                android:layout_width="70dp"
+                android:layout_marginLeft="260dp"
+                android:layout_marginTop="30dp"
+                android:background="@android:color/transparent"
+                android:layout_height="70dp"
+                android:src="@drawable/fat3_2" />
+
+            <ImageButton
+                android:id="@+id/fat1"
+                android:layout_width="70dp"
+                android:layout_marginLeft="40dp"
+                android:layout_height="70dp"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="-70dp"
+                android:src="@drawable/fat1_2" />
+
+            <ImageButton
+                android:id="@+id/fat2"
+                android:layout_width="70dp"
+                android:layout_marginLeft="150dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="-70dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/fat2_2" />
+
+            <ImageButton
+                android:id="@+id/fat4"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="90dp"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/fat4_2" />
+
+            <ImageButton
+                android:id="@+id/fat5"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="-70dp"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="210dp"
+                android:src="@drawable/fat5_2" />
+
+            <TextView
+                android:id="@+id/fatinfo"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textAlignment="center"
+                android:layout_marginTop="7dp"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:text="" />
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:background="@drawable/radiusview"
             android:backgroundTint="@color/yellow"
             android:orientation="vertical">
@@ -158,11 +248,24 @@
                 android:textSize="16sp"
                 android:text="평균 산책 시간" />
             <TextView
-                android:id="@+id/walk_2"
+                android:id="@+id/walk2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="  " />
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:text="" />
+            <ProgressBar
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:progressBackgroundTint="@color/colorPrimaryDark"
+                android:progressTint="@color/white"
+                android:max="30"
+                android:progressDrawable="@drawable/progressbar_my"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:id="@+id/progress"/>
         </LinearLayout>
 
         <LinearLayout

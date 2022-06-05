@@ -31,8 +31,6 @@ public class my1 extends AppCompatActivity {
         Button Female_1;
         Button Male_1;
         private boolean check = false;
-        ImageButton profile_pic1;
-        ImageView profile1;
         private static final int PICK_IMAGE_REQUEST = 1;
 
 
@@ -91,32 +89,52 @@ public class my1 extends AppCompatActivity {
 
                 final EditText inputname = findViewById(id.inputname);
                 final EditText walk_1 = findViewById(id.walk_1);
+                final ImageView profile1 = findViewById(id.profile1);
+
 
 
                 Button submit_1 = (Button) findViewById(id.submit_1);
 
-                submit_1.setOnClickListener(new View.OnClickListener(){
+
+
+                submit_1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
 
-                                String time = walk_1.getText().toString().trim();
+
+
+
+
+
+
+                                int time = Integer.parseInt(walk_1.getText().toString());
                                 String name = inputname.getText().toString().trim();
                                 SharedPreferences sharedPreferences = getSharedPreferences("MY", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putString("name", name);
-                                editor.putString("time", time);
+
+
+                                editor.putInt("time", time);
+                                editor.putString("year", spin1.getSelectedItem().toString());
+                                editor.putString("month", spin2.getSelectedItem().toString());
+                                editor.putString("day", spin3.getSelectedItem().toString());
+                                editor.putString("type", spin4.getSelectedItem().toString());
+
                                 editor.apply();
 
 
                                 int list = 1; //어디 페이지로 프레그먼트 시작할지 정하는 변수
                                 Intent intent = new Intent(my1.this, c1Activity.class);
-                                intent.putExtra("list",list);
+                                intent.putExtra("list", list);
                                 startActivity(intent);
                                 //야매로 c1은 액티비티니까 액티비티로 이동
                                 //대신 시작할 때 마이페이지 뜰 수 있게 list = 1로 변경
 
                         }
-                }); //클릭 시 인텐트 부분 끝
+                });
+
+
+                //클릭 시 인텐트 부분 끝
 
                 Female_1 = (Button) findViewById(id.Female_1);
                 Female_1.setOnClickListener(new OnClickListener() {
@@ -146,7 +164,7 @@ public class my1 extends AppCompatActivity {
                         }
                 });
 
-                ImageButton profile_pic1 = (ImageButton)findViewById(id.profile_pic1);
+                ImageButton profile_pic1 = (ImageButton) findViewById(id.profile_pic1);
 
                 profile_pic1.setOnClickListener(new View.OnClickListener() {
                         @Override //갤러리 부분
@@ -158,10 +176,11 @@ public class my1 extends AppCompatActivity {
                         }
                 });
         }
+
         @Override //사진 띄우기
-        public  void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
                 super.onActivityResult(requestCode, resultCode, data);
-                if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null){
+                if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
                         Uri uri = data.getData();
 
                         try {
@@ -169,13 +188,22 @@ public class my1 extends AppCompatActivity {
                                 ImageView profile1 = (ImageView) findViewById(id.profile1);
                                 profile1.setImageBitmap(bitmap);
 
+
+
+
+
                         } catch (IOException e) {
                                 e.printStackTrace();
                         }
 
-                }else if (resultCode == RESULT_CANCELED){
+                } else if (resultCode == RESULT_CANCELED) {
                         Toast.makeText(this, "사진 선택 취소", Toast.LENGTH_LONG).show();
 
                 }
+
+
         }
+
+
+
 }
