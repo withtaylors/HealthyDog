@@ -123,7 +123,6 @@ public class c4Activity extends AppCompatActivity {
             Model.Outputs outputs = model.process(inputFeature0);
             TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
-
             //정확도 오른쪽, 왼쪽눈에 각각 저장 -----------------------
             float[] confidences_l = outputFeature0.getFloatArray();
             float[] confidences_r = outputFeature0.getFloatArray();
@@ -133,7 +132,6 @@ public class c4Activity extends AppCompatActivity {
                 for(int i =0; i<confidences_l.length; i++){
                     if(confidences_l[i] > maxConfidence_l){
                         maxConfidence_l = confidences_l[i];
-                        maxPos_l = i;
                     }
                 }
             }
@@ -142,19 +140,15 @@ public class c4Activity extends AppCompatActivity {
                 for(int i =0; i<confidences_r.length; i++){
                     if(confidences_r[i] > maxConfidence_r){
                         maxConfidence_r = confidences_r[i];
-                        maxPos_r = i;
                     }
                 }
             }
-
-
 
             //정확도가 90% 미만일 경우 토스트 메시지 출력
             String toastMessage = "정확도가 낮아요! 재촬영이 필요합니다.";
             if( maxConfidence_l * 100 < 90 || maxConfidence_r * 100 < 90 ) {
                 Toast.makeText(c4Activity.this, toastMessage, Toast.LENGTH_SHORT).show();
             }
-
 
             //눈 혼탁 증상률이 높다고 판정될 경우, 전문 수의사의 진단이 필요함을 안내하는 문구
             if( maxPos_l == 0 || maxPos_r == 0 ){
@@ -173,11 +167,12 @@ public class c4Activity extends AppCompatActivity {
         //측정하기 버튼 클릭했을 때 결과 값 저장하기
         String result1 = classes[maxPos_l].trim();
         String result2 = classes[maxPos_r].trim();
+//        String lefteyeresult = Float.toString(confidences_l[0]);
         SharedPreferences sharedPreferences = getSharedPreferences("result", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("result1", result1);
         editor.putString("result2", result2);
-        editor.putString("confidences", confidences);
+//        editor.putString("lefteyeresult", confiden);
         editor.apply();
 
 
