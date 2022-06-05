@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,19 +21,25 @@ public class MyPage extends Fragment {
 
         TextView name2 = view.findViewById(R.id.name2);
 
-        Bundle bundle1 = this.getArguments();
+        //Bundle bundle1 = this.getArguments();
 
-        if(bundle1 != null) {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MY", Context.MODE_PRIVATE );
+        String name = sharedPreferences.getString("value", "");
+        name2.setText(name);
+
+/*        if(bundle1 != null) {
             bundle1 = getArguments();
 
             String name = bundle1.getString("name");
             name2.setText(name);
-        }
+        }*/
+
 
         Button changeinfo = (Button)view.findViewById(R.id.changeinfo);
         changeinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent3 = new Intent(getActivity(), my1.class);
                 startActivity(intent3);
             }

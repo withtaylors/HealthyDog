@@ -3,7 +3,9 @@ package com.example.myapplication;
 import static com.example.myapplication.R.id;
 import static com.example.myapplication.R.layout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,6 +24,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.io.IOException;
 
@@ -33,6 +37,7 @@ public class my1 extends AppCompatActivity {
         ImageButton profile_pic1;
         ImageView profile1;
         private static final int PICK_IMAGE_REQUEST = 1;
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -89,16 +94,24 @@ public class my1 extends AppCompatActivity {
                 final EditText inputname = findViewById(id.inputname);
 
                 Button submit_1 = (Button) findViewById(id.submit_1);
-                submit_1.setOnClickListener(new View.OnClickListener(){
 
+                submit_1.setOnClickListener(new View.OnClickListener(){
                         @Override
                         public void onClick(View view) {
-                                        Bundle bundle = new Bundle();
-                                        bundle.putString("name", inputname.getText().toString().trim());
-                                        Fragment MyPage = new Fragment();
-                                        MyPage.setArguments(bundle);
-                                        getSupportFragmentManager().beginTransaction().replace(R.id.container, MyPage).commit();
-                                        //my2불러오기기
+
+                                String name = inputname.getText().toString().trim();
+                                SharedPreferences sharedPreferences = getSharedPreferences("MY", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString("value", name);
+                                editor.apply();
+
+
+                                int list = 1; //어디 페이지로 프레그먼트 시작할지 정하는 변수
+                                Intent intent = new Intent(my1.this, c1Activity.class);
+                                intent.putExtra("list",list);
+                                startActivity(intent);
+                                //야매로 c1은 액티비티니까 액티비티로 이동
+                                //대신 시작할 때 마이페이지 뜰 수 있게 list = 1로 변경
 
                         }
                 }); //클릭 시 인텐트 부분 끝
