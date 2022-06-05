@@ -36,17 +36,15 @@ public class c4Activity extends AppCompatActivity {
     Button othereye, btn2; //측정버튼
     int imageSize = 224;
 
-    int maxPos_l; //큰 번호 값 저장
-    float maxConfidence_l; //큰 정확률 값
-    int maxPos_r; //큰 번호 값 저장
-    float maxConfidence_r; //큰 정확률 값
+    int maxPos_l, maxPos_r; //큰 번호 값 저장
+    float maxConfidence_l, maxConfidence_r; //큰 정확률 값
 
     String[] classes = {"혼탁 증상 확률이 높다", "혼탁 증상 확률이 낮다"};
-
-    String s = ""; //결과 값 저장 변수
-    String result_info = ""; //혼탁 증상 확률이 높을 경우 출력되는 '수의사 측정 요망' 문구
+    String result_info = "각막의 혼탁이 부분적으로 나타날 경우 지방이나 칼슘의 침착, 이전 상처에 대한 흉터일 가능성도 있어요. 전반적인 각막의 혼탁이 나타난다면 각막 부종이나 녹내장 등과 같은 질환일 수 있으니 동물병원에서 정확한 원인을 체크받길 추천해요."; //혼탁 증상 확률이 높을 경우 출력되는 '수의사 측정 요망' 문구
 
     int CheckOn ; //선택된 눈의 값. 왼쪽 체크 시 값 1, 오른쪽 체크 시 2, 둘 다 체크 시 3
+
+    Intent intent = new Intent(this, c5Activity.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,10 +71,8 @@ public class c4Activity extends AppCompatActivity {
             button.setVisibility(View.VISIBLE);
             othereye.setVisibility(View.VISIBLE);
             btn2.setVisibility(View.GONE);
-        }  else if (CheckOn == 0) { //양쪽 눈 촬영 클릭한 경우 - 왼쪽 실행 후 오른쪽
-            textView2.setText("오른쪽 눈을 촬영해주세요");
-            button.setVisibility(View.VISIBLE);
-        };
+        }; //양쪽 눈 촬영 클릭한 경우 CheckOn 디폴트 값 '4' - 왼쪽 실행 후 오른쪽
+
 
         imageView = findViewById(R.id.imageView);
         picture = (ImageButton)findViewById(R.id.button);
@@ -127,13 +123,12 @@ public class c4Activity extends AppCompatActivity {
             Model.Outputs outputs = model.process(inputFeature0);
             TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
-            System.out.print("체크온" +CheckOn);
 
-            //정확도 저장
+            //정확도 오른쪽, 왼쪽눈에 각각 저장 -----------------------
             float[] confidences_l = outputFeature0.getFloatArray();
             float[] confidences_r = outputFeature0.getFloatArray();
 
-            if(CheckOn == 1 || CheckOn ==3){
+            if(CheckOn == 1 || CheckOn ==3){ //왼쪽눈 촬영시
                 //큰 값 저장하기
                 for(int i =0; i<confidences_l.length; i++){
                     if(confidences_l[i] > maxConfidence_l){
@@ -141,41 +136,34 @@ public class c4Activity extends AppCompatActivity {
                         maxPos_l = i;
                     }
                 }
-                for(int i =0; i<classes.length; i++){
-                    s += String.format("%s: %.1f%%\n", classes[i], confidences_l[i] * 100);
-                }
-                //눈 혼탁 증상률이 높다고 판정될 경우, 전문 수의사의 진단이 필요함을 안내하는 문구
-                if( maxPos_l == 0 ){
-                    result_info = "각막의 혼탁이 부분적으로 나타날 경우 지방이나 칼슘의 침착, 이전 상처에 대한 흉터일 가능성도 있어요. 전반적인 각막의 혼탁이 나타난다면 각막 부종이나 녹내장 등과 같은 질환일 수 있으니 동물병원에서 정확한 원인을 체크받길 추천해요.";
-                }
-                //정확도가 90% 미만일 경우 토스트 메시지 출력
-                String toastMessage = "정확도가 낮아요! 재촬영이 필요합니다.";
-                if( maxConfidence_l * 100 < 90 ) {
-                    Toast.makeText(c4Activity.this, toastMessage, Toast.LENGTH_SHORT).show();
-                }
             }
-
-             if (CheckOn == 2 || CheckOn == 4){
+             if (CheckOn == 2 || CheckOn == 4){ //오른쪽눈 촬영시
                 //큰 값 저장하기
                 for(int i =0; i<confidences_r.length; i++){
                     if(confidences_r[i] > maxConfidence_r){
-                        maxConfidence_r = confidences_l[i];
+                        maxConfidence_r = confidences_r[i];
                         maxPos_r = i;
                     }
                 }
-                for(int i =0; i<classes.length; i++){
-                    s += String.format("%s: %.1f%%\n", classes[i], confidences_r[i] * 100);
-                }
-                //눈 혼탁 증상률이 높다고 판정될 경우, 전문 수의사의 진단이 필요함을 안내하는 문구
-                if( maxPos_r == 0 ){
-                    result_info = "각막의 혼탁이 부분적으로 나타날 경우 지방이나 칼슘의 침착, 이전 상처에 대한 흉터일 가능성도 있어요. 전반적인 각막의 혼탁이 나타난다면 각막 부종이나 녹내장 등과 같은 질환일 수 있으니 동물병원에서 정확한 원인을 체크받길 추천해요.";
-                }
-                //정확도가 90% 미만일 경우 토스트 메시지 출력
-                String toastMessage = "정확도가 낮아요! 재촬영이 필요합니다.";
-                if( maxConfidence_r * 100 < 90 ) {
-                    Toast.makeText(c4Activity.this, toastMessage, Toast.LENGTH_SHORT).show();
-                }
             }
+
+
+
+            //정확도가 90% 미만일 경우 토스트 메시지 출력
+            String toastMessage = "정확도가 낮아요! 재촬영이 필요합니다.";
+            if( maxConfidence_l * 100 < 90 || maxConfidence_r * 100 < 90 ) {
+                Toast.makeText(c4Activity.this, toastMessage, Toast.LENGTH_SHORT).show();
+            }
+
+
+            //눈 혼탁 증상률이 높다고 판정될 경우, 전문 수의사의 진단이 필요함을 안내하는 문구
+            if( maxPos_l == 0 || maxPos_r == 0 ){
+                //증상이 높을 경우 수의사 진단 필요함을 안내하는 'result_info' 보내주기
+                String main_result_info;
+                main_result_info = result_info;
+                intent.putExtra("result_info",main_result_info);
+            }
+
             // Releases model resources if no longer used.
             model.close();
         } catch (IOException e) {
@@ -185,7 +173,6 @@ public class c4Activity extends AppCompatActivity {
         //측정하기 버튼 클릭했을 때 결과 값 저장하기
         String result1 = classes[maxPos_l].trim();
         String result2 = classes[maxPos_r].trim();
-        String confidences = s.trim();
         SharedPreferences sharedPreferences = getSharedPreferences("result", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("result1", result1);
@@ -193,12 +180,7 @@ public class c4Activity extends AppCompatActivity {
         editor.putString("confidences", confidences);
         editor.apply();
 
-        Intent intent = new Intent(this, c5Activity.class);
 
-        //증상이 높을 경우 수의사 진단 필요함을 안내하는 'result_info' 보내주기
-        String main_result_info;
-        main_result_info = result_info;
-        intent.putExtra("result_info",main_result_info);
 
         //오른쪽 눈 촬영하기 버튼 클릭했을 경우 해당 액티비티 다시 실행
         othereye.setOnClickListener(new OnClickListener() {

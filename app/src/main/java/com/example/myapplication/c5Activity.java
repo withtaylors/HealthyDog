@@ -30,13 +30,13 @@ public class c5Activity extends AppCompatActivity {
         ProgressBar progressBar_left = findViewById(R.id.progressBar_left);
 
         //c4Activity 값 받기
-        /*String sub_result, sub_confidences, sub_result_info ;
+        String sub_result, sub_confidences, sub_result_info ;
 
         Intent intent = getIntent();
-
+/*
         sub_result = intent.getStringExtra("result");
-        sub_confidences = intent.getStringExtra("confidences");
-        sub_result_info = intent.getStringExtra("result_info");*/
+        sub_confidences = intent.getStringExtra("confidences");*/
+        sub_result_info = intent.getStringExtra("result_info");
 
         //저장된 값 가져오기
         SharedPreferences sharedPreferences2 = getSharedPreferences("result", Context.MODE_PRIVATE );
