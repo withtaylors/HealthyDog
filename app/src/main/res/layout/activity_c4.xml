@@ -53,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/othereye"
+            android:layout_marginTop="10dp"
             android:padding="8dp"
             android:textAlignment="center"
             android:text="오른쪽 눈 촬영하기"
