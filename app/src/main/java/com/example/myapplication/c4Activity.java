@@ -160,22 +160,23 @@ public class c4Activity extends AppCompatActivity {
 
             // Releases model resources if no longer used.
             model.close();
+
+            //측정하기 버튼 클릭했을 때 결과 값 저장하기
+            String result_l = classes[maxPos_l].trim();
+            String result_r = classes[maxPos_r].trim();
+            String l_result = Float.toString(confidences_l[0]);
+            String r_result = Float.toString(confidences_r[0]);
+            SharedPreferences sharedPreferences = getSharedPreferences("total_result", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("result1", result_l);
+            editor.putString("result2", result_r);
+            editor.putString("l_result", l_result);
+            editor.putString("r_result", r_result);
+            editor.apply();
+
         } catch (IOException e) {
             // TODO Handle the exception
         }
-
-        //측정하기 버튼 클릭했을 때 결과 값 저장하기
-        String result1 = classes[maxPos_l].trim();
-        String result2 = classes[maxPos_r].trim();
-//        String lefteyeresult = Float.toString(confidences_l[0]);
-        SharedPreferences sharedPreferences = getSharedPreferences("result", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("result1", result1);
-        editor.putString("result2", result2);
-//        editor.putString("lefteyeresult", confiden);
-        editor.apply();
-
-
 
         //오른쪽 눈 촬영하기 버튼 클릭했을 경우 해당 액티비티 다시 실행
         othereye.setOnClickListener(new OnClickListener() {
