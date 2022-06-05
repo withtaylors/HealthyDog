@@ -9,15 +9,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="vertical"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
             android:text="눈 건강 체크 결과입니다."
             android:textSize="20dp"
             android:textStyle="bold"

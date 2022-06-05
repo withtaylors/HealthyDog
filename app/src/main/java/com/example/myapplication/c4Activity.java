@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
@@ -126,8 +128,6 @@ public class c4Activity extends AppCompatActivity {
             TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
             float[] confidences = outputFeature0.getFloatArray();
-            String toastMessage = "정확도가 낮아요! 재촬영이 필요합니다.";
-
 
             //큰 값 저장하기
             for(int i =0; i<confidences.length; i++){
@@ -137,16 +137,19 @@ public class c4Activity extends AppCompatActivity {
                 }
             }
 
+            for(int i =0; i<classes.length; i++){
+                s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
+            }
+
+
             //눈 혼탁 증상률이 높다고 판정될 경우, 전문 수의사의 진단이 필요함을 안내하는 문구
             if( maxPos == 0 ){
                 result_info = "각막의 혼탁이 부분적으로 나타날 경우 지방이나 칼슘의 침착, 이전 상처에 대한 흉터일 가능성도 있어요. 전반적인 각막의 혼탁이 나타난다면 각막 부종이나 녹내장 등과 같은 질환일 수 있으니 동물병원에서 정확한 원인을 체크받길 추천해요.";
             }
             //정확도가 90% 미만일 경우 토스트 메시지 출력
+            String toastMessage = "정확도가 낮아요! 재촬영이 필요합니다.";
             if( maxConfidence * 100 < 90 ) {
                 Toast.makeText(c4Activity.this, toastMessage, Toast.LENGTH_SHORT).show();
-            }
-            for(int i =0; i<classes.length; i++){
-                s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
             }
             // Releases model resources if no longer used.
             model.close();
@@ -155,9 +158,18 @@ public class c4Activity extends AppCompatActivity {
         }
 
 
-        //오른쪽 눈 촬영하기 버튼을 클릭했을 경우, 결과 값 c5로 보내주기
-        //측정하기 버튼 클릭했을 때 결과 값 c5로 보내주기 + 증상이 높을 경우 수의사 진단 필요함을 안내하는 'result_info' 보내주기
-        String main_result , main_confidences, main_result_info;
+        //측정하기 버튼 클릭했을 때 결과 값 저장하기
+        String result = classes[maxPos].trim();
+        String confidences = s.trim();
+        SharedPreferences sharedPreferences = getSharedPreferences("result", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("result", result);
+        editor.putString("confidences", confidences);
+        editor.apply();
+
+
+
+        /*        String main_result , main_confidences, main_result_info;
 
         main_result = classes[maxPos] ;
         main_confidences = s;
@@ -166,7 +178,9 @@ public class c4Activity extends AppCompatActivity {
         Intent intent = new Intent(this, c5Activity.class);
         intent.putExtra("result",main_result);
         intent.putExtra("confidences",main_confidences);
-        intent.putExtra("result_info",main_result_info);
+        intent.putExtra("result_info",main_result_info);*/
+
+
 
         //오른쪽 눈 촬영하기 버튼 클릭했을 경우 해당 액티비티 다시 실행
         othereye.setOnClickListener(new OnClickListener() {
@@ -177,6 +191,14 @@ public class c4Activity extends AppCompatActivity {
                 startActivity(new Intent(c4Activity.this,c4Activity.class));
             }
         });
+
+        Intent intent = new Intent(this, c5Activity.class);
+
+        //증상이 높을 경우 수의사 진단 필요함을 안내하는 'result_info' 보내주기
+        String main_result_info;
+        main_result_info = result_info;
+        intent.putExtra("result_info",main_result_info);
+
         //측정하기 버튼 클릭했을 때 인텐트 c5 이동
         btn2.setOnClickListener(new OnClickListener() {
             @Override

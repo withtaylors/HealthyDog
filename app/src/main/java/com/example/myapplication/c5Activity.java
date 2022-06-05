@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -20,24 +22,36 @@ public class c5Activity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_c5);
-        TextView result = findViewById(R.id.result);
-        TextView confidences = findViewById(R.id.confidence);
+        TextView classified = findViewById(R.id.classified);
+        //TextView result = findViewById(R.id.result);
+        //TextView confidences = findViewById(R.id.confidence);
         TextView result_info = findViewById(R.id.result_info);
         ProgressBar progressBar_right = findViewById(R.id.progressBar_right);
         ProgressBar progressBar_left = findViewById(R.id.progressBar_left);
 
         //c4Activity 값 받기
-        String sub_result, sub_confidences, sub_result_info ;
+        /*String sub_result, sub_confidences, sub_result_info ;
 
         Intent intent = getIntent();
 
         sub_result = intent.getStringExtra("result");
         sub_confidences = intent.getStringExtra("confidences");
-        sub_result_info = intent.getStringExtra("result_info");
+        sub_result_info = intent.getStringExtra("result_info");*/
 
-        result.setText("눈 "+sub_result+"고 판정되었습니다.");
-        result_info.setText(sub_result_info);
-        confidences.setText(sub_confidences);
+        //저장된 값 가져오기
+        SharedPreferences sharedPreferences2 = getSharedPreferences("result", Context.MODE_PRIVATE );
+        String result = sharedPreferences2.getString("result", "");
+        String confidences = sharedPreferences2.getString("confidences", "");
+        System.out.println(result);
+        System.out.println(confidences);
+        // result.setText("눈 "+result+"고 판정되었습니다.");
+        //result_info.setText(sub_result_info);
+        //confidences.setText(sub_confidences);
+
+        //사용자 반려동물 이름 값 출력하기
+        SharedPreferences sharedPreferences = getSharedPreferences("MY", Context.MODE_PRIVATE );
+        String name = sharedPreferences.getString("name", "");
+        classified.setText(name+"의 눈 건강 체크 결과입니다.");
 
         //infoText 중간 글씨 색 바꾸기
         TextView function_text = (TextView)findViewById(R.id.infoText); //텍스트 변수 선언
