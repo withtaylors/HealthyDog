@@ -20,12 +20,15 @@ public class MyPage extends Fragment {
         View view = inflater.inflate(R.layout.activity_my2, container,false);
 
         TextView name2 = view.findViewById(R.id.name2);
+        TextView walk2 = view.findViewById(R.id.walk_2);
 
         //Bundle bundle1 = this.getArguments();
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MY", Context.MODE_PRIVATE );
-        String name = sharedPreferences.getString("value", "");
+        String name = sharedPreferences.getString("name", "");
+        String time = sharedPreferences.getString("time", "");
         name2.setText(name);
+        walk2.setText(time);
 
 /*        if(bundle1 != null) {
             bundle1 = getArguments();
