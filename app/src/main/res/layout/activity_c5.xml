@@ -9,15 +9,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="vertical"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
             android:text="눈 건강 체크 결과입니다."
             android:textSize="20dp"
             android:textStyle="bold"
@@ -43,7 +39,6 @@
             android:layout_margin="20dp"
             android:padding="10dp"
             android:background="@drawable/button_background">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,18 +48,15 @@
                 android:textSize="20sp"
                 android:layout_below="@+id/result"
                 android:layout_marginTop="10dp" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
-
                 <TextView
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:text="오른쪽"/>
-
                 <ProgressBar
                     android:id="@+id/progressBar_right"
                     style="?android:attr/progressBarStyleHorizontal"
@@ -73,7 +65,6 @@
                     android:padding="10dp"
                     android:max="100"
                     android:progressDrawable="@drawable/progressbar_background"/>
-
             </LinearLayout>
 
             <LinearLayout
@@ -81,12 +72,10 @@
                 android:layout_height="50dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
-
                 <TextView
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:text="왼쪽"/>
-
                 <ProgressBar
                     android:id="@+id/progressBar_left"
                     style="?android:attr/progressBarStyleHorizontal"
@@ -95,9 +84,7 @@
                     android:padding="10dp"
                     android:max="100"
                     android:progressDrawable="@drawable/progressbar_background"/>
-
             </LinearLayout>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -107,9 +94,6 @@
                 android:textSize="22sp"
                 android:id="@+id/confidence"
                 android:layout_below="@+id/confidencesText" />
-
-
-
         </LinearLayout>
 
         <LinearLayout
@@ -120,7 +104,6 @@
             android:padding="15dp"
             android:background="@drawable/button_background"
             android:orientation="vertical">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -131,7 +114,6 @@
                 android:background="#EBFF82"
                 android:id="@+id/result"
                 android:layout_below="@+id/classified" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -140,7 +122,6 @@
                 android:text=""
                 android:textSize="13dp"
                 android:id="@+id/result_info"/>
-
         </LinearLayout>
 
         <TextView
