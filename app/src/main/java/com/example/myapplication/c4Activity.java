@@ -168,8 +168,8 @@ public class c4Activity extends AppCompatActivity {
             String r_result = Float.toString(confidences_r[0]);
             SharedPreferences sharedPreferences = getSharedPreferences("total_result", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("result1", result_l);
-            editor.putString("result2", result_r);
+            editor.putString("result_l", result_l);
+            editor.putString("result_r", result_r);
             editor.putString("l_result", l_result);
             editor.putString("r_result", r_result);
             editor.apply();
