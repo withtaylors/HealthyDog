@@ -23,9 +23,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import java.io.IOException;
 
@@ -91,7 +88,10 @@ public class my1 extends AppCompatActivity {
                 spin5.setSelection(0);
 
                 //여기서부터 인텐트
+
                 final EditText inputname = findViewById(id.inputname);
+                final EditText walk_1 = findViewById(id.walk_1);
+
 
                 Button submit_1 = (Button) findViewById(id.submit_1);
 
@@ -99,10 +99,12 @@ public class my1 extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
 
+                                String time = walk_1.getText().toString().trim();
                                 String name = inputname.getText().toString().trim();
                                 SharedPreferences sharedPreferences = getSharedPreferences("MY", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString("value", name);
+                                editor.putString("name", name);
+                                editor.putString("time", time);
                                 editor.apply();
 
 
