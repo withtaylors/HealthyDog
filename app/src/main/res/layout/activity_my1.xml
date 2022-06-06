@@ -151,29 +151,23 @@
             android:layout_marginLeft="70dp"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/Female_1"
-                android:layout_width="55dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="15dp"
-                android:backgroundTint="@color/button_background_color"
-                android:fontFamily="@font/gowundodum"
-                android:background="@drawable/radius"
-                android:selectAllOnFocus="true"
-                android:layout_marginRight="5dp"
-                android:text="여" />
-
-            <Button
-                android:id="@+id/Male_1"
-                android:layout_width="55dp"
-                android:layout_height="48dp"
-                android:fontFamily="@font/gowundodum"
-                android:layout_marginTop="15dp"
-                android:backgroundTint="@color/button_background_color"
-                android:layout_marginRight="5dp"
-                android:selectAllOnFocus="true"
-                android:background="@drawable/radius"
-                android:text="남" />
+            <RadioGroup
+                android:id="@+id/gender"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/female1"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:text="여"/>
+            <RadioButton
+                android:id="@+id/male1"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:text="남"/>
+            </RadioGroup>
 
             <Spinner
                 android:id="@+id/spinner_gender1"

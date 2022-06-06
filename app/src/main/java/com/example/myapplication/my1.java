@@ -14,12 +14,13 @@ import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -31,11 +32,11 @@ import java.io.IOException;
 
 public class my1 extends AppCompatActivity {
         ArrayAdapter<CharSequence> adspin1, adspin2, adspin3, adspin4, adspin5;
-        Button Female_1;
-        Button Male_1;
-        private boolean check = false;
         private static final int PICK_IMAGE_REQUEST = 1;
-        String imgString;
+        RadioGroup gender;
+        RadioButton female1;
+        RadioButton male1;
+        int state;
 
 
         @Override
@@ -100,6 +101,18 @@ public class my1 extends AppCompatActivity {
                 Button submit_1 = (Button) findViewById(id.submit_1);
 
 
+                RadioGroup.OnCheckedChangeListener radioGroupClickListener = new RadioGroup.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                                if(i == id.female1){
+                                        state = 1;
+                                }else if(i == id.male1){
+                                        state = 2;
+                                }
+                        }
+
+                };
+
 
                 submit_1.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -118,12 +131,12 @@ public class my1 extends AppCompatActivity {
                                 String temp1 = Base64.encodeToString(bytes1, Base64.DEFAULT);
 
 
+
+
                                 SharedPreferences sharedPreferences = getSharedPreferences("MY", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putString("name", name);
                                 editor.putString("profile", temp1);
-
-
                                 editor.putInt("time", time);
                                 editor.putString("year", spin1.getSelectedItem().toString());
                                 editor.putString("month", spin2.getSelectedItem().toString());
@@ -144,35 +157,6 @@ public class my1 extends AppCompatActivity {
                 });
 
 
-                //클릭 시 인텐트 부분 끝
-
-                Female_1 = (Button) findViewById(id.Female_1);
-                Female_1.setOnClickListener(new OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                                if (check == false) {
-                                        check = true;
-                                        Female_1.setSelected(true);
-                                } else {
-                                        check = false;
-                                        Female_1.setSelected(false);
-                                }
-                        }
-                });
-
-                Male_1 = (Button) findViewById(id.Male_1);
-                Male_1.setOnClickListener(new OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                                if (check == false) {
-                                        check = true;
-                                        Male_1.setSelected(true);
-                                } else {
-                                        check = false;
-                                        Male_1.setSelected(false);
-                                }
-                        }
-                });
 
                 ImageButton profile_pic1 = (ImageButton) findViewById(id.profile_pic1);
 

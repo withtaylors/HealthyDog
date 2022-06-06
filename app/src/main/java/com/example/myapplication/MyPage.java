@@ -37,6 +37,7 @@ public class MyPage extends Fragment {
         ImageButton fat1 = view.findViewById(R.id.fat1);
         ImageButton fat2 = view.findViewById(R.id.fat2);
         ProgressBar progressBar = view.findViewById(R.id.progress);
+        TextView gender2 = view.findViewById(R.id.gender2);
 
 
 
@@ -67,6 +68,13 @@ public class MyPage extends Fragment {
         String str2 = sharedPreferences.getString("month", "");
         String str3 = sharedPreferences.getString("day", "");
         String str4 = sharedPreferences.getString("type", "");
+        int gen = sharedPreferences.getInt("gender",1);
+        if(gen == 1) {
+            gender2.setText("여아");
+        }else{
+            gender2.setText("남아");
+        }
+
         if(str4.equals("견종")){
             typeinfo.setText("");
         }
