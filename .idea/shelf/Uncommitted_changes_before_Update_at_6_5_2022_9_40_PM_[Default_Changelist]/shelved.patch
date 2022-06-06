@@ -1,0 +1,212 @@
+Index: app/src/main/java/com/example/myapplication/c5Activity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.myapplication;\r\n\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\nimport android.content.SharedPreferences;\r\nimport android.graphics.Color;\r\nimport android.graphics.Typeface;\r\nimport android.os.Bundle;\r\nimport android.text.Spannable;\r\nimport android.text.SpannableString;\r\nimport android.text.style.ForegroundColorSpan;\r\nimport android.text.style.RelativeSizeSpan;\r\nimport android.text.style.StyleSpan;\r\nimport android.widget.ProgressBar;\r\nimport android.widget.TextView;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\npublic class c5Activity extends AppCompatActivity {\r\n\r\n    @Override\r\n    public void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_c5);\r\n        TextView classified = findViewById(R.id.classified);\r\n        //TextView result = findViewById(R.id.result);\r\n        //TextView confidences = findViewById(R.id.confidence);\r\n        TextView result_info = findViewById(R.id.result_info);\r\n        ProgressBar progressBar_right = findViewById(R.id.progressBar_right);\r\n        ProgressBar progressBar_left = findViewById(R.id.progressBar_left);\r\n\r\n        //c4Activity 값 받기\r\n        String sub_result, sub_confidences, sub_result_info ;\r\n\r\n        Intent intent = getIntent();\r\n/*\r\n        sub_result = intent.getStringExtra(\"result\");\r\n        sub_confidences = intent.getStringExtra(\"confidences\");*/\r\n        sub_result_info = intent.getStringExtra(\"result_info\");\r\n\r\n        //저장된 값 가져오기\r\n        SharedPreferences sharedPreferences2 = getSharedPreferences(\"result\", Context.MODE_PRIVATE );\r\n        String result = sharedPreferences2.getString(\"result\", \"\");\r\n        String confidences = sharedPreferences2.getString(\"confidences\", \"\");\r\n        System.out.println(result);\r\n        System.out.println(confidences);\r\n        // result.setText(\"눈 \"+result+\"고 판정되었습니다.\");\r\n        //result_info.setText(sub_result_info);\r\n        //confidences.setText(sub_confidences);\r\n\r\n        //사용자 반려동물 이름 값 출력하기\r\n        SharedPreferences sharedPreferences = getSharedPreferences(\"MY\", Context.MODE_PRIVATE );\r\n        String name = sharedPreferences.getString(\"name\", \"\");\r\n        classified.setText(name+\"의 눈 건강 체크 결과입니다.\");\r\n\r\n        //infoText 중간 글씨 색 바꾸기\r\n        TextView function_text = (TextView)findViewById(R.id.infoText); //텍스트 변수 선언\r\n        String content = function_text.getText().toString(); //텍스트 가져옴.\r\n        SpannableString spannableString = new SpannableString(content); //객체 생성\r\n\r\n        //infoText 속 특정 문자(눈 혼탁 증상이 있을 확률)의 시작위치 끝위치 얻기\r\n        String word =\"눈 혼탁 증상이 있을 확률\";\r\n        int start = content.indexOf(word);\r\n        int end = start + word.length();\r\n\r\n        //spannableString 속성 정하기\r\n        spannableString.setSpan(new ForegroundColorSpan(Color.parseColor(\"#E77794\")), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);\r\n        //spannableString.setSpan(new StyleSpan(Typeface.BOLD), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);\r\n        // spannableString.setSpan(new RelativeSizeSpan(1.3f), start, end, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);\r\n\r\n        function_text.setText(spannableString);\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/myapplication/c5Activity.java b/app/src/main/java/com/example/myapplication/c5Activity.java
+--- a/app/src/main/java/com/example/myapplication/c5Activity.java	(revision 4c365e0de3ad4bcda54cbf729e1676f1fef9c193)
++++ b/app/src/main/java/com/example/myapplication/c5Activity.java	(date 1654426809777)
+@@ -23,30 +23,34 @@
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_c5);
+         TextView classified = findViewById(R.id.classified);
+-        //TextView result = findViewById(R.id.result);
+-        //TextView confidences = findViewById(R.id.confidence);
+         TextView result_info = findViewById(R.id.result_info);
+         ProgressBar progressBar_right = findViewById(R.id.progressBar_right);
+         ProgressBar progressBar_left = findViewById(R.id.progressBar_left);
+ 
+-        //c4Activity 값 받기
+-        String sub_result, sub_confidences, sub_result_info ;
+-
++        //result_info 받아오기
++        String sub_result_info ;
+         Intent intent = getIntent();
+-/*
+-        sub_result = intent.getStringExtra("result");
+-        sub_confidences = intent.getStringExtra("confidences");*/
+         sub_result_info = intent.getStringExtra("result_info");
+ 
+         //저장된 값 가져오기
+-        SharedPreferences sharedPreferences2 = getSharedPreferences("result", Context.MODE_PRIVATE );
+-        String result = sharedPreferences2.getString("result", "");
+-        String confidences = sharedPreferences2.getString("confidences", "");
+-        System.out.println(result);
+-        System.out.println(confidences);
+-        // result.setText("눈 "+result+"고 판정되었습니다.");
+-        //result_info.setText(sub_result_info);
+-        //confidences.setText(sub_confidences);
++        SharedPreferences sharedPreferences2 = getSharedPreferences("total_result", Context.MODE_PRIVATE );
++        String result_l = sharedPreferences2.getString("result_l", "");
++        String result_r = sharedPreferences2.getString("result_r", "");
++        String l_result = sharedPreferences2.getString("l_result", "");
++        String r_result = sharedPreferences2.getString("r_result", "");
++
++        classified.setText("측정한 눈의 "+ result_l + result_r +"고 판정되었습니다.");
++
++
++        //결과값을 프로그래스바에 나타내기
++//        progressBar_left.setProgress(Integer.parseInt(l_result));
++//        progressBar_right.setProgress(Integer.parseInt(r_result));
++
++        System.out.println(result_l);
++        System.out.println(result_r);
++        System.out.println(l_result);
++        System.out.println(r_result);
++
+ 
+         //사용자 반려동물 이름 값 출력하기
+         SharedPreferences sharedPreferences = getSharedPreferences("MY", Context.MODE_PRIVATE );
+Index: app/src/main/java/com/example/myapplication/c4Activity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.myapplication;\r\n\r\nimport android.Manifest;\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\nimport android.content.SharedPreferences;\r\nimport android.content.pm.PackageManager;\r\nimport android.graphics.Bitmap;\r\nimport android.media.ThumbnailUtils;\r\nimport android.os.Bundle;\r\nimport android.provider.MediaStore;\r\nimport android.view.View;\r\nimport android.view.View.OnClickListener;\r\nimport android.widget.Button;\r\nimport android.widget.ImageButton;\r\nimport android.widget.ImageView;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.annotation.Nullable;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport com.bumptech.glide.load.Option;\r\nimport com.example.myapplication.ml.Model;\r\n\r\nimport org.tensorflow.lite.DataType;\r\nimport org.tensorflow.lite.support.tensorbuffer.TensorBuffer;\r\n\r\nimport java.io.IOException;\r\nimport java.nio.ByteBuffer;\r\nimport java.nio.ByteOrder;\r\n\r\npublic class c4Activity extends AppCompatActivity {\r\n    ImageView imageView; //촬영사진\r\n    ImageButton picture, button; //촬영버튼\r\n    Button othereye, btn2; //측정버튼\r\n    int imageSize = 224;\r\n\r\n    int maxPos_l, maxPos_r; //큰 번호 값 저장\r\n    float maxConfidence_l, maxConfidence_r; //큰 정확률 값\r\n\r\n    String[] classes = {\"혼탁 증상 확률이 높다\", \"혼탁 증상 확률이 낮다\"};\r\n    String result_info = \"각막의 혼탁이 부분적으로 나타날 경우 지방이나 칼슘의 침착, 이전 상처에 대한 흉터일 가능성도 있어요. 전반적인 각막의 혼탁이 나타난다면 각막 부종이나 녹내장 등과 같은 질환일 수 있으니 동물병원에서 정확한 원인을 체크받길 추천해요.\"; //혼탁 증상 확률이 높을 경우 출력되는 '수의사 측정 요망' 문구\r\n\r\n    int CheckOn ; //선택된 눈의 값. 왼쪽 체크 시 값 1, 오른쪽 체크 시 2, 둘 다 체크 시 3\r\n\r\n    Intent intent = new Intent(this, c5Activity.class);\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_c4);\r\n\r\n        othereye = findViewById(R.id.othereye); //다른쪽 눈(오른쪽) 촬영하기 버튼\r\n        button = findViewById(R.id.button); //카메라 버튼\r\n        TextView textView2 = findViewById(R.id.textView2);\r\n        btn2 = findViewById(R.id.button2); //측정하기 버튼\r\n\r\n        //CheckOn 값 (촬영할 눈 선택 값) 가져오기\r\n        Intent intent = getIntent();\r\n        CheckOn = intent.getIntExtra(\"CheckOn\",4);\r\n\r\n        if(CheckOn == 1) { //왼쪽 눈 촬영만 클릭한 경우\r\n            textView2.setText(\"왼쪽 눈을 촬영해주세요\");\r\n            button.setVisibility(View.VISIBLE);\r\n        } else if (CheckOn == 2){ //오른쪽 눈 촬영만 클릭한 경우\r\n            textView2.setText(\"오른쪽 눈을 촬영해주세요\");\r\n            button.setVisibility(View.VISIBLE);\r\n        } else if (CheckOn == 3){ //양쪽 눈 촬영 클릭한 경우 - 왼쪽 먼저 실행\r\n            textView2.setText(\"왼쪽 눈을 촬영해주세요\");\r\n            button.setVisibility(View.VISIBLE);\r\n            othereye.setVisibility(View.VISIBLE);\r\n            btn2.setVisibility(View.GONE);\r\n        }; //양쪽 눈 촬영 클릭한 경우 CheckOn 디폴트 값 '4' - 왼쪽 실행 후 오른쪽\r\n\r\n\r\n        imageView = findViewById(R.id.imageView);\r\n        picture = (ImageButton)findViewById(R.id.button);\r\n\r\n        //앱 카메라 허용 시 사진 촬영 가능\r\n        picture.setOnClickListener(new OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                // Launch camera if we have permission\r\n                if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {\r\n                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);\r\n                    startActivityForResult(cameraIntent, 1);\r\n                } else {\r\n                    //Request camera permission if we don't have it.\r\n                    requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);\r\n                }\r\n            }\r\n        });\r\n    }\r\n\r\n    //사진 촬영 후 비트맵으로 이미지 띄우기\r\n    public void classifyImage(Bitmap image){\r\n        try {\r\n            Model model = Model.newInstance(getApplicationContext());\r\n\r\n            // Creates inputs for reference.\r\n            TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);\r\n            ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3);\r\n            byteBuffer.order(ByteOrder.nativeOrder());\r\n\r\n            // get 1D array of 224 * 224 pixels in image\r\n            int [] intValues = new int[imageSize * imageSize];\r\n            image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());\r\n\r\n            // iterate over pixels and extract R, G, and B values. Add to bytebuffer.\r\n            int pixel = 0;\r\n            for(int i = 0; i<imageSize; i++){\r\n                for(int j=0; j<imageSize; j++){\r\n                    int val = intValues[pixel++]; //RGB\r\n                    byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f / 255.f));\r\n                    byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f / 255.f));\r\n                    byteBuffer.putFloat((val & 0xFF) * (1.f / 255.f));\r\n                }\r\n            }\r\n            inputFeature0.loadBuffer(byteBuffer);\r\n\r\n            // Runs model inference and gets result. Model 돌리기 및 결과 값 가져오기\r\n            Model.Outputs outputs = model.process(inputFeature0);\r\n            TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();\r\n\r\n            //정확도 오른쪽, 왼쪽눈에 각각 저장 -----------------------\r\n            float[] confidences_l = outputFeature0.getFloatArray();\r\n            float[] confidences_r = outputFeature0.getFloatArray();\r\n\r\n            if(CheckOn == 1 || CheckOn ==3){ //왼쪽눈 촬영시\r\n                //큰 값 저장하기\r\n                for(int i =0; i<confidences_l.length; i++){\r\n                    if(confidences_l[i] > maxConfidence_l){\r\n                        maxConfidence_l = confidences_l[i];\r\n                    }\r\n                }\r\n            }\r\n             if (CheckOn == 2 || CheckOn == 4){ //오른쪽눈 촬영시\r\n                //큰 값 저장하기\r\n                for(int i =0; i<confidences_r.length; i++){\r\n                    if(confidences_r[i] > maxConfidence_r){\r\n                        maxConfidence_r = confidences_r[i];\r\n                    }\r\n                }\r\n            }\r\n\r\n            //정확도가 90% 미만일 경우 토스트 메시지 출력\r\n            String toastMessage = \"정확도가 낮아요! 재촬영이 필요합니다.\";\r\n            if( maxConfidence_l * 100 < 90 || maxConfidence_r * 100 < 90 ) {\r\n                Toast.makeText(c4Activity.this, toastMessage, Toast.LENGTH_SHORT).show();\r\n            }\r\n\r\n            //눈 혼탁 증상률이 높다고 판정될 경우, 전문 수의사의 진단이 필요함을 안내하는 문구\r\n            if( maxPos_l == 0 || maxPos_r == 0 ){\r\n                //증상이 높을 경우 수의사 진단 필요함을 안내하는 'result_info' 보내주기\r\n                String main_result_info;\r\n                main_result_info = result_info;\r\n                intent.putExtra(\"result_info\",main_result_info);\r\n            }\r\n\r\n            // Releases model resources if no longer used.\r\n            model.close();\r\n\r\n            //측정하기 버튼 클릭했을 때 결과 값 저장하기\r\n            String result_l = classes[maxPos_l].trim();\r\n            String result_r = classes[maxPos_r].trim();\r\n            String l_result = Float.toString(confidences_l[0]);\r\n            String r_result = Float.toString(confidences_r[0]);\r\n            SharedPreferences sharedPreferences = getSharedPreferences(\"total_result\", Context.MODE_PRIVATE);\r\n            SharedPreferences.Editor editor = sharedPreferences.edit();\r\n            editor.putString(\"result_l\", result_l);\r\n            editor.putString(\"result_r\", result_r);\r\n            editor.putString(\"l_result\", l_result);\r\n            editor.putString(\"r_result\", r_result);\r\n            editor.apply();\r\n\r\n        } catch (IOException e) {\r\n            // TODO Handle the exception\r\n        }\r\n\r\n        //오른쪽 눈 촬영하기 버튼 클릭했을 경우 해당 액티비티 다시 실행\r\n        othereye.setOnClickListener(new OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                startActivity(new Intent(c4Activity.this,c4Activity.class));\r\n            }\r\n        });\r\n\r\n        //측정하기 버튼 클릭했을 때 인텐트 c5 이동\r\n        btn2.setOnClickListener(new OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                startActivity(intent);\r\n            }\r\n        });\r\n    }\r\n\r\n    @Override\r\n    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {\r\n        if (requestCode == 1 && resultCode == RESULT_OK) {\r\n            Bitmap image = (Bitmap) data.getExtras().get(\"data\");\r\n            int dimension = Math.min(image.getWidth(), image.getHeight());\r\n            image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);\r\n            imageView.setImageBitmap(image);\r\n\r\n            image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);\r\n            classifyImage(image);\r\n        }\r\n        super.onActivityResult(requestCode, resultCode, data);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/myapplication/c4Activity.java b/app/src/main/java/com/example/myapplication/c4Activity.java
+--- a/app/src/main/java/com/example/myapplication/c4Activity.java	(revision 4c365e0de3ad4bcda54cbf729e1676f1fef9c193)
++++ b/app/src/main/java/com/example/myapplication/c4Activity.java	(date 1654432757219)
+@@ -20,7 +20,6 @@
+ import androidx.annotation.Nullable;
+ import androidx.appcompat.app.AppCompatActivity;
+ 
+-import com.bumptech.glide.load.Option;
+ import com.example.myapplication.ml.Model;
+ 
+ import org.tensorflow.lite.DataType;
+@@ -37,15 +36,13 @@
+     int imageSize = 224;
+ 
+     int maxPos_l, maxPos_r; //큰 번호 값 저장
+-    float maxConfidence_l, maxConfidence_r; //큰 정확률 값
++    float other_l, maxConfidence_l , maxConfidence_r; //큰 정확률 값
+ 
+     String[] classes = {"혼탁 증상 확률이 높다", "혼탁 증상 확률이 낮다"};
+     String result_info = "각막의 혼탁이 부분적으로 나타날 경우 지방이나 칼슘의 침착, 이전 상처에 대한 흉터일 가능성도 있어요. 전반적인 각막의 혼탁이 나타난다면 각막 부종이나 녹내장 등과 같은 질환일 수 있으니 동물병원에서 정확한 원인을 체크받길 추천해요."; //혼탁 증상 확률이 높을 경우 출력되는 '수의사 측정 요망' 문구
+ 
+     int CheckOn ; //선택된 눈의 값. 왼쪽 체크 시 값 1, 오른쪽 체크 시 2, 둘 다 체크 시 3
+ 
+-    Intent intent = new Intent(this, c5Activity.class);
+-
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+@@ -127,21 +124,51 @@
+             float[] confidences_l = outputFeature0.getFloatArray();
+             float[] confidences_r = outputFeature0.getFloatArray();
+ 
++            SharedPreferences sharedPreferences = getSharedPreferences("total_result", Context.MODE_PRIVATE);
++            SharedPreferences.Editor editor = sharedPreferences.edit();
++
+             if(CheckOn == 1 || CheckOn ==3){ //왼쪽눈 촬영시
+                 //큰 값 저장하기
+                 for(int i =0; i<confidences_l.length; i++){
+                     if(confidences_l[i] > maxConfidence_l){
+                         maxConfidence_l = confidences_l[i];
++                        maxPos_l = i;
++                        other_l = 1 - (maxConfidence_l);
++
++                        if(maxConfidence_l > other_l) {
++                            maxConfidence_l = confidences_l[i];
++                            System.out.print("두번째 i야"+confidences_l[i]);
++                            System.out.print("두번째야m이야 "+maxConfidence_l);
++                        }
++
++                        System.out.print("dkdk"+maxPos_l);
++                        System.out.print("DF"+maxConfidence_l);
++                        System.out.print("나머지"+other_l);
++                        System.out.print("하하"+confidences_l[i]);
+                     }
++                    else {
++                        confidences_l[i] = maxConfidence_l;
++                        maxPos_l = i;
++                    }
+                 }
++
++                String result_l = classes[maxPos_l].trim();
++                String l_result = Float.toString(confidences_l[0]*100);
++                editor.putString("result_l", result_l);
++                editor.putString("l_result", l_result);
+             }
+-             if (CheckOn == 2 || CheckOn == 4){ //오른쪽눈 촬영시
++            if (CheckOn == 2 || CheckOn == 4){ //오른쪽눈 촬영시
+                 //큰 값 저장하기
+                 for(int i =0; i<confidences_r.length; i++){
+                     if(confidences_r[i] > maxConfidence_r){
+                         maxConfidence_r = confidences_r[i];
++                        maxPos_r = i;
+                     }
+                 }
++                String result_r = classes[maxPos_r].trim();
++                String r_result = Float.toString(confidences_r[0]*100);
++                editor.putString("result_r", result_r);
++                editor.putString("r_result", r_result);
+             }
+ 
+             //정확도가 90% 미만일 경우 토스트 메시지 출력
+@@ -155,25 +182,14 @@
+                 //증상이 높을 경우 수의사 진단 필요함을 안내하는 'result_info' 보내주기
+                 String main_result_info;
+                 main_result_info = result_info;
++
++                Intent intent = new Intent(c4Activity.this, c5Activity.class);
+                 intent.putExtra("result_info",main_result_info);
+             }
+-
++            //결과 값 저장하기
++            editor.apply();
+             // Releases model resources if no longer used.
+             model.close();
+-
+-            //측정하기 버튼 클릭했을 때 결과 값 저장하기
+-            String result_l = classes[maxPos_l].trim();
+-            String result_r = classes[maxPos_r].trim();
+-            String l_result = Float.toString(confidences_l[0]);
+-            String r_result = Float.toString(confidences_r[0]);
+-            SharedPreferences sharedPreferences = getSharedPreferences("total_result", Context.MODE_PRIVATE);
+-            SharedPreferences.Editor editor = sharedPreferences.edit();
+-            editor.putString("result_l", result_l);
+-            editor.putString("result_r", result_r);
+-            editor.putString("l_result", l_result);
+-            editor.putString("r_result", r_result);
+-            editor.apply();
+-
+         } catch (IOException e) {
+             // TODO Handle the exception
+         }
+@@ -190,6 +206,7 @@
+         btn2.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View view) {
++                Intent intent = new Intent(c4Activity.this, c5Activity.class);
+                 startActivity(intent);
+             }
+         });
+Index: .idea/deploymentTargetDropDown.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"deploymentTargetDropDown\">\r\n    <targetSelectedWithDropDown>\r\n      <Target>\r\n        <type value=\"QUICK_BOOT_TARGET\" />\r\n        <deviceKey>\r\n          <Key>\r\n            <type value=\"VIRTUAL_DEVICE_PATH\" />\r\n            <value value=\"$USER_HOME$/.android/avd/Nexus_5X_API_29.avd\" />\r\n          </Key>\r\n        </deviceKey>\r\n      </Target>\r\n    </targetSelectedWithDropDown>\r\n    <timeTargetWasSelectedWithDropDown value=\"2022-06-03T06:58:15.625610Z\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml
+--- a/.idea/deploymentTargetDropDown.xml	(revision 4c365e0de3ad4bcda54cbf729e1676f1fef9c193)
++++ b/.idea/deploymentTargetDropDown.xml	(date 1654430882665)
+@@ -7,11 +7,11 @@
+         <deviceKey>
+           <Key>
+             <type value="VIRTUAL_DEVICE_PATH" />
+-            <value value="$USER_HOME$/.android/avd/Nexus_5X_API_29.avd" />
++            <value value="C:\Users\jiyeo\.android\avd\Nexus_5X_API_29.avd" />
+           </Key>
+         </deviceKey>
+       </Target>
+     </targetSelectedWithDropDown>
+-    <timeTargetWasSelectedWithDropDown value="2022-06-03T06:58:15.625610Z" />
++    <timeTargetWasSelectedWithDropDown value="2022-06-05T12:06:42.592422600Z" />
+   </component>
+ </project>
+\ No newline at end of file

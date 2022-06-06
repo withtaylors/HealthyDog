@@ -199,7 +199,5 @@
             android:text="본 서비스는 동물의 증상을 확인하여 진단에 도움을 주기 위한 보조장치로, 수의사법에 저촉되지 않는 범위에서 사용할 수 있으며 질병의 진단은 반드시 전문 수의사가 수행하여야 합니다."
             android:textSize="12dp"
             android:backgroundTint="#EBEDEC"/>
-
     </LinearLayout>
-
 </ScrollView>
