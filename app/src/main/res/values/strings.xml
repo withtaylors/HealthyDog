@@ -86,7 +86,7 @@
         <item>말티즈</item>
         <item>믹스</item>
         <item>보더콜리</item>
-        <item>비숑</item>
+        <item>비숑 프리제</item>
         <item>시베리안 허스키</item>
         <item>시츄</item>
         <item>요크셔테리어</item>
@@ -95,6 +95,7 @@
         <item>코커 스파니엘</item>
         <item>포메라니안</item>
         <item>푸들</item>
+        <item>기타</item>
     </string-array>
 
     <string-array name="gender">

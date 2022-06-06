@@ -1,44 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="60dp"
-            android:text="눈 건강 체크 결과입니다."
+            android:text=" "
             android:textSize="20dp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:id="@+id/classified" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:id="@+id/infoText"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_margin="20dp"
-            android:padding="10dp"
-            android:gravity="center_vertical"
-            android:text="증상 결과는 건강하개 기술을 통해 눈 혼탁 증상이 있을 확률을 제공해줍니다"
-            android:textSize="15dp"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/back_brown"
-            android:background="@drawable/button_background"/>
+            android:backgroundTint="#C0B7AF"
+            android:background="@drawable/button_background">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:id="@+id/infoText"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="증상 결과는 건강하개 기술을 통해 눈 혼탁 증상이 있을 확률을 다음과 같이 제공해줍니다"
+                android:textSize="17dp"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
+                android:alpha="0.7"
+                app:srcCompat="@drawable/progressbar_info" />
+
+
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:orientation="vertical"
-            android:layout_margin="20dp"
-            android:padding="10dp"
-            android:background="@drawable/button_background">
+            android:layout_marginHorizontal="20dp"
+            android:padding="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -47,23 +65,33 @@
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:layout_below="@+id/result"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center"
+                android:layout_marginLeft="5dp">
                 <TextView
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="오른쪽"/>
+                    android:text="오른쪽"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/confidences_right"/>
                 <ProgressBar
                     android:id="@+id/progressBar_right"
                     style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="300dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:max="100"
+                    android:max="1000"
                     android:progressDrawable="@drawable/progressbar_background"/>
             </LinearLayout>
 
@@ -71,21 +99,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center"
+                android:layout_marginLeft="5dp">
                 <TextView
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="왼쪽"/>
+                    android:text="왼쪽"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="3dp"
+                    android:id="@+id/confidences_left"/>
                 <ProgressBar
                     android:id="@+id/progressBar_left"
                     style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="300dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:max="100"
+                    android:max="1000"
                     android:progressDrawable="@drawable/progressbar_background"/>
             </LinearLayout>
-            <TextView
+            <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -93,35 +130,64 @@
                 android:textColor="#000"
                 android:textSize="22sp"
                 android:id="@+id/confidence"
-                android:layout_below="@+id/confidencesText" />
+                android:layout_below="@+id/confidencesText" />-->
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:padding="15dp"
             android:background="@drawable/button_background"
-            android:orientation="vertical">
-            <TextView
+            android:backgroundTint="@color/back_brown"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text=""
+                    android:textStyle="bold"
+                    android:textSize="13dp"
+                    android:background="#f1e5d4"
+                    android:id="@+id/result_right"
+                    android:layout_marginBottom="5dp"
+                    android:layout_below="@+id/classified" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text=""
+                    android:textStyle="bold"
+                    android:textSize="13dp"
+                    android:background="#f1e5d4"
+                    android:id="@+id/result_left"
+                    android:layout_below="@+id/classified" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:text=" "
+                    android:textSize="13dp"
+                    android:id="@+id/result_info"/>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text=""
-                android:textStyle="bold"
-                android:textSize="13dp"
-                android:background="#EBFF82"
-                android:id="@+id/result"
-                android:layout_below="@+id/classified" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
-                android:text=""
-                android:textSize="13dp"
-                android:id="@+id/result_info"/>
+                android:layout_gravity="end">
+                <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="70dp"
+                    android:scaleType="fitCenter"
+                    android:id="@+id/GoCare"
+                    android:backgroundTint="@color/back_brown"
+                    app:srcCompat="@drawable/nextbutton"/>
+            </LinearLayout>
         </LinearLayout>
 
         <TextView
@@ -132,7 +198,7 @@
             android:padding="12dp"
             android:layout_centerHorizontal="true"
             android:text="본 서비스는 동물의 증상을 확인하여 진단에 도움을 주기 위한 보조장치로, 수의사법에 저촉되지 않는 범위에서 사용할 수 있으며 질병의 진단은 반드시 전문 수의사가 수행하여야 합니다."
-            android:textSize="10dp"
+            android:textSize="12dp"
             android:backgroundTint="#EBEDEC"/>
 
     </LinearLayout>

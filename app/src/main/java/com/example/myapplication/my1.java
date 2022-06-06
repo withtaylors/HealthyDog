@@ -7,9 +7,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,6 +26,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class my1 extends AppCompatActivity {
@@ -32,6 +35,7 @@ public class my1 extends AppCompatActivity {
         Button Male_1;
         private boolean check = false;
         private static final int PICK_IMAGE_REQUEST = 1;
+        String imgString;
 
 
         @Override
@@ -101,17 +105,23 @@ public class my1 extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
 
-
-
-
-
-
-
                                 int time = Integer.parseInt(walk_1.getText().toString());
                                 String name = inputname.getText().toString().trim();
+
+                                //imagview bitmap으로 바꾼 후 string 으로 보내기
+                                BitmapDrawable drawable = (BitmapDrawable)profile1.getDrawable();
+                                Bitmap bitmap1 = drawable.getBitmap();
+                                profile1.setImageBitmap(bitmap1);
+                                ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
+                                bitmap1.compress(Bitmap.CompressFormat.PNG, 70, baos1);
+                                byte[]bytes1 = baos1.toByteArray();
+                                String temp1 = Base64.encodeToString(bytes1, Base64.DEFAULT);
+
+
                                 SharedPreferences sharedPreferences = getSharedPreferences("MY", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putString("name", name);
+                                editor.putString("profile", temp1);
 
 
                                 editor.putInt("time", time);

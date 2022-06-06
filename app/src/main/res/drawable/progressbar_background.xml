@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <shape>
+        <shape> //배경지정
             <corners android:radius="5dp" />
             <solid android:color="#D5D5D5" />
         </shape>
     </item>
     <item>
         <clip>
-            <shape>
+            <shape> //상태바 지정
                 <corners android:radius="5dp" />
-                <solid android:color="#E77794" />
+                <gradient android:startColor="#6A9CFF"
+                    android:endColor="#E77794"/>
             </shape>
         </clip>
     </item>

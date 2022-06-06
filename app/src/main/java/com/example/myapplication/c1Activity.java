@@ -45,6 +45,16 @@ public class c1Activity extends AppCompatActivity {
             bottomNavigationView.setSelectedItemId(R.id.nav_mypage);
 
             System.out.println("--mypage가 열립니다. --변수 list의 값은 :"+list);
+        } else if(list ==2){
+            getSupportFragmentManager().beginTransaction().detach(care).attach(care).commitNow(); //새로고침
+            getSupportFragmentManager().beginTransaction().remove(care).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, care).commit();
+            list = 0;
+
+            BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+            bottomNavigationView.setSelectedItemId(R.id.nav_pic_paws);
+
+            System.out.println("--care가 열립니다. --변수 list의 값은 :"+list);
         }
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
