@@ -63,11 +63,11 @@ public class MyPage extends Fragment {
         //Bundle bundle1 = this.getArguments();
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MY", Context.MODE_PRIVATE );
-        String name = sharedPreferences.getString("name", "");
-        String str1 = sharedPreferences.getString("year", "");
-        String str2 = sharedPreferences.getString("month", "");
-        String str3 = sharedPreferences.getString("day", "");
-        String str4 = sharedPreferences.getString("type", "");
+        String name = sharedPreferences.getString("name", " ");
+        String str1 = sharedPreferences.getString("year", " ");
+        String str2 = sharedPreferences.getString("month", " ");
+        String str3 = sharedPreferences.getString("day", " ");
+        String str4 = sharedPreferences.getString("type", " ");
         int gen = sharedPreferences.getInt("gender",1);
         if(gen == 1) {
             gender2.setText("여아");
@@ -76,7 +76,7 @@ public class MyPage extends Fragment {
         }
 
         if(str4.equals("견종")){
-            typeinfo.setText("");
+            typeinfo.setText(" ");
         }
         if(str4.equals("골든 리트리버")){
             typeinfo.setText("골든 리트리버는 총명하고 믿음직한 성격의 강아지입니다.\n 털이 이중모의 구조를 갖고 있어 봄에 속털이 빠지므로\n 이 시기에 솔질을 자주 해주어 털을 제거해야 합니다.\n 워낙 차분하기 때문에 운동을 자주 해주어\n 비만을 예방하는 것이 좋습니다." );
@@ -85,8 +85,8 @@ public class MyPage extends Fragment {
         if(str4.equals("닥스훈트")){
             typeinfo.setText("닥스훈트는 독일어의 '오소리 사냥'이라는 뜻이 담겨있는 이름입니다.\n 이름에서처럼 오소리나 토끼를 추적하는데 활약했던 강아지이기에\n 겁이 없다는 특징을 갖고 있습니다.\n 몸이 길어 체중 조절과 운동에 신경을 써 주어야\n 척추 디스크를 예방할 수 있습니다. ");
         }
-        if(str4.equals("레브라도 리트리버")){
-            typeinfo.setText("레브라도 리트리버는 덩치가 매우 큰 대형견이지만 순박한 매력을 갖고 있습니다.\n 사람을 좋아하고 뛰어난 후각능력과 민첩성을 갖고 있어\n 안내견과 마약 및 폭탄 탐지견 등과 같은 목적견으로서 각광받고 있습니다.");
+        if(str4.equals("래브라도 리트리버")){
+            typeinfo.setText("래브라도 리트리버는 덩치가 매우 큰 대형견이지만 순박한 매력을 갖고 있습니다.\n 사람을 좋아하고 뛰어난 후각능력과 민첩성을 갖고 있어\n 안내견과 마약 및 폭탄 탐지견 등과 같은 목적견으로서 각광받고 있습니다.");
         }
         if(str4.equals("말티즈")){
             typeinfo.setText("말티즈는 활발하고 쾌할한 반려견으로 작은 몸에 비해 용감합니다.\n 목적견이나 사냥견의 역사가 없는 반려용 강아지로 유래가 깊습니다. 붙임성이 좋고 애교가 많아 사람을 잘 따르며\n 머리회전도 좋아 많은 재능을 발휘할 수 있습니다.");
@@ -128,7 +128,7 @@ public class MyPage extends Fragment {
             typeinfo.setText("자신의 반려동물의 견종을 아는 것은 매우 중요합니다.\n 반려동물과 행복한 공존 생활을 하기 위해 반려동물의 견종을 알고\n 그에 따른 다양한 특징을 아는 것이 좋습니다.");
         }
         //image string to bitmap
-        String temp1 = sharedPreferences.getString("profile", "");
+        String temp1 = sharedPreferences.getString("profile", " ");
         byte[] encodeByte = Base64.decode(temp1, Base64.DEFAULT);
         Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
         profile2.setImageBitmap(bitmap);

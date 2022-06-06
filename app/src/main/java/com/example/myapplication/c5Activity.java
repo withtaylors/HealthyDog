@@ -44,14 +44,14 @@ public class c5Activity extends AppCompatActivity {
 
         //저장된 값 가져오기
         SharedPreferences sharedPreferences = getSharedPreferences("total_result", Context.MODE_PRIVATE );
-        String result_r = sharedPreferences.getString("result_r", ""); //오른쪽 눈의 결과 멘트
-        String result_l = sharedPreferences.getString("result_l", ""); //왼쪽 눈의 결과 멘트
-        String r_result = sharedPreferences.getString("r_result", ""); //오른쪽 눈의 혼탁있을 확률
-        String l_result = sharedPreferences.getString("l_result", ""); //왼쪽 눈의 혼탁있을 확률
+        String result_r = sharedPreferences.getString("result_r", " "); //오른쪽 눈의 결과 멘트
+        String result_l = sharedPreferences.getString("result_l", " "); //왼쪽 눈의 결과 멘트
+        String r_result = sharedPreferences.getString("r_result", " "); //오른쪽 눈의 혼탁있을 확률
+        String l_result = sharedPreferences.getString("l_result", " "); //왼쪽 눈의 혼탁있을 확률
 
         //사용자 반려동물 이름 값 출력하기
         sharedPreferences = getSharedPreferences("MY", Context.MODE_PRIVATE );
-        String name = sharedPreferences.getString("name", "");
+        String name = sharedPreferences.getString("name", " ");
         classified.setText(name+"의 눈 건강 체크 결과입니다.");
         //classified.setBackgroundColor(Color.parseColor("#FFC0CB"));
 
