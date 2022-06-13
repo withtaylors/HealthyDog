@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -159,6 +158,17 @@ public class c4Activity extends AppCompatActivity {
                 String l_result = Float.toString(confidences_l[0]*100).trim();
                 editor.putString("result_l", result_l);
                 editor.putString("l_result", l_result);
+
+                //정확도가 90% 미만일 경우 토스트 메시지 출력
+                if( maxConfidence_l * 100 < 90) {
+                    Toast.makeText(c4Activity.this, "정확도가 낮아요! 재촬영이 필요합니다.", Toast.LENGTH_SHORT).show();
+                }
+
+                //눈 혼탁 증상률이 높다고 판정될 경우, 전문 수의사의 진단이 필요함을 안내하는 문구
+                if( maxPos_l == 0 ){
+                    //증상이 높을 경우 수의사 진단 필요함을 안내하는 'result_info' VO속 result_info에 저장하기.
+                    VO.setResult_info(result_info);
+                }
             }
             if (CheckOn == 2 || CheckOn == 4){ //오른쪽눈 촬영시
                 //큰 값 저장하기
@@ -178,18 +188,16 @@ public class c4Activity extends AppCompatActivity {
                 String r_result = Float.toString(confidences_r[0]*100);
                 editor.putString("result_r", result_r);
                 editor.putString("r_result", r_result);
-            }
 
-            //정확도가 90% 미만일 경우 토스트 메시지 출력
-            String toastMessage = "정확도가 낮아요! 재촬영이 필요합니다.";
-            if( maxConfidence_l * 100 < 90 || maxConfidence_r * 100 < 90 ) {
-                Toast.makeText(c4Activity.this, toastMessage, Toast.LENGTH_SHORT).show();
-            }
-
-            //눈 혼탁 증상률이 높다고 판정될 경우, 전문 수의사의 진단이 필요함을 안내하는 문구
-            if( maxPos_l == 0 || maxPos_r == 0 ){
-                //증상이 높을 경우 수의사 진단 필요함을 안내하는 'result_info' VO속 result_info에 저장하기.
-                VO.setResult_info(result_info);
+                //정확도가 90% 미만일 경우 토스트 메시지 출력
+                if( maxConfidence_r * 100 < 90) {
+                    Toast.makeText(c4Activity.this, "정확도가 낮아요! 재촬영이 필요합니다.", Toast.LENGTH_SHORT).show();
+                }
+                //눈 혼탁 증상률이 높다고 판정될 경우, 전문 수의사의 진단이 필요함을 안내하는 문구
+                if( maxPos_r == 0 ){
+                    //증상이 높을 경우 수의사 진단 필요함을 안내하는 'result_info' VO속 result_info에 저장하기.
+                    VO.setResult_info(result_info);
+                }
             }
 
             //결과 값 저장하기

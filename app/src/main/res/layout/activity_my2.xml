@@ -40,7 +40,7 @@
                 android:layout_width="50dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="220dp"
-                android:layout_marginTop="-195dp"
+                android:layout_marginTop="-180dp"
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:textAlignment="center"
@@ -91,13 +91,14 @@
                 android:text="성별: " />
             <TextView
                 android:id="@+id/gender2"
-                android:layout_width="50dp"
+                android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="-40dp"
                 android:textColor="@color/black"
                 android:textSize="13sp"
                 android:layout_marginLeft="270dp"
                 android:text="      " />
+
             <TextView
                 android:id="@+id/texttype"
                 android:layout_width="50dp"
@@ -188,8 +189,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="15dp"
-                android:layout_gravity="center"
-                android:src="@android:drawable/screen_background_light" />
+                android:layout_gravity="center"/>
             <TextView
                 android:id="@+id/fatinfo"
                 android:layout_width="match_parent"

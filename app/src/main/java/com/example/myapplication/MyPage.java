@@ -41,6 +41,7 @@ public class MyPage extends Fragment {
         TextView gender2 = view.findViewById(R.id.gender2);
 
 
+
         /*fat1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +72,11 @@ public class MyPage extends Fragment {
         String str3 = sharedPreferences.getString("day", " ");
         String str4 = sharedPreferences.getString("type", " ");
         howfat= sharedPreferences.getInt("fat", 0);
+        String gender = sharedPreferences.getString("gender", " ");
+
+        if(howfat == 0){
+
+        }
         Bitmap icon = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.fat1_2);
         if(howfat == 1){
             fatpic.setImageBitmap(icon);
@@ -98,11 +104,11 @@ public class MyPage extends Fragment {
             fatinfo.setText("비만이에요. 전문가와 상담이 필요해요.");
         }
 
-        String gen = sharedPreferences.getString("gender","1");
+        String gen = sharedPreferences.getString("gender","0");
         if(gen == "1") {
-            gender2.setText("여아");
+            gender2.setText("여아" + " " + gender);
         }else{
-            gender2.setText("남아");
+            gender2.setText("남아" +" " + gender);
         }
 
         if(str4.equals("견종")){
