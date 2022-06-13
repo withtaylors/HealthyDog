@@ -25,8 +25,6 @@ public class c3Activity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_c3);
 
-        Intent intent = new Intent(this, c4Activity.class);
-
         btn2_change = (ImageButton)findViewById(R.id.choose_eye_left);
         btn2_change.setOnClickListener(new OnClickListener() {
             @Override
@@ -99,14 +97,14 @@ public class c3Activity extends Activity {
             }
         });
 
-        //촬영하기 버튼 클릭하면 CheckOn 인텐트 전달
+        //촬영하기 버튼 클릭하면 CheckOn 값 VO속 ChekOn 데이터에 저장
         choose_button = (Button)findViewById(R.id.choose_button);
         choose_button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent.putExtra("CheckOn",CheckON);
+                VO.setCheckON(CheckON);
+                Intent intent = new Intent(c3Activity.this, c4Activity.class);
                 startActivity(intent);
-                finish();
             }
         });
     }

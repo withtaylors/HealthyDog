@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -19,7 +19,9 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 public class MyPage extends Fragment {
+    private boolean selected;
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,29 +35,29 @@ public class MyPage extends Fragment {
         TextView type2 = view.findViewById(R.id.type2);
         TextView type3 = view.findViewById(R.id.type3);
         TextView typeinfo = view.findViewById(R.id.typeinfo);
+        ImageView fatpic = view.findViewById(R.id.fatpic);
         TextView fatinfo = view.findViewById(R.id.fatinfo);
-        ImageButton fat1 = view.findViewById(R.id.fat1);
-        ImageButton fat2 = view.findViewById(R.id.fat2);
         ProgressBar progressBar = view.findViewById(R.id.progress);
         TextView gender2 = view.findViewById(R.id.gender2);
 
 
-
-
-        fat1.setOnClickListener(new View.OnClickListener() {
+        /*fat1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fatinfo.setText("사료 양을 많이 늘려주세요!");
+               if(selected == false){
+                   selected = true;
+                   fat1.setSelected(true);
+                   fatinfo.setText("사료 양을 많이 늘려주세요!");
+               }
+               else{
+                   selected =false;
+                   fat1.setSelected(false);
+               }
             }
-        });
-        fat2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fatinfo.setText("사료 양을 조금 늘려주세요!");
-            }
-        });
+        });*/
 
         int walktime;
+        int howfat;
 
 
 
@@ -68,8 +70,36 @@ public class MyPage extends Fragment {
         String str2 = sharedPreferences.getString("month", " ");
         String str3 = sharedPreferences.getString("day", " ");
         String str4 = sharedPreferences.getString("type", " ");
-        int gen = sharedPreferences.getInt("gender",1);
-        if(gen == 1) {
+        howfat= sharedPreferences.getInt("fat", 0);
+        Bitmap icon = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.fat1_2);
+        if(howfat == 1){
+            fatpic.setImageBitmap(icon);
+            fatinfo.setText("사료의 양을 많이 늘려주세요!");
+        }
+        Bitmap icon2 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.fat2_2);
+        if(howfat == 2){
+            fatpic.setImageBitmap(icon2);
+            fatinfo.setText("사료의 양을 조금 더 늘려주세요!");
+        }
+
+        Bitmap icon3 = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.fat3_2);
+        if(howfat == 3){
+            fatpic.setImageBitmap(icon3);
+            fatinfo.setText("건강한 체격이에요. 지금을 유지해주세요.");
+        }
+        Bitmap icon4 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.fat4_2);
+        if(howfat == 4){
+            fatpic.setImageBitmap(icon4);
+            fatinfo.setText("사료의 양을 조금 줄이거나 운동을 시켜주세요.");
+        }
+        Bitmap icon5 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.fat5_2);
+        if(howfat == 5){
+            fatpic.setImageBitmap(icon5);
+            fatinfo.setText("비만이에요. 전문가와 상담이 필요해요.");
+        }
+
+        String gen = sharedPreferences.getString("gender","1");
+        if(gen == "1") {
             gender2.setText("여아");
         }else{
             gender2.setText("남아");
@@ -135,22 +165,15 @@ public class MyPage extends Fragment {
 
 
 
-        walktime = sharedPreferences.getInt("time", 0);
-        progressBar.setProgress(walktime);
-
-
-
-
-
-
-
-
-
 
 
         birth2.setText(str1+" . "+str2+" . "+str3);
         type2.setText(str4);
         type3.setText(str4);
+
+
+        walktime = sharedPreferences.getInt("time", 0);
+        progressBar.setProgress(walktime);
         if(walktime < 30){
             walk2.setText(String.valueOf(walktime)+"분은 너무 적어요. 산책시간을 늘려주세요.");
 
@@ -160,11 +183,6 @@ public class MyPage extends Fragment {
         }
         else
             walk2.setText(String.valueOf(walktime)+"분 산책은 강아지가 힘들 수 있어요. 컨디션을 잘 조절해주세요.");
-
-
-
-
-
 
         name2.setText(name);
 
@@ -189,4 +207,6 @@ public class MyPage extends Fragment {
         // Inflate the layout for this fragment
         return view;
     }
+
+
 }

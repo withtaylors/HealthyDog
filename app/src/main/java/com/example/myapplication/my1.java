@@ -34,10 +34,13 @@ public class my1 extends AppCompatActivity {
         ArrayAdapter<CharSequence> adspin1, adspin2, adspin3, adspin4, adspin5;
         private static final int PICK_IMAGE_REQUEST = 1;
         RadioGroup gender;
+        boolean check = false;
         RadioButton female1;
         RadioButton male1;
         int state;
-
+        int click=0;
+        String temp1;
+        int time;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,9 @@ public class my1 extends AppCompatActivity {
                 getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
 
 
+
                 setContentView(layout.activity_my1);
+
                 //스피너 값 선택하기
 
                 final Spinner spin1 = (Spinner) findViewById(id.spinner_year1);
@@ -64,6 +69,7 @@ public class my1 extends AppCompatActivity {
                 final Spinner spin3 = (Spinner) findViewById(id.spinner_day1);
                 final Spinner spin4 = (Spinner) findViewById(id.spinner_type1);
                 final Spinner spin5 = (Spinner) findViewById(id.spinner_gender1);
+
 
                 adspin1 = ArrayAdapter.createFromResource(this, R.array.year, android.R.layout.simple_spinner_dropdown_item);
                 adspin1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -95,10 +101,19 @@ public class my1 extends AppCompatActivity {
                 final EditText inputname = findViewById(id.inputname);
                 final EditText walk_1 = findViewById(id.walk_1);
                 final ImageView profile1 = findViewById(id.profile1);
-
-
-
                 Button submit_1 = (Button) findViewById(id.submit_1);
+                final ImageButton fat1 = findViewById(id.fat1);
+                final ImageButton fat2 = findViewById(id.fat2);
+                final ImageButton fat3 = findViewById(id.fat3);
+                final ImageButton fat4 = findViewById(id.fat4);
+                final ImageButton fat5 = findViewById(id.fat5);
+
+
+
+
+
+
+
 
 
                 RadioGroup.OnCheckedChangeListener radioGroupClickListener = new RadioGroup.OnCheckedChangeListener() {
@@ -112,52 +127,98 @@ public class my1 extends AppCompatActivity {
                         }
 
                 };
+                click = 0;
 
+                fat1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                                click = 1;
+                                fat1.setSelected(!fat1.isSelected());
+
+                        }
+                });
+                click = 0;
+                fat2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                                click = 2;
+                                fat2.setSelected(!fat2.isSelected());
+
+                        }
+                });
+                click = 0;
+                fat3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                                click = 3;
+                                fat3.setSelected(!fat3.isSelected());
+                        }
+                });
+                click = 0;
+                fat4.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                                click = 4;
+                                fat4.setSelected(!fat4.isSelected());
+                        }
+                });
+                click = 0;
+                fat5.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                                click = 5;
+                                fat5.setSelected(!fat5.isSelected());
+                        }
+                });
 
                 submit_1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
 
-                                int time = Integer.parseInt(walk_1.getText().toString());
+
+                                if(walk_1.getText().length() == 0){
+                                        int time = 0;
+                                } else { time = Integer.parseInt(walk_1.getText().toString()); }
                                 String name = inputname.getText().toString().trim();
+
 
                                 //imagview bitmap으로 바꾼 후 string 으로 보내기
                                 BitmapDrawable drawable = (BitmapDrawable)profile1.getDrawable();
-                                Bitmap bitmap1 = drawable.getBitmap();
-                                profile1.setImageBitmap(bitmap1);
-                                ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
-                                bitmap1.compress(Bitmap.CompressFormat.PNG, 70, baos1);
-                                byte[]bytes1 = baos1.toByteArray();
-                                String temp1 = Base64.encodeToString(bytes1, Base64.DEFAULT);
-
-
+                                if (profile1.getDrawable() == null) { System.out.println("ERROR=저장된 사진 값이 없습니다"); }
+                                else {
+                                        Bitmap bitmap1 = drawable.getBitmap();
+                                        profile1.setImageBitmap(bitmap1);
+                                        ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
+                                        bitmap1.compress(Bitmap.CompressFormat.PNG, 70, baos1);
+                                        byte[]bytes1 = baos1.toByteArray();
+                                        temp1 = Base64.encodeToString(bytes1, Base64.DEFAULT);
+                                }
 
 
                                 SharedPreferences sharedPreferences = getSharedPreferences("MY", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putString("name", name);
                                 editor.putString("profile", temp1);
+                                editor.putInt("fat", click);
                                 editor.putInt("time", time);
                                 editor.putString("year", spin1.getSelectedItem().toString());
                                 editor.putString("month", spin2.getSelectedItem().toString());
                                 editor.putString("day", spin3.getSelectedItem().toString());
+                                editor.putString("gender", spin5.getSelectedItem().toString());
                                 editor.putString("type", spin4.getSelectedItem().toString());
 
                                 editor.apply();
 
 
                                 int list = 1; //어디 페이지로 프레그먼트 시작할지 정하는 변수
+                                VO.setList(list);
                                 Intent intent = new Intent(my1.this, c1Activity.class);
-                                intent.putExtra("list", list);
                                 startActivity(intent);
-                                //야매로 c1은 액티비티니까 액티비티로 이동
+                                //c1은 액티비티니까 액티비티로 이동
                                 //대신 시작할 때 마이페이지 뜰 수 있게 list = 1로 변경
 
                         }
                 });
-
-
-
                 ImageButton profile_pic1 = (ImageButton) findViewById(id.profile_pic1);
 
                 profile_pic1.setOnClickListener(new View.OnClickListener() {
@@ -182,22 +243,12 @@ public class my1 extends AppCompatActivity {
                                 ImageView profile1 = (ImageView) findViewById(id.profile1);
                                 profile1.setImageBitmap(bitmap);
 
-
-
-
-
                         } catch (IOException e) {
                                 e.printStackTrace();
                         }
 
                 } else if (resultCode == RESULT_CANCELED) {
                         Toast.makeText(this, "사진 선택 취소", Toast.LENGTH_LONG).show();
-
                 }
-
-
         }
-
-
-
 }

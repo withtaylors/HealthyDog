@@ -27,9 +27,8 @@ public class c1Activity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        //어디페이지에서 시작할지 정하는 변수 my1에서 받기
-        Intent intent = getIntent();
-        list = intent.getIntExtra("list",0);
+        //어디페이지에서 시작할지 정하는 변수 VO에서 받기
+        list = VO.getList();
 
         System.out.println("--변수 list의 값은 : "+list);
 

@@ -12,7 +12,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:orientation="vertical">
 
@@ -162,11 +162,11 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="10dp"
                     android:text="여"/>
-            <RadioButton
-                android:id="@+id/male1"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:text="남"/>
+                <RadioButton
+                    android:id="@+id/male1"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:text="남"/>
             </RadioGroup>
 
             <Spinner
@@ -182,6 +182,70 @@
 
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="반려동물의 모습과 비슷한 그림을 고르세요."
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:textSize="16sp"/>
+
+                <ImageButton
+                    android:id="@+id/fat1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:backgroundTint="@drawable/mybtbackground"
+                    android:layout_marginLeft="25dp"
+                    app:srcCompat="@drawable/fat1_2" />
+
+                <ImageButton
+                    android:id="@+id/fat2"
+                    android:layout_marginTop="-100dp"
+                    android:layout_marginLeft="150dp"
+                    android:backgroundTint="@drawable/mybtbackground"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:srcCompat="@drawable/fat2_2" />
+
+                <ImageButton
+                    android:id="@+id/fat3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="275dp"
+                    android:backgroundTint="@drawable/mybtbackground"
+                    android:layout_marginTop="-100dp"
+                    app:srcCompat="@drawable/fat3_2" />
+
+                <ImageButton
+                    android:id="@+id/fat4"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:backgroundTint="@drawable/mybtbackground"
+                    android:layout_marginLeft="90dp"
+                    app:srcCompat="@drawable/fat4_2" />
+
+                <ImageButton
+                    android:id="@+id/fat5"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="-100dp"
+                    android:backgroundTint="@drawable/mybtbackground"
+                    android:layout_marginLeft="215dp"
+                    app:srcCompat="@drawable/fat5_2" />
+            </LinearLayout>
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/walk"

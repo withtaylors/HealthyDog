@@ -40,7 +40,6 @@ public class c4Activity extends AppCompatActivity {
     Button othereye, btn2; //측정버튼
     int imageSize = 224;
 
-
     String[] classes = {"혼탁 증상 확률이 높다", "혼탁 증상 확률이 낮다"};
     String result_info = "각막의 혼탁이 부분적으로 나타날 경우 지방이나 칼슘의 침착, 이전 상처에 대한 흉터일 가능성도 있어요. 전반적인 각막의 혼탁이 나타난다면 각막 부종이나 녹내장 등과 같은 질환일 수 있으니 동물병원에서 정확한 원인을 체크받길 추천해요."; //혼탁 증상 확률이 높을 경우 출력되는 '수의사 측정 요망' 문구
 
@@ -57,8 +56,7 @@ public class c4Activity extends AppCompatActivity {
         btn2 = findViewById(R.id.button2); //측정하기 버튼
 
         //CheckOn 값 (촬영할 눈 선택 값) 가져오기
-        Intent intent = getIntent();
-        CheckOn = intent.getIntExtra("CheckOn",4);
+        CheckOn = VO.getCheckON();
 
         if(CheckOn == 1) { //왼쪽 눈 촬영만 클릭한 경우
             textView2.setText("왼쪽 눈을 촬영해주세요");
@@ -71,7 +69,11 @@ public class c4Activity extends AppCompatActivity {
             button.setVisibility(View.VISIBLE);
             othereye.setVisibility(View.VISIBLE);
             btn2.setVisibility(View.GONE);
-        }; //양쪽 눈 촬영 클릭한 경우 CheckOn 디폴트 값 '4' - 왼쪽 실행 후 오른쪽
+        } else if (CheckOn == 4) { //양쪽 눈 촬영 클릭한 경우 - 오른쪽 실행
+            textView2.setText("오른쪽 눈을 촬영해주세요");
+            button.setVisibility(View.VISIBLE);
+            btn2.setVisibility(View.VISIBLE);
+        }//양쪽 눈 촬영 클릭한 경우 CheckOn 디폴트 값 '4' - 왼쪽 실행 후 오른쪽
 
 
         imageView = findViewById(R.id.imageView);
@@ -186,12 +188,8 @@ public class c4Activity extends AppCompatActivity {
 
             //눈 혼탁 증상률이 높다고 판정될 경우, 전문 수의사의 진단이 필요함을 안내하는 문구
             if( maxPos_l == 0 || maxPos_r == 0 ){
-                //증상이 높을 경우 수의사 진단 필요함을 안내하는 'result_info' 보내주기
-                String main_result_info;
-                main_result_info = result_info;
-
-                Intent intent = new Intent(c4Activity.this, c5Activity.class);
-                intent.putExtra("result_info",main_result_info);
+                //증상이 높을 경우 수의사 진단 필요함을 안내하는 'result_info' VO속 result_info에 저장하기.
+                VO.setResult_info(result_info);
             }
 
             //결과 값 저장하기
@@ -207,6 +205,8 @@ public class c4Activity extends AppCompatActivity {
         othereye.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                CheckOn = 4;
+                VO.setCheckON(CheckOn);
                 startActivity(new Intent(c4Activity.this,c4Activity.class));
             }
         });

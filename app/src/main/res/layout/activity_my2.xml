@@ -9,6 +9,7 @@
     android:scrollbarSize="10dp"
     tools:context=".MyPage"
     tools:ignore="SpeakableTextPresentCheck"
+    android:onClick="onClick"
     android:id="@+id/container">
 
     <LinearLayout
@@ -181,51 +182,14 @@
                 android:textStyle="bold"
                 android:text="*우리 아이와 닮은 체형을 골라주세요.*" />
 
-            <ImageButton
-                android:id="@+id/fat3"
-                android:layout_width="70dp"
-                android:layout_marginLeft="260dp"
-                android:layout_marginTop="30dp"
-                android:background="@android:color/transparent"
-                android:layout_height="70dp"
-                android:src="@drawable/fat3_2" />
 
-            <ImageButton
-                android:id="@+id/fat1"
-                android:layout_width="70dp"
-                android:layout_marginLeft="40dp"
-                android:layout_height="70dp"
-                android:background="@android:color/transparent"
-                android:layout_marginTop="-70dp"
-                android:src="@drawable/fat1_2" />
-
-            <ImageButton
-                android:id="@+id/fat2"
-                android:layout_width="70dp"
-                android:layout_marginLeft="150dp"
-                android:layout_height="70dp"
-                android:layout_marginTop="-70dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/fat2_2" />
-
-            <ImageButton
-                android:id="@+id/fat4"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginLeft="90dp"
-                android:background="@android:color/transparent"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/fat4_2" />
-
-            <ImageButton
-                android:id="@+id/fat5"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginTop="-70dp"
-                android:background="@android:color/transparent"
-                android:layout_marginLeft="210dp"
-                android:src="@drawable/fat5_2" />
-
+            <ImageView
+                android:id="@+id/fatpic"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:src="@android:drawable/screen_background_light" />
             <TextView
                 android:id="@+id/fatinfo"
                 android:layout_width="match_parent"

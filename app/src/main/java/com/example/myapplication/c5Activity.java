@@ -36,11 +36,27 @@ public class c5Activity extends AppCompatActivity {
         TextView result_right = findViewById(R.id.result_right); //오른쪽 눈의 결과 멘트 result_r
         TextView result_left = findViewById(R.id.result_left); //왼쪽 눈의 결과 멘트 result_l
         ImageButton nextbutton = (ImageButton)findViewById(R.id.GoCare); //버튼 클릭 시 care로 이동
+        TextView right = findViewById(R.id.right); //오른쪽 글씨
+        TextView left = findViewById(R.id.left); //왼쪽 글씨
 
-        //result_info 받아오기
-        Intent intent = getIntent();
-        String sub_result_info = intent.getStringExtra("result_info");
+        //result_info 가져오기
+        String sub_result_info = VO.getResult_info();
         result_info.setText(sub_result_info);
+
+        //CheckOn 값 가져오기
+        int CheckOn = VO.getCheckON();
+
+        if(CheckOn == 1) { //왼쪽 눈 촬영만 클릭한 경우
+            progressBar_right.setVisibility(View.GONE);
+            confidences_right.setVisibility(View.GONE);
+            result_right.setVisibility(View.GONE);
+            right.setVisibility(View.GONE);
+        } else if (CheckOn == 2){ //오른쪽 눈 촬영만 클릭한 경우
+            progressBar_left.setVisibility(View.GONE);
+            confidences_left.setVisibility(View.GONE);
+            result_left.setVisibility(View.GONE);
+            left.setVisibility(View.GONE);
+        } else if (CheckOn == 3 || CheckOn == 4 ) { } //양쪽 눈 촬영 클릭한 경우 default
 
         //저장된 값 가져오기
         SharedPreferences sharedPreferences = getSharedPreferences("total_result", Context.MODE_PRIVATE );
@@ -78,8 +94,8 @@ public class c5Activity extends AppCompatActivity {
             public void onClick(View view) {
 
                 int list = 2; //어디 페이지로 프레그먼트 시작할지 정하는 변수
+                VO.setList(list); //VO 변수에 저장해두기
                 Intent intent = new Intent(c5Activity.this, c1Activity.class);
-                intent.putExtra("list",list);
                 startActivity(intent);
                 //야매로 c1은 액티비티니까 액티비티로 이동
                 //대신 시작할 때 마이페이지 뜰 수 있게 list = 2로 변경
