@@ -33,7 +33,6 @@ import java.io.IOException;
 public class my1 extends AppCompatActivity {
         ArrayAdapter<CharSequence> adspin1, adspin2, adspin3, adspin4, adspin5;
         private static final int PICK_IMAGE_REQUEST = 1;
-        RadioGroup gender;
         boolean check = false;
         RadioButton female1;
         RadioButton male1;
@@ -61,13 +60,11 @@ public class my1 extends AppCompatActivity {
                 setContentView(layout.activity_my1);
 
                 //스피너 값 선택하기
-
                 final Spinner spin1 = (Spinner) findViewById(id.spinner_year1);
                 final Spinner spin2 = (Spinner) findViewById(id.spinner_month1);
                 final Spinner spin3 = (Spinner) findViewById(id.spinner_day1);
                 final Spinner spin4 = (Spinner) findViewById(id.spinner_type1);
                 final Spinner spin5 = (Spinner) findViewById(id.spinner_gender1);
-
 
                 adspin1 = ArrayAdapter.createFromResource(this, R.array.year, android.R.layout.simple_spinner_dropdown_item);
                 adspin1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -95,7 +92,6 @@ public class my1 extends AppCompatActivity {
                 spin5.setSelection(0);
 
                 //여기서부터 인텐트
-
                 final EditText inputname = findViewById(id.inputname);
                 final EditText walk_1 = findViewById(id.walk_1);
                 final ImageView profile1 = findViewById(id.profile1);
@@ -106,22 +102,23 @@ public class my1 extends AppCompatActivity {
                 final ImageButton fat4 = findViewById(id.fat4);
                 final ImageButton fat5 = findViewById(id.fat5);
 
-                female1 = findViewById(id.female1);
-                male1 = findViewById(id.male1);
-
-                state = female1.getId();
-
-                System.out.println("===="+state);
-                RadioGroup.OnCheckedChangeListener radioGroupClickListener = new RadioGroup.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                                if(i == id.female1){
-                                        state = 1;
-                                }else if(i == id.male1){
-                                        state = 2;
+                RadioGroup rg = (RadioGroup) findViewById(R.id.gender);
+                rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+                {
+                        public void onCheckedChanged(RadioGroup group, int checkedId) {
+                                int rgid = rg.getCheckedRadioButtonId();
+                                female1 = findViewById(rgid);
+                                male1 = findViewById(rgid);
+                                switch(checkedId){
+                                        case id.female1:
+                                                state = 1;
+                                                break;
+                                        case id.male1:
+                                                state = 2;
+                                                break;
                                 }
                         }
-                };
+                });
                 click = 0;
 
                 fat1.setOnClickListener(new View.OnClickListener() {
@@ -196,9 +193,11 @@ public class my1 extends AppCompatActivity {
                                 editor.putString("day", spin3.getSelectedItem().toString());
                                 editor.putString("gender", spin5.getSelectedItem().toString());
                                 editor.putString("type", spin4.getSelectedItem().toString());
-                                System.out.print("하하핳ㅎㅎㅎㅎ하하"+state);
-                                editor.putInt("gen", state);
-
+                                if(state == 1){
+                                        editor.putInt("gen",1).commit();
+                                } else {
+                                        editor.putInt("gen",2).commit();
+                                }
                                 editor.apply();
 
                                 int list = 1; //어디 페이지로 프레그먼트 시작할지 정하는 변수
@@ -207,11 +206,10 @@ public class my1 extends AppCompatActivity {
                                 startActivity(intent);
                                 //c1은 액티비티니까 액티비티로 이동
                                 //대신 시작할 때 마이페이지 뜰 수 있게 list = 1로 변경
-
                         }
                 });
-                ImageButton profile_pic1 = (ImageButton) findViewById(id.profile_pic1);
 
+                ImageButton profile_pic1 = (ImageButton) findViewById(id.profile_pic1);
                 profile_pic1.setOnClickListener(new View.OnClickListener() {
                         @Override //갤러리 부분
                         public void onClick(View view) {
@@ -228,7 +226,6 @@ public class my1 extends AppCompatActivity {
                 super.onActivityResult(requestCode, resultCode, data);
                 if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
                         Uri uri = data.getData();
-
                         try {
                                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                                 ImageView profile1 = (ImageView) findViewById(id.profile1);
@@ -237,7 +234,6 @@ public class my1 extends AppCompatActivity {
                         } catch (IOException e) {
                                 e.printStackTrace();
                         }
-
                 } else if (resultCode == RESULT_CANCELED) {
                         Toast.makeText(this, "사진 선택 취소", Toast.LENGTH_LONG).show();
                 }

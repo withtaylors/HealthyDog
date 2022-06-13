@@ -40,30 +40,8 @@ public class MyPage extends Fragment {
         ProgressBar progressBar = view.findViewById(R.id.progress);
         TextView gender2 = view.findViewById(R.id.gender2);
 
-
-
-        /*fat1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               if(selected == false){
-                   selected = true;
-                   fat1.setSelected(true);
-                   fatinfo.setText("사료 양을 많이 늘려주세요!");
-               }
-               else{
-                   selected =false;
-                   fat1.setSelected(false);
-               }
-            }
-        });*/
-
         int walktime;
         int howfat;
-
-
-
-
-        //Bundle bundle1 = this.getArguments();
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MY", Context.MODE_PRIVATE );
         String name = sharedPreferences.getString("name", " ");
@@ -75,9 +53,7 @@ public class MyPage extends Fragment {
         String gender = sharedPreferences.getString("gender", " ");
         int gen = sharedPreferences.getInt("gen",0);
 
-
         if(howfat == 0){
-
         }
         Bitmap icon = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.fat1_2);
         if(howfat == 1){
@@ -89,7 +65,6 @@ public class MyPage extends Fragment {
             fatpic.setImageBitmap(icon2);
             fatinfo.setText("사료의 양을 조금 더 늘려주세요!");
         }
-
         Bitmap icon3 = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.fat3_2);
         if(howfat == 3){
             fatpic.setImageBitmap(icon3);
@@ -107,7 +82,6 @@ public class MyPage extends Fragment {
         }
 
         //성별 선택값 가져옴
-        System.out.print("====================================================="+gen);
         if(gen == 1) {
             gender2.setText("여아" + " " + gender);
         }else{
@@ -119,7 +93,6 @@ public class MyPage extends Fragment {
         }
         if(str4.equals("골든 리트리버")){
             typeinfo.setText("골든 리트리버는 총명하고 믿음직한 성격의 강아지입니다.\n 털이 이중모의 구조를 갖고 있어 봄에 속털이 빠지므로\n 이 시기에 솔질을 자주 해주어 털을 제거해야 합니다.\n 워낙 차분하기 때문에 운동을 자주 해주어\n 비만을 예방하는 것이 좋습니다." );
-
         }
         if(str4.equals("닥스훈트")){
             typeinfo.setText("닥스훈트는 독일어의 '오소리 사냥'이라는 뜻이 담겨있는 이름입니다.\n 이름에서처럼 오소리나 토끼를 추적하는데 활약했던 강아지이기에\n 겁이 없다는 특징을 갖고 있습니다.\n 몸이 길어 체중 조절과 운동에 신경을 써 주어야\n 척추 디스크를 예방할 수 있습니다. ");
@@ -171,49 +144,29 @@ public class MyPage extends Fragment {
         byte[] encodeByte = Base64.decode(temp1, Base64.DEFAULT);
         Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
         profile2.setImageBitmap(bitmap);
-
-
-
-
-
+        
         birth2.setText(str1+" . "+str2+" . "+str3);
         type2.setText(str4);
         type3.setText(str4);
-
 
         walktime = sharedPreferences.getInt("time", 0);
         progressBar.setProgress(walktime);
         if(walktime < 30){
             walk2.setText(String.valueOf(walktime)+"분은 너무 적어요. 산책시간을 늘려주세요.");
-
-        }
-        else if(30 <= walktime && walktime <100 ){
+        } else if(30 <= walktime && walktime <100 ){
             walk2.setText(String.valueOf(walktime)+"분 산책했어요. 딱 적당해요.");
-        }
-        else
+        } else{
             walk2.setText(String.valueOf(walktime)+"분 산책은 강아지가 힘들 수 있어요. 컨디션을 잘 조절해주세요.");
-
+        }
         name2.setText(name);
-
-/*        if(bundle1 != null) {
-            bundle1 = getArguments();
-
-            String name = bundle1.getString("name");
-            name2.setText(name);
-        }*/
-
 
         Button changeinfo = (Button)view.findViewById(R.id.changeinfo);
         if ( name == " " ) {
             changeinfo.setText("반려동물 정보 입력하기");
         }
-
-
-
         changeinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent3 = new Intent(getActivity(), my1.class);
                 startActivity(intent3);
             }
@@ -222,6 +175,4 @@ public class MyPage extends Fragment {
         // Inflate the layout for this fragment
         return view;
     }
-
-
 }
