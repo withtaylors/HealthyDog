@@ -32,21 +32,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:id="@+id/infoText"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
+                android:layout_marginHorizontal="20dp"
                 android:gravity="center_vertical"
                 android:text="증상 결과는 건강하개 기술을 통해 눈 혼탁 증상이 있을 확률을 다음과 같이 제공해줍니다"
-                android:textSize="17dp"
-                android:textColor="@color/white" />
+                android:textSize="16dp"
+                android:textColor="@color/white"/>
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="330dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_height="31dp"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
                 android:alpha="0.7"
-                app:srcCompat="@drawable/progressbar_info" />
+                app:srcCompat="@drawable/progbar" />
 
 
         </LinearLayout>
@@ -87,7 +86,7 @@
                     android:id="@+id/progressBar_left"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="250dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="36dp"
                     android:padding="10dp"
                     android:max="1000"
                     android:progressDrawable="@drawable/progressbar_background"/>
@@ -114,7 +113,7 @@
                     android:id="@+id/progressBar_right"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="250dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="36dp"
                     android:padding="10dp"
                     android:max="1000"
                     android:progressDrawable="@drawable/progressbar_background"/>
@@ -134,7 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:padding="15dp"
             android:background="@drawable/button_background"
             android:backgroundTint="@color/back_brown"
@@ -151,6 +150,7 @@
                     android:textStyle="bold"
                     android:textSize="13dp"
                     android:background="#f1e5d4"
+                    android:textColor="@color/black"
                     android:id="@+id/result_left"
                     android:layout_below="@+id/classified" />
                 <TextView
@@ -161,6 +161,7 @@
                     android:textStyle="bold"
                     android:textSize="13dp"
                     android:background="#f1e5d4"
+                    android:textColor="@color/black"
                     android:id="@+id/result_right"
                     android:layout_marginBottom="5dp"
                     android:layout_below="@+id/classified" />
@@ -171,6 +172,7 @@
                     android:layout_marginTop="5dp"
                     android:text=" "
                     android:textSize="13dp"
+                    android:textColor="@color/black"
                     android:id="@+id/result_info"/>
             </LinearLayout>
             <LinearLayout

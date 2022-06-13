@@ -58,8 +58,6 @@ public class my1 extends AppCompatActivity {
                 newUiOptions ^= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
                 getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
 
-
-
                 setContentView(layout.activity_my1);
 
                 //스피너 값 선택하기
@@ -108,14 +106,12 @@ public class my1 extends AppCompatActivity {
                 final ImageButton fat4 = findViewById(id.fat4);
                 final ImageButton fat5 = findViewById(id.fat5);
 
+                female1 = findViewById(id.female1);
+                male1 = findViewById(id.male1);
 
+                state = female1.getId();
 
-
-
-
-
-
-
+                System.out.println("===="+state);
                 RadioGroup.OnCheckedChangeListener radioGroupClickListener = new RadioGroup.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -125,7 +121,6 @@ public class my1 extends AppCompatActivity {
                                         state = 2;
                                 }
                         }
-
                 };
                 click = 0;
 
@@ -134,7 +129,6 @@ public class my1 extends AppCompatActivity {
                         public void onClick(View view) {
                                 click = 1;
                                 fat1.setSelected(!fat1.isSelected());
-
                         }
                 });
                 click = 0;
@@ -174,13 +168,10 @@ public class my1 extends AppCompatActivity {
                 submit_1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
-
                                 if(walk_1.getText().length() == 0){
                                         int time = 0;
                                 } else { time = Integer.parseInt(walk_1.getText().toString()); }
                                 String name = inputname.getText().toString().trim();
-
 
                                 //imagview bitmap으로 바꾼 후 string 으로 보내기
                                 BitmapDrawable drawable = (BitmapDrawable)profile1.getDrawable();
@@ -194,7 +185,6 @@ public class my1 extends AppCompatActivity {
                                         temp1 = Base64.encodeToString(bytes1, Base64.DEFAULT);
                                 }
 
-
                                 SharedPreferences sharedPreferences = getSharedPreferences("MY", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putString("name", name);
@@ -206,9 +196,10 @@ public class my1 extends AppCompatActivity {
                                 editor.putString("day", spin3.getSelectedItem().toString());
                                 editor.putString("gender", spin5.getSelectedItem().toString());
                                 editor.putString("type", spin4.getSelectedItem().toString());
+                                System.out.print("하하핳ㅎㅎㅎㅎ하하"+state);
+                                editor.putInt("gen", state);
 
                                 editor.apply();
-
 
                                 int list = 1; //어디 페이지로 프레그먼트 시작할지 정하는 변수
                                 VO.setList(list);

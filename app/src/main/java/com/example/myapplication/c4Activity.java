@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -43,6 +44,9 @@ public class c4Activity extends AppCompatActivity {
     String result_info = "각막의 혼탁이 부분적으로 나타날 경우 지방이나 칼슘의 침착, 이전 상처에 대한 흉터일 가능성도 있어요. 전반적인 각막의 혼탁이 나타난다면 각막 부종이나 녹내장 등과 같은 질환일 수 있으니 동물병원에서 정확한 원인을 체크받길 추천해요."; //혼탁 증상 확률이 높을 경우 출력되는 '수의사 측정 요망' 문구
 
     int CheckOn ; //선택된 눈의 값. 왼쪽 체크 시 값 1, 오른쪽 체크 시 2, 둘 다 체크 시 3
+
+    String r_result; //오른쪽 눈의 혼탁률
+    String l_result; //왼쪽 눈의 혼탁률
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,7 +159,7 @@ public class c4Activity extends AppCompatActivity {
                 System.out.println("큰 값은 " + maxConfidence_l * 100);
 
                 String result_l = classes[maxPos_l].trim();
-                String l_result = Float.toString(confidences_l[0]*100).trim();
+                l_result = Float.toString(confidences_l[0]*100).trim();
                 editor.putString("result_l", result_l);
                 editor.putString("l_result", l_result);
 
@@ -185,7 +189,7 @@ public class c4Activity extends AppCompatActivity {
                 System.out.println("큰 값은 " + maxConfidence_r * 100);
 
                 String result_r = classes[maxPos_r].trim();
-                String r_result = Float.toString(confidences_r[0]*100);
+                r_result = Float.toString(confidences_r[0]*100);
                 editor.putString("result_r", result_r);
                 editor.putString("r_result", r_result);
 
@@ -223,6 +227,27 @@ public class c4Activity extends AppCompatActivity {
         btn2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //눈의 결과 값 저장해나갈 ArrayList
+                if(r_result != null) {
+                    ArrayList<String> r = VO.getrArray();
+                    r.add(r_result);
+                    VO.setrArray(r);
+                    //SharedPreferences sharedPreferences = getSharedPreferences("result_array", Context.MODE_PRIVATE);
+                    //SharedPreferences.Editor editor = sharedPreferences.edit();
+                }
+                if(VO.getCheckON() == 1 || VO.getCheckON() == 4) { //왼쪽 눈 촬영 같은 경우, 양쪽 눈을 촬영한 뒤 새로 시작하므로 내부저장소에서 값을 가져와 저장한다.
+                    SharedPreferences sharedPreferences = getSharedPreferences("total_result", Context.MODE_PRIVATE );
+                    l_result = sharedPreferences.getString("l_result", " "); //왼쪽 눈의 혼탁있을 확률
+                    //눈의 결과 값 저장해나갈 ArrayList
+                    ArrayList<String> l = VO.getlArray();
+                    l.add(l_result);
+                    VO.setlArray(l);
+                }
+
+                System.out.println("지금까지의 기록 결과 (오른쪽) : "+VO.getrArray());
+                System.out.println("지금까지의 기록 결과 (왼쪽) : "+VO.getlArray());
+
                 Intent intent = new Intent(c4Activity.this, c5Activity.class);
                 startActivity(intent);
             }

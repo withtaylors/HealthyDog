@@ -73,6 +73,8 @@ public class MyPage extends Fragment {
         String str4 = sharedPreferences.getString("type", " ");
         howfat= sharedPreferences.getInt("fat", 0);
         String gender = sharedPreferences.getString("gender", " ");
+        int gen = sharedPreferences.getInt("gen",0);
+
 
         if(howfat == 0){
 
@@ -104,8 +106,9 @@ public class MyPage extends Fragment {
             fatinfo.setText("비만이에요. 전문가와 상담이 필요해요.");
         }
 
-        String gen = sharedPreferences.getString("gender","0");
-        if(gen == "1") {
+        //성별 선택값 가져옴
+        System.out.print("====================================================="+gen);
+        if(gen == 1) {
             gender2.setText("여아" + " " + gender);
         }else{
             gender2.setText("남아" +" " + gender);
@@ -201,6 +204,12 @@ public class MyPage extends Fragment {
 
 
         Button changeinfo = (Button)view.findViewById(R.id.changeinfo);
+        if ( name == " " ) {
+            changeinfo.setText("반려동물 정보 입력하기");
+        }
+
+
+
         changeinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

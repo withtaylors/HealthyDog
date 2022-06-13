@@ -7,33 +7,34 @@
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/progressbar_background.xml" value="0.1" />
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/progressbar_my.xml" value="0.1" />
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/radiusview.xml" value="0.1" />
-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_c4.xml" value="0.1" />
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_c5.xml" value="0.13598500624739693" />
-        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_guide.xml" value="0.11770157553290084" />
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_my1.xml" value="0.25" />
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_my2.xml" value="0.33" />
+        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/drawable-v24/radius2.xml" value="0.318" />
         <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/button_background.xml" value="0.1" />
+        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/mybtbackground.xml" value="0.179" />
+        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/radiusview.xml" value="0.318" />
         <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_c1.xml" value="0.2247191011235955" />
         <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_c3.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_c4.xml" value="0.1762917933130699" />
-        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_c5.xml" value="0.17426545086119555" />
-        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_guide.xml" value="0.17572463768115942" />
-        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_my1.xml" value="0.1828125" />
-        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_my2.xml" value="0.1" />
-        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_camera.xml" value="0.17222222222222222" />
-        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_care.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_c5.xml" value="0.33" />
+        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_guide.xml" value="0.33" />
+        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_my1.xml" value="0.33" />
+        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_my2.xml" value="0.3340080971659919" />
+        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_mypopup.xml" value="0.22" />
+        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/custom_marker_view.xml" value="0.23505434782608695" />
+        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_camera.xml" value="0.4315352697095436" />
+        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_care.xml" value="0.25" />
+        <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_guide1.xml" value="0.33" />
         <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_guide2.xml" value="0.27682737169517885" />
         <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_my_page.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/menu/menu.xml" value="0.30185185185185187" />
         <entry key="app/src/main/res/drawable/firtstpage.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/mybtbackground.xml" value="0.206" />
         <entry key="app/src/main/res/drawable/progressbar_background.xml" value="0.241" />
-        <entry key="app/src/main/res/layout/activity_c3.xml" value="0.14736842105263157" />
+        <entry key="app/src/main/res/layout/activity_c3.xml" value="0.24102564102564103" />
         <entry key="app/src/main/res/layout/activity_c4.xml" value="0.208955223880597" />
         <entry key="app/src/main/res/layout/activity_c5.xml" value="0.24187725631768953" />
         <entry key="app/src/main/res/layout/activity_firstpage.xml" value="0.21002349853515626" />
-        <entry key="app/src/main/res/layout/activity_my1.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_my2.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_care.xml" value="0.24479166666666666" />
       </map>
     </option>
