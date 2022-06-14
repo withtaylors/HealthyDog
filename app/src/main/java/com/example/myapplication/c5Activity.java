@@ -89,7 +89,6 @@ public class c5Activity extends AppCompatActivity {
         System.out.println(result_r);
         System.out.println(r_result);
 
-
         //버튼 클릭시 care로 이동하기
         nextbutton.setOnClickListener(new View.OnClickListener() {
             @Override
