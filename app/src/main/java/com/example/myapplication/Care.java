@@ -229,7 +229,7 @@ public class Care extends Fragment {
 //        eye_chart.animateY(1500); // 이건 X축
 //
 
-        LineChart eye_chart = view.findViewById(R.id.eye_chart);
+/*        LineChart eye_chart = view.findViewById(R.id.eye_chart);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("total_result", MODE_PRIVATE );
 
         String l_result = sharedPreferences.getString("l_result", "");
@@ -251,7 +251,7 @@ public class Care extends Fragment {
 
         LineData lineData = new LineData(labels, lineDataSet);
 
-        eye_chart.setData(lineData);
+        eye_chart.setData(lineData);*/
 
 //        XAxis xAxis = eye_chart.getXAxis();
 //        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -260,7 +260,7 @@ public class Care extends Fragment {
 //        leftYAxis.setAxisMaxValue(100);
 //        leftYAxis.setAxisMinValue(0);
 
-        XAxis xAxis = eye_chart.getXAxis();
+/*        XAxis xAxis = eye_chart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextSize(10f);
         xAxis.setDrawGridLines(false);
@@ -286,7 +286,7 @@ public class Care extends Fragment {
         eye_chart.animateY(1500); // 이건 X축
 
         eye_chart.animateY(2000, Easing.EasingOption.EaseInCubic);
-        eye_chart.invalidate();
+        eye_chart.invalidate();*/
 
         return view;
     }

@@ -229,7 +229,7 @@ public class c4Activity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //눈의 결과 값 저장해나갈 ArrayList
-                if(r_result != null) {
+                if(r_result != "") {
                     ArrayList<String> r = VO.getrArray();
                     r.add(r_result);
                     VO.setrArray(r);

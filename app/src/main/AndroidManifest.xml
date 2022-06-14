@@ -43,6 +43,9 @@
         <activity
             android:name=".my1"
             android:exported="true" />
+        <activity
+            android:name=".PLZcare"
+            android:exported="true" />
 
 
     </application>

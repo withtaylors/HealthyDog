@@ -56,7 +56,7 @@ public class c5Activity extends AppCompatActivity {
             confidences_left.setVisibility(View.GONE);
             result_left.setVisibility(View.GONE);
             left.setVisibility(View.GONE);
-        } else if (CheckOn == 3 || CheckOn == 4 ) { } //양쪽 눈 촬영 클릭한 경우 default
+        } // else if (CheckOn == 3 || CheckOn == 4 ) { } 양쪽 눈 촬영 클릭한 경우 default
 
         //저장된 값 가져오기
         SharedPreferences sharedPreferences = getSharedPreferences("total_result", Context.MODE_PRIVATE );
@@ -72,15 +72,17 @@ public class c5Activity extends AppCompatActivity {
         //classified.setBackgroundColor(Color.parseColor("#FFC0CB"));
 
         //결과 값 출력하기
-        confidences_right.setText(String.format("%.1f",Float.parseFloat(r_result)));
-        confidences_left.setText(String.format("%.1f",Float.parseFloat(l_result)));
-        result_right.setText("오른쪽 : "+ result_r +"고 판정되었습니다.");
-        result_left.setText("왼쪽 : "+ result_l +"고 판정되었습니다.");
-
         //결과값을 프로그래스바에 나타내기 - 이때 프로그래스바는 int형만 가능해서 기존 소수점 * 10을 해서 가져옵니다.
-        progressBar_right.setProgress((int)(Float.parseFloat(r_result)*10));
-        progressBar_left.setProgress((int) (Float.parseFloat(l_result)*10));
-
+        if(r_result != " "){
+            confidences_right.setText(String.format("%.1f",Float.parseFloat(r_result)));
+            progressBar_right.setProgress((int)(Float.parseFloat(r_result)*10));
+            result_right.setText("오른쪽 : "+ result_r +"고 판정되었습니다.");
+        }
+        if(l_result != " "){
+            confidences_left.setText(String.format("%.1f",Float.parseFloat(l_result)));
+            progressBar_left.setProgress((int) (Float.parseFloat(l_result)*10));
+            result_left.setText("왼쪽 : "+ result_l +"고 판정되었습니다.");
+        }
 
         System.out.println(result_l);
         System.out.println(l_result);
@@ -95,7 +97,7 @@ public class c5Activity extends AppCompatActivity {
 
                 int list = 2; //어디 페이지로 프레그먼트 시작할지 정하는 변수
                 VO.setList(list); //VO 변수에 저장해두기
-                Intent intent = new Intent(c5Activity.this, c1Activity.class);
+                Intent intent = new Intent(c5Activity.this, PLZcare.class);
                 startActivity(intent);
                 //야매로 c1은 액티비티니까 액티비티로 이동
                 //대신 시작할 때 마이페이지 뜰 수 있게 list = 2로 변경
