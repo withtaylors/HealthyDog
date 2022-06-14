@@ -121,6 +121,5 @@ public class c5Activity extends AppCompatActivity {
         // spannableString.setSpan(new RelativeSizeSpan(1.3f), start, end, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         function_text.setText(spannableString);
-
     }
 }
