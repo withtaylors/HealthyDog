@@ -17,7 +17,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
             android:text="확인하고 싶은 \n측정 기록을 클릭하세요"
+            android:layout_marginBottom="20dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </LinearLayout>
 
@@ -26,30 +28,33 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_marginHorizontal="15dp"
-            android:layout_width="210dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#FFFFFF"
-            android:src="@drawable/btn_1"
+            android:src="@drawable/teethlist"
             tools:ignore="SpeakableTextPresentCheck"
             android:adjustViewBounds="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
             android:scaleType="fitCenter"/>
 
         <ImageButton
             android:id="@+id/imageButton2"
             android:layout_marginRight="15dp"
-            android:layout_width="210dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#FFFFFF"
-            android:src="@drawable/btn_2"
+            android:src="@drawable/eyelist"
             tools:ignore="SpeakableTextPresentCheck"
             android:adjustViewBounds="true"
+            android:layout_marginLeft="16dp"
             android:scaleType="fitCenter"/>
     </LinearLayout>
 </LinearLayout>
