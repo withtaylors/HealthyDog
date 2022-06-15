@@ -66,4 +66,5 @@ public class VO {
     public static void setlDayArray(ArrayList<String> lDayArray) {
         VO.lDayArray = lDayArray;
     }
+
 }
