@@ -75,9 +75,9 @@ public class MyPage extends Fragment {
         String gender = sharedPreferences.getString("gender", " ");
         int gen = sharedPreferences.getInt("gen", 0);
         if(gen == 1){
-            gender2.setText("여아" + gender);
+            gender2.setText("여아" +" "+ gender);
         }else{
-            gender2.setText("남아" + gender);
+            gender2.setText("남아" +" "+ gender);
         }
 
 

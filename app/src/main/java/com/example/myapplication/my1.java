@@ -40,7 +40,7 @@ public class my1 extends AppCompatActivity {
         int click=0;
         String temp1;
         int time;
-        String oncheck1;
+        int state;
 
 
 
@@ -110,32 +110,21 @@ public class my1 extends AppCompatActivity {
 
                 female1 = findViewById(id.female1);
                 male1 = findViewById(id.male1);
-                gender = findViewById(id.gender);
-                RadioButton oncheck = (RadioButton)findViewById(gender.getCheckedRadioButtonId());
+                gender = (RadioGroup) findViewById(R.id.gender);
 
-
-
-
-
-                RadioGroup.OnCheckedChangeListener radioGroupClickListener = new RadioGroup.OnCheckedChangeListener() {
+                gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                                if(radioGroup.getId() == id.gender){
-                                        switch (i){
-                                                case id.female1:
-
-
-                                                        break;
-
-                                                case id.male1:
-
-
-                                                        break;
-
-                                        }
+                                switch (i){
+                                        case id.female1:
+                                                state = 1;
+                                                break;
+                                        case id.male1:
+                                                state = 2;
+                                                break;
                                 }
                         }
-                };
+                });
 
 
                 click = 0;
@@ -217,7 +206,13 @@ public class my1 extends AppCompatActivity {
                                 editor.putString("day", spin3.getSelectedItem().toString());
                                 editor.putString("gender", spin5.getSelectedItem().toString());
                                 editor.putString("type", spin4.getSelectedItem().toString());
-                                editor.putString("gen", oncheck1);
+
+                                if(state == 1) {
+                                        editor.putInt("gen", 1);
+                                } else if (state == 2){
+                                        editor.putInt("gen", 2);
+                                }
+
 
 
                                 editor.apply();

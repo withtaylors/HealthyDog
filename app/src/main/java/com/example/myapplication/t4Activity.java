@@ -71,11 +71,14 @@ public class t4Activity extends AppCompatActivity {
         t3button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList<String> r = VO.gettArray();
-                r.add(tresult);
-                VO.settArray(r);
+
                 SharedPreferences tsharedPreferences = getSharedPreferences("t_total_result", Context.MODE_PRIVATE );
-                tresult = tsharedPreferences.getString("teeth", " ");
+                tresult = tsharedPreferences.getString("tresult", " ");
+
+                ArrayList<String> t = VO.gettArray();
+                t.add(tresult);
+                VO.settArray(t);
+
                 System.out.println("============="+tresult);
 
                 System.out.println("지금까지의 기록 결과 teeth : "+VO.gettArray());
@@ -130,7 +133,9 @@ public class t4Activity extends AppCompatActivity {
 
                 }
             }
-            tresult = tclasses[tmaxPos].trim();
+
+            tresult = Float.toString(tconfidences[0]*100).trim();
+            editor.putString("tresult", tresult);
 
             String tdate_text_l = new SimpleDateFormat("%y.MM.dd", Locale.getDefault()).format(currentTime);
             String tday_l = tdate_text_l;
@@ -142,9 +147,10 @@ public class t4Activity extends AppCompatActivity {
                     tmaxConfidence = tconfidences[i];
                     tmaxPos = i;
                 }
-                if( tmaxConfidence * 100 < 90) {
-                    Toast.makeText(t4Activity.this, "정확도가 낮아요! 재촬영이 필요합니다.", Toast.LENGTH_SHORT).show();
-                }
+
+            }
+            if( tmaxConfidence * 100 < 90) {
+                Toast.makeText(t4Activity.this, "정확도가 낮아요! 재촬영이 필요합니다.", Toast.LENGTH_SHORT).show();
             }
             System.out.println(tmaxPos + tclasses[tmaxPos] );
             System.out.println("큰 값은 " + tmaxConfidence * 100);
