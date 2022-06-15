@@ -60,6 +60,7 @@ public class GuideActivity extends AppCompatActivity {
         });
     }
     public void onClick(View view){
+        VO.setList(0);
         Intent intent = new Intent(this, c1Activity.class);
         startActivity(intent);
     }
