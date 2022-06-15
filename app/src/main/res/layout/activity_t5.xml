@@ -18,7 +18,7 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:id="@+id/classified" />
+            android:id="@+id/tclassified" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,10 +31,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:id="@+id/infoText"
+                android:id="@+id/tinfoText"
                 android:layout_marginHorizontal="20dp"
                 android:gravity="center_vertical"
-                android:text="증상 결과는 건강하개 기술을 통해 눈 혼탁 증상이 있을 확률을 다음과 같이 제공해줍니다"
+                android:text="증상 결과는 건강하개 기술을 통해 치석의 확률을 다음과 같이 제공해줍니다"
                 android:textSize="16dp"
                 android:textColor="@color/white"/>
 
@@ -59,58 +59,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/confidencesText"
-                android:text="눈 혼탁 증상률"
+                android:text="치석 의심 확률"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:layout_below="@+id/result"
                 android:layout_marginBottom="15dp"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center">
+
                 <TextView
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="왼쪽"
-                    android:textColor="@color/black"
-                    android:id="@+id/left"/>
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
                     android:text=" "
+                    android:layout_marginRight="10dp"
                     android:textColor="@color/black"
-                    android:layout_marginLeft="3dp"
-                    android:id="@+id/confidences_left"/>
+                    android:id="@+id/confidences_teeth"/>
                 <ProgressBar
-                    android:id="@+id/progressBar_left"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="250dp"
-                    android:layout_height="36dp"
-                    android:padding="10dp"
-                    android:max="1000"
-                    android:progressDrawable="@drawable/progressbar_background"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:text="오른쪽"
-                    android:textColor="@color/black"
-                    android:id="@+id/right"/>
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:text=" "
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="3dp"
-                    android:id="@+id/confidences_right"/>
-                <ProgressBar
-                    android:id="@+id/progressBar_right"
+                    android:id="@+id/progressBar_teeth"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="250dp"
                     android:layout_height="36dp"
@@ -138,43 +107,36 @@
             android:background="@drawable/button_background"
             android:backgroundTint="@color/back_brown"
             android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
+                    android:id="@+id/result_teeth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/tclassified"
                     android:layout_centerHorizontal="true"
-                    android:text=""
-                    android:textStyle="bold"
-                    android:textSize="13dp"
+                    android:layout_marginTop="20dp"
                     android:background="#f1e5d4"
-                    android:textColor="@color/black"
-                    android:id="@+id/result_left"
-                    android:layout_below="@+id/classified" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
                     android:text=""
-                    android:textStyle="bold"
-                    android:textSize="13dp"
-                    android:background="#f1e5d4"
                     android:textColor="@color/black"
-                    android:id="@+id/result_right"
-                    android:layout_marginBottom="5dp"
-                    android:layout_below="@+id/classified" />
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
                 <TextView
+                    android:id="@+id/tresult_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
                     android:text=" "
-                    android:textSize="13dp"
                     android:textColor="@color/black"
-                    android:id="@+id/sub_result_info"/>
+                    android:textSize="13dp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

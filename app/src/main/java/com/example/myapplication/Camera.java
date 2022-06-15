@@ -1,17 +1,13 @@
 package com.example.myapplication;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageButton;
+
+import androidx.fragment.app.Fragment;
 
 public class Camera extends Fragment {
 
@@ -26,6 +22,15 @@ public class Camera extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), c3Activity.class);
                 startActivity(intent);
+            }
+        });
+
+        ImageButton imageButton3 = (ImageButton) view.findViewById(R.id.imageButton3);
+        imageButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getActivity(), t4Activity.class);
+                startActivity(intent1);
             }
         });
 

@@ -8,7 +8,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,7 +22,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.ml.Model;
 
-import org.checkerframework.checker.units.qual.A;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.tensorflow.lite.DataType;
@@ -295,8 +293,8 @@ public class c4Activity extends AppCompatActivity {
 
                 //System.out.println("지금까지의 기록 결과 (측정 날짜)(왼쪽) : "+VO.getlDayArray()+VO.getlArray());
                 //System.out.println("지금까지의 기록 결과 (측정 날짜)(오른쪽) : "+VO.getrDayArray()+VO.getrArray());
-                System.out.println("지금까지의 기록 결과 (측정 날짜)(왼쪽) : "+rDay+r);
-                System.out.println("지금까지의 기록 결과 (측정 날짜)(오른쪽) : "+lDay+l);
+                System.out.println("지금까지의 기록 결과 (측정 날짜)(왼쪽) : "+lDay+l);
+                System.out.println("지금까지의 기록 결과 (측정 날짜)(오른쪽) : "+rDay+r);
 
                 Intent intent = new Intent(c4Activity.this, c5Activity.class);
                 startActivity(intent);

@@ -8,12 +8,9 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
-import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -28,7 +25,7 @@ public class c5Activity extends AppCompatActivity {
         setContentView(R.layout.activity_c5);
 
         TextView classified = findViewById(R.id.classified); //눈 건강 체크 결과입니다 멘트
-        TextView result_info = findViewById(R.id.result_info); //혼탁 증상률 높을 때 나오는 안내 문구
+        TextView result_info = findViewById(R.id.sub_result_info); //혼탁 증상률 높을 때 나오는 안내 문구
         ProgressBar progressBar_right = findViewById(R.id.progressBar_right); //오른쪽 프로그레스 바
         ProgressBar progressBar_left = findViewById(R.id.progressBar_left); //왼쪽 프로그레스 바
         TextView confidences_right = findViewById(R.id.confidences_right); //오른쪽 눈의 혼탁있을 확률 r_result
@@ -96,7 +93,7 @@ public class c5Activity extends AppCompatActivity {
 
                 int list = 2; //어디 페이지로 프레그먼트 시작할지 정하는 변수
                 VO.setList(list); //VO 변수에 저장해두기
-                Intent intent = new Intent(c5Activity.this, PLZcare.class);
+                Intent intent = new Intent(c5Activity.this, careActivity.class);
                 startActivity(intent);
                 //야매로 c1은 액티비티니까 액티비티로 이동
                 //대신 시작할 때 마이페이지 뜰 수 있게 list = 2로 변경
