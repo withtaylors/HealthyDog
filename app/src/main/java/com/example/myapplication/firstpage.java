@@ -26,7 +26,7 @@ public class firstpage extends AppCompatActivity {
         //이름이 저장되어 있지 않다면, 액티비티 1로 이동.
         SharedPreferences sharedPreferences = getSharedPreferences("MY", Context.MODE_PRIVATE);
         String name = sharedPreferences.getString("name", " ");
-        if (name == " ") {
+        if (name == "") {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
