@@ -152,7 +152,7 @@ public class t4Activity extends AppCompatActivity {
             }
             if( tmaxPos == 0 ) {
                 //증상이 높을 경우 수의사 진단 필요함을 안내하는 'result_info' VO속 result_info에 저장하기.
-                VO.setResult_info(tresult_info);
+                VO.setResult_infot(tresult_info);
             }
 
 

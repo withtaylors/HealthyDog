@@ -5,5 +5,43 @@
     android:layout_height="match_parent"
     tools:context=".Guide2Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
+        <!--TODO: Update blank fragment layout-->
+        <LinearLayout
+            android:id="@+id/page1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="한번에 잘 찍으려면? 촬영 전 준비해 주세요."
+                android:textSize="17dp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="180dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/carepic" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:textColor="@color/black"
+                    android:text="1. 치아가 입술에 가려지지 않게 찍어주세요. \n2. 균일한 치아 건강 측정을 위하여 가능한 동일한 환경에서 촬영할 수 있도록 해주세요. \n3. 다른 물체가 치아를 가리면 안돼요. 손이나 입술이 나오면 정확도가 떨어지니 최대한 촬영할 치아만 나오도록 찍어주세요 \n5. 정확도가 떨어지면 촬영 후 재촬영 안내메세지가 떠요. 가이드를 확인한 뒤 그에 맞춰 다시 촬영해 주세요." />
+            </ScrollView>
+        </LinearLayout>
 </FrameLayout>

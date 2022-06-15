@@ -13,6 +13,7 @@ public class VO {
     static private ArrayList<String> lDayArray = new ArrayList<>(); //측정 날짜를 저장해 나갈 ArrayList
     static private ArrayList<String> tDayArray = new ArrayList<>();
 
+    static private String tresult_info = ""; //치석률 높을 경우 안내 문구 전달하기
 
     public static int getCheckON() {
         return CheckON;
@@ -26,9 +27,9 @@ public class VO {
         return result_info;
     }
 
-    public static void setResult_info(String result_info) {
-        VO.result_info = result_info;
-    }
+//    public static void setResult_info(String result_info) {
+//        VO.result_info = result_info;
+//    }
 
     public static int getList() {
         return list;
@@ -84,5 +85,9 @@ public class VO {
     public static void settDayArray(ArrayList<String> tDayArray) {
         VO.tDayArray = tDayArray;
     }
+
+    public static String getResult_infot() { return tresult_info; }
+
+    public static void setResult_infot(String tresult_info) { VO.tresult_info = tresult_info; }
 
 }
