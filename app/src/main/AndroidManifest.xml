@@ -18,11 +18,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".careActivity"
+            android:exported="true" />
+        <activity
             android:name=".t5Activity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".t4Activity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".firstpage"
             android:exported="true">

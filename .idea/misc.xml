@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/fat1_2.xml" value="0.1" />
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/fat1_2d.xml" value="0.1" />
+        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/gradient_background.xml" value="0.1" />
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/mybtbackground.xml" value="0.323" />
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/mypagebtcl.xml" value="0.1" />
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/progressbar_background.xml" value="0.1" />
@@ -14,6 +15,8 @@
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_c3.xml" value="0.12640566430653893" />
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_c4.xml" value="0.15" />
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_c5.xml" value="0.13598500624739693" />
+        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_care.xml" value="0.13411078717201166" />
+        <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_care2.xml" value="0.13411078717201166" />
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_firstpage.xml" value="0.25951261222744765" />
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_guide.xml" value="0.11770157553290084" />
         <entry key="..\:/Users/heart/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_my1.xml" value="0.25" />

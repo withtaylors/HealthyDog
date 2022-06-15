@@ -173,7 +173,7 @@
                     android:text=" "
                     android:textSize="13dp"
                     android:textColor="@color/black"
-                    android:id="@+id/result_info"/>
+                    android:id="@+id/sub_result_info"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"

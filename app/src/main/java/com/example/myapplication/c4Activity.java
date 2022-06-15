@@ -22,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.ml.Model;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
@@ -47,6 +49,11 @@ public class c4Activity extends AppCompatActivity {
 
     String r_result; //오른쪽 눈의 혼탁률
     String l_result; //왼쪽 눈의 혼탁률
+
+    Date currentTime = Calendar.getInstance().getTime(); //현재 시간 가져오기
+    String simpleDateFormat = new SimpleDateFormat("MM.dd", Locale.getDefault()).format(currentTime); //시간 저장 할 데이터포멧
+
+    String day_r, day_l; //측정한 날짜
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +107,12 @@ public class c4Activity extends AppCompatActivity {
 
     //사진 촬영 후 비트맵으로 이미지 띄우기
     public void classifyImage(Bitmap image){
+
+        //내부저장소 SP 사용
+        SharedPreferences sharedPreferences = getSharedPreferences("total_result", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+
         try {
             Model model = Model.newInstance(getApplicationContext());
 
@@ -139,10 +152,6 @@ public class c4Activity extends AppCompatActivity {
             System.out.println(confidences_l);
             System.out.println(confidences_r);
 
-            SharedPreferences sharedPreferences = getSharedPreferences("total_result", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            Date currentTime = Calendar.getInstance().getTime();
-
             if(CheckOn == 1 || CheckOn ==3){ //왼쪽눈 촬영시
                 //큰 값 저장하기
                 for(int i =0; i<confidences_l.length; i++){
@@ -151,9 +160,8 @@ public class c4Activity extends AppCompatActivity {
                         maxPos_l = i;
                     }
                 }
-                String date_text_l = new SimpleDateFormat("%y.MM.dd", Locale.getDefault()).format(currentTime);
-                String day_l = date_text_l;
-                editor.putString("day_l", day_l);
+
+                day_l = simpleDateFormat; //왼쪽 눈 촬영 날짜 저장하기
 
                 System.out.println(maxPos_l + classes[maxPos_l] );
                 System.out.println("큰 값은 " + maxConfidence_l * 100);
@@ -162,6 +170,7 @@ public class c4Activity extends AppCompatActivity {
                 l_result = Float.toString(confidences_l[0]*100).trim();
                 editor.putString("result_l", result_l);
                 editor.putString("l_result", l_result);
+                editor.putString("day_l", day_l);
 
                 //정확도가 90% 미만일 경우 토스트 메시지 출력
                 if( maxConfidence_l * 100 < 90) {
@@ -182,9 +191,9 @@ public class c4Activity extends AppCompatActivity {
                         maxPos_r = i;
                     }
                 }
-                String date_text_r = new SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault()).format(currentTime);
-                String day_r = date_text_r;
-                editor.putString("day_r", day_r);
+
+                day_r = simpleDateFormat; //오른쪽 눈 촬영 날짜 저장하기
+
                 System.out.println(maxPos_r + classes[maxPos_r] );
                 System.out.println("큰 값은 " + maxConfidence_r * 100);
 
@@ -192,6 +201,7 @@ public class c4Activity extends AppCompatActivity {
                 r_result = Float.toString(confidences_r[0]*100);
                 editor.putString("result_r", result_r);
                 editor.putString("r_result", r_result);
+                editor.putString("day_r", day_r);
 
                 //정확도가 90% 미만일 경우 토스트 메시지 출력
                 if( maxConfidence_r * 100 < 90) {
@@ -217,6 +227,21 @@ public class c4Activity extends AppCompatActivity {
         othereye.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                //왼쪽눈 촬영 결과값 저장해두기
+                ArrayList<String> l = getStringArray("ljsonArray"); //왼쪽 눈 측정 결과 받아온 arraylist
+                ArrayList<String> lDay = getStringArray("lDayjsonArray");; //왼쪽 눈 측정 날짜 받아온 arraylist
+
+                //ArrayList<String> l = VO.getlArray();
+                l.add(l_result);
+                VO.setlArray(l);
+
+                //ArrayList<String> lDay = VO.getlDayArray();
+                lDay.add(day_l);
+                VO.setlDayArray(lDay);
+
+                setStringArray("ljsonArray",VO.getlArray()); //저장해둔 lArray를 SP에 저장하기.
+                setStringArray("lDayjsonArray",VO.getlDayArray()); //저장해둔 lDayArray를 SP에 저장하기.
+
                 CheckOn = 4;
                 VO.setCheckON(CheckOn);
                 startActivity(new Intent(c4Activity.this,c4Activity.class));
@@ -227,26 +252,49 @@ public class c4Activity extends AppCompatActivity {
         btn2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                ArrayList<String> r = getStringArray("rjsonArray"); //오른쪽 눈 측정 결과 받아온 arraylist
+                ArrayList<String> rDay = getStringArray("rDayjsonArray");; //오른쪽 눈 측정 날짜 받아온 arraylist
+                ArrayList<String> l = getStringArray("ljsonArray"); //왼쪽 눈 측정 결과 받아온 arraylist
+                ArrayList<String> lDay = getStringArray("lDayjsonArray");; //왼쪽 눈 측정 날짜 받아온 arraylist
 
-                //눈의 결과 값 저장해나갈 ArrayList
-                if(r_result != null) {
-                    ArrayList<String> r = VO.getrArray();
+                //눈의 결과 값과 측정 날짜 저장해나갈 ArrayList
+                if(VO.getCheckON() == 2 || VO.getCheckON() == 4) {
+                    //ArrayList<String> r = VO.getrArray();
                     r.add(r_result);
-                    VO.setrArray(r);
-                    //SharedPreferences sharedPreferences = getSharedPreferences("result_array", Context.MODE_PRIVATE);
-                    //SharedPreferences.Editor editor = sharedPreferences.edit();
+                    VO.setrArray(r); //VO에 넘겨주기
+
+                    //ArrayList<String> rDay = VO.getrDayArray();
+                    rDay.add(day_r);
+                    VO.setrDayArray(rDay); //VO에 넘겨주기
+
+                    setStringArray("rjsonArray",VO.getrArray()); //저장해둔 rArray를 SP에 저장하기.
+                    setStringArray("rDayjsonArray",VO.getrDayArray()); //저장해둔 rDayArray를 SP에 저장하기.
                 }
-                if(VO.getCheckON() == 1 || VO.getCheckON() == 4) { //왼쪽 눈 촬영 같은 경우, 양쪽 눈을 촬영한 뒤 새로 시작하므로 내부저장소에서 값을 가져와 저장한다.
-                    SharedPreferences sharedPreferences = getSharedPreferences("total_result", Context.MODE_PRIVATE );
-                    l_result = sharedPreferences.getString("l_result", " "); //왼쪽 눈의 혼탁있을 확률
+                if(VO.getCheckON() == 1 ) { //왼쪽 눈 촬영일때만! 양쪽 촬영 후 오른쪽 눈으로 넘어가면, 새로 시작하므로 데이터 저장이 안된다. 그러므로 오른쪽눈 측정하기 버튼 눌렀을 때에 저장하도록 구현했음
                     //눈의 결과 값 저장해나갈 ArrayList
-                    ArrayList<String> l = VO.getlArray();
+                    //ArrayList<String> l = VO.getlArray();
+
                     l.add(l_result);
-                    VO.setlArray(l);
+                    VO.setlArray(l); //VO에 넘겨주기
+
+                    //ArrayList<String> lDay = VO.getlDayArray();
+                    lDay.add(day_l);
+                    VO.setlDayArray(lDay); //VO에 넘겨주기
+
+                    setStringArray("ljsonArray",VO.getlArray()); //저장해둔 lArray를 SP에 저장하기.
+                    setStringArray("lDayjsonArray",VO.getlDayArray()); //저장해둔 lDayArray를 SP에 저장하기.
                 }
 
-                System.out.println("지금까지의 기록 결과 (오른쪽) : "+VO.getrArray());
-                System.out.println("지금까지의 기록 결과 (왼쪽) : "+VO.getlArray());
+                //[TEST]====출력해보기 위해 다시 한번 가져와보기 test용
+                r = getStringArray("rjsonArray"); //오른쪽 눈 측정 결과 받아온 arraylist
+                rDay = getStringArray("rDayjsonArray");; //오른쪽 눈 측정 날짜 받아온 arraylist
+                l = getStringArray("ljsonArray"); //오른쪽 눈 측정 결과 받아온 arraylist
+                lDay = getStringArray("lDayjsonArray");; //오른쪽 눈 측정 날짜 받아온 arraylist
+
+                //System.out.println("지금까지의 기록 결과 (측정 날짜)(왼쪽) : "+VO.getlDayArray()+VO.getlArray());
+                //System.out.println("지금까지의 기록 결과 (측정 날짜)(오른쪽) : "+VO.getrDayArray()+VO.getrArray());
+                System.out.println("지금까지의 기록 결과 (측정 날짜)(왼쪽) : "+lDay+l);
+                System.out.println("지금까지의 기록 결과 (측정 날짜)(오른쪽) : "+rDay+r);
 
                 Intent intent = new Intent(c4Activity.this, c5Activity.class);
                 startActivity(intent);
@@ -266,5 +314,46 @@ public class c4Activity extends AppCompatActivity {
             classifyImage(image);
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    //Arraylist를 JSONArray로 변환해서 SP에 저장하는 함수
+    private void setStringArray(String key, ArrayList<String> values) {
+        //내부저장소 SP 사용
+        SharedPreferences sharedPreferences = getSharedPreferences("total_result", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        JSONArray jsonArray = new JSONArray(); //저장할 JSONArray 생성
+
+        for (int i = 0; i < values.size(); i++) { //입력받은 arraylist 값의 values를 돌면서 jsonArray에 넣기
+            jsonArray.put(values.get(i));
+        }
+
+        if (!values.isEmpty()) { //만약 입력값(arraylist)이 비어있는게 아니라면, 변경한 jsonArray 값을 SP에 저장하기.
+            editor.putString(key, jsonArray.toString()); //key 값은 왼쪽 오른쪽 날짜 배열 모두에서 돌려야하므로 각각 설정하도록 !
+        } else {
+            editor.putString(key, null);
+        }
+        editor.apply();
+    }
+
+    //SP에 저장된 jsonArray를 arraylist로 변경하는 함수
+    private ArrayList getStringArray(String key) {
+        SharedPreferences sharedPreferences = getSharedPreferences("total_result", Context.MODE_PRIVATE );
+        String json = sharedPreferences.getString(key, ""); //가져올 key값
+        ArrayList list = new ArrayList();
+
+        if (json != null) { //key값에 값이 저장되어 있다면
+            try {
+                JSONArray a = new JSONArray(json); //for문 돌면서 list에 저장 ->Arraylist 만들기
+
+                for (int i = 0; i < a.length(); i++) {
+                    String d = a.optString(i);
+                    list.add(d);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
     }
 }

@@ -9,6 +9,9 @@ public class VO {
     static private ArrayList<String> rArray = new ArrayList<>(); //결과 값을 저장해 나갈 ArrayList
     static private ArrayList<String> lArray = new ArrayList<>(); //결과 값을 저장해 나갈 ArrayList
     static private ArrayList<String> tArray = new ArrayList<>(); //결과 값을 저장해 나갈 ArrayList
+    static private ArrayList<String> rDayArray = new ArrayList<>(); //측정 날짜를 저장해 나갈 ArrayList
+    static private ArrayList<String> lDayArray = new ArrayList<>(); //측정 날짜를 저장해 나갈 ArrayList
+    static private ArrayList<String> tDayArray = new ArrayList<>();
 
 
     public static int getCheckON() {
@@ -58,4 +61,28 @@ public class VO {
     public static void settArray(ArrayList<String> tArray) {
         VO.tArray = tArray;
     }
+
+    public static ArrayList<String> getlDayArray() {
+        return lDayArray;
+    }
+
+    public static void setlDayArray(ArrayList<String> lDayArray) {
+        VO.lDayArray = lDayArray;
+    }
+    public static ArrayList<String> getrDayArray() {
+        return rDayArray;
+    }
+
+    public static void setrDayArray(ArrayList<String> rDayArray) {
+        VO.rDayArray = rDayArray;
+    }
+
+    public static ArrayList<String> gettDayArray() {
+        return tDayArray;
+    }
+
+    public static void settDayArray(ArrayList<String> tDayArray) {
+        VO.tDayArray = tDayArray;
+    }
+
 }
