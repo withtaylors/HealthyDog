@@ -52,6 +52,7 @@ public class Care extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_care, container, false);
 
+
 //        LineChart teeth_chart = view.findViewById(R.id.teeth_chart);
 //        LineChart eye_chart = view.findViewById(R.id.eye_chart);
 //        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("total_result", MODE_PRIVATE );

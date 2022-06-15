@@ -8,7 +8,8 @@ public class VO {
     static private int list; //어디 페이지에서 시작할지 전해주는 변수
     static private ArrayList<String> rArray = new ArrayList<>(); //결과 값을 저장해 나갈 ArrayList
     static private ArrayList<String> lArray = new ArrayList<>(); //결과 값을 저장해 나갈 ArrayList
-
+    static private ArrayList<String> rDayArray = new ArrayList<>(); //측정 날짜를 저장해 나갈 ArrayList
+    static private ArrayList<String> lDayArray = new ArrayList<>(); //측정 날짜를 저장해 나갈 ArrayList
 
     public static int getCheckON() {
         return CheckON;
@@ -48,5 +49,21 @@ public class VO {
 
     public static void setlArray(ArrayList<String> lArray) {
         VO.lArray = lArray;
+    }
+
+    public static ArrayList<String> getrDayArray() {
+        return rDayArray;
+    }
+
+    public static void setrDayArray(ArrayList<String> rDayArray) {
+        VO.rDayArray = rDayArray;
+    }
+
+    public static ArrayList<String> getlDayArray() {
+        return lDayArray;
+    }
+
+    public static void setlDayArray(ArrayList<String> lDayArray) {
+        VO.lDayArray = lDayArray;
     }
 }

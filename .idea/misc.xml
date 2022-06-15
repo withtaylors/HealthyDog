@@ -30,12 +30,14 @@
         <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_my_page.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/jiyeo/AndroidStudioProjects/MyApplication/app/src/main/res/menu/menu.xml" value="0.30185185185185187" />
         <entry key="app/src/main/res/drawable/firtstpage.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.206" />
         <entry key="app/src/main/res/drawable/progressbar_background.xml" value="0.241" />
         <entry key="app/src/main/res/layout/activity_c3.xml" value="0.24102564102564103" />
         <entry key="app/src/main/res/layout/activity_c4.xml" value="0.208955223880597" />
         <entry key="app/src/main/res/layout/activity_c5.xml" value="0.24187725631768953" />
         <entry key="app/src/main/res/layout/activity_firstpage.xml" value="0.21002349853515626" />
-        <entry key="app/src/main/res/layout/fragment_care.xml" value="0.24479166666666666" />
+        <entry key="app/src/main/res/layout/fragment_care.xml" value="0.168817138671875" />
+        <entry key="app/src/main/res/layout/makerview.xml" value="0.1984375" />
       </map>
     </option>
   </component>
