@@ -37,10 +37,12 @@ public class my1 extends AppCompatActivity {
         boolean check = false;
         RadioButton female1;
         RadioButton male1;
-        int state;
         int click=0;
         String temp1;
         int time;
+        String oncheck1;
+
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -108,20 +110,34 @@ public class my1 extends AppCompatActivity {
 
                 female1 = findViewById(id.female1);
                 male1 = findViewById(id.male1);
+                gender = findViewById(id.gender);
+                RadioButton oncheck = (RadioButton)findViewById(gender.getCheckedRadioButtonId());
 
-                state = female1.getId();
 
-                System.out.println("===="+state);
+
+
+
                 RadioGroup.OnCheckedChangeListener radioGroupClickListener = new RadioGroup.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                                if(i == id.female1){
-                                        state = 1;
-                                }else if(i == id.male1){
-                                        state = 2;
+                                if(radioGroup.getId() == id.gender){
+                                        switch (i){
+                                                case id.female1:
+
+
+                                                        break;
+
+                                                case id.male1:
+
+
+                                                        break;
+
+                                        }
                                 }
                         }
                 };
+
+
                 click = 0;
 
                 fat1.setOnClickListener(new View.OnClickListener() {
@@ -173,6 +189,11 @@ public class my1 extends AppCompatActivity {
                                 } else { time = Integer.parseInt(walk_1.getText().toString()); }
                                 String name = inputname.getText().toString().trim();
 
+
+
+
+
+
                                 //imagview bitmap으로 바꾼 후 string 으로 보내기
                                 BitmapDrawable drawable = (BitmapDrawable)profile1.getDrawable();
                                 if (profile1.getDrawable() == null) { System.out.println("ERROR=저장된 사진 값이 없습니다"); }
@@ -196,8 +217,8 @@ public class my1 extends AppCompatActivity {
                                 editor.putString("day", spin3.getSelectedItem().toString());
                                 editor.putString("gender", spin5.getSelectedItem().toString());
                                 editor.putString("type", spin4.getSelectedItem().toString());
-                                System.out.print("하하핳ㅎㅎㅎㅎ하하"+state);
-                                editor.putInt("gen", state);
+                                editor.putString("gen", oncheck1);
+
 
                                 editor.apply();
 

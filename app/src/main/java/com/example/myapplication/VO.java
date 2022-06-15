@@ -8,6 +8,7 @@ public class VO {
     static private int list; //어디 페이지에서 시작할지 전해주는 변수
     static private ArrayList<String> rArray = new ArrayList<>(); //결과 값을 저장해 나갈 ArrayList
     static private ArrayList<String> lArray = new ArrayList<>(); //결과 값을 저장해 나갈 ArrayList
+    static private ArrayList<String> tArray = new ArrayList<>(); //결과 값을 저장해 나갈 ArrayList
 
 
     public static int getCheckON() {
@@ -48,5 +49,13 @@ public class VO {
 
     public static void setlArray(ArrayList<String> lArray) {
         VO.lArray = lArray;
+    }
+
+    public static ArrayList<String> gettArray() {
+        return tArray;
+    }
+
+    public static void settArray(ArrayList<String> tArray) {
+        VO.tArray = tArray;
     }
 }

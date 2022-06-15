@@ -73,7 +73,15 @@ public class MyPage extends Fragment {
         String str4 = sharedPreferences.getString("type", " ");
         howfat= sharedPreferences.getInt("fat", 0);
         String gender = sharedPreferences.getString("gender", " ");
-        int gen = sharedPreferences.getInt("gen",0);
+        int gen = sharedPreferences.getInt("gen", 0);
+        if(gen == 1){
+            gender2.setText("여아" + gender);
+        }else{
+            gender2.setText("남아" + gender);
+        }
+
+
+
 
 
         if(howfat == 0){
@@ -107,12 +115,6 @@ public class MyPage extends Fragment {
         }
 
         //성별 선택값 가져옴
-        System.out.print("====================================================="+gen);
-        if(gen == 1) {
-            gender2.setText("여아" + " " + gender);
-        }else{
-            gender2.setText("남아" +" " + gender);
-        }
 
         if(str4.equals("견종")){
             typeinfo.setText(" ");
